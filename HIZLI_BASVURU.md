@@ -14,6 +14,8 @@ Basit Yargılama Usulü - **alt sınırı 2 yıl veya daha az** hapis cezası ol
 - Mala zarar verme (TCK 151)
 - Diğer basit suçlar (alt sınırı 2 yıl veya daha az)
 
+**📚 Tam liste için:** `SUC_TURLERI_KUTUPHANESI.md` dosyasına bakınız.
+
 ---
 
 ## ⚡ HIZLI REFERANS
