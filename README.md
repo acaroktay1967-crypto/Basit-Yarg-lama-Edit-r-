@@ -10,6 +10,23 @@ Basit yargılama usulü, **alt sınırı 2 yıl veya daha az hapis cezası** ön
 
 ## 📚 İçindekiler
 
+### 0. Suç Türleri Kütüphanesi
+**Dosya:** `SUC_TURLERI_KUTUPHANESI.md`
+
+Basit yargılama usulüne tabi tutulabilecek suçların kapsamlı listesi ve detaylı açıklamaları.
+
+**İçerik:**
+- TCK'da basit yargılama kapsamındaki tüm suç türleri
+- Her suç için ceza aralıkları
+- Basit yargılama uygunluk durumu
+- Özet tablo ve hızlı referans
+- Özel kanunlardaki suçlar hakkında bilgi
+
+**Ne zaman kullanılır:**
+- Dosyanın basit yargılamaya uygun olup olmadığını kontrol ederken
+- Hangi suçun hangi TCK maddesine girdiğini araştırırken
+- Ceza aralıklarını kontrol ederken
+
 ### 1. Tensip Zaptı (Ön Karar)
 **Dosya:** `1_Tensip_Zapti_CMK251.md`
 
@@ -288,6 +305,9 @@ Ceza belirlenirken dikkate alınır:
 Basit-Yargılama-Editör/
 │
 ├── README.md (Bu dosya)
+├── SUC_TURLERI_KUTUPHANESI.md (Suç türleri kütüphanesi)
+├── HIZLI_BASVURU.md (Hızlı başvuru kılavuzu)
+├── IS_AKIS_SEMASI.md (İş akış şeması)
 ├── 1_Tensip_Zapti_CMK251.md
 ├── 2_Basit_Yargilama_Karar_Sablonu_TCK86.md
 ├── 3_HAGB_Karar_Sablonu.md

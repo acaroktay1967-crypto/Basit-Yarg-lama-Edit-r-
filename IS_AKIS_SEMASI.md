@@ -17,6 +17,8 @@
 - [ ] Dosya karmaşık değil mi?
 - [ ] Deliller yeterli mi?
 
+**📚 Suç türlerini kontrol etmek için:** `SUC_TURLERI_KUTUPHANESI.md` dosyasına bakınız.
+
 **Karar:**
 - ✅ UYGUN → ADIM 2'ye geç
 - ❌ UYGUN DEĞİL → Normal yargılama usulü uygula
@@ -309,6 +311,8 @@ DOSYA
 4. TCK 86 için örnek → `2_Basit_Yargilama_Karar_Sablonu_TCK86.md`
 5. İtiraz geldi → `6_Itiraz_Inceleme_Karar.md`
 6. Duruşma açacağım → `5_Itiraz_Uzerine_Durusma_Acilmasi.md`
+
+**Suç türlerini kontrol etmek için:** `SUC_TURLERI_KUTUPHANESI.md`
 
 **Detaylı bilgi için:** `README.md` ve `HIZLI_BASVURU.md`
 
