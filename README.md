@@ -31,6 +31,42 @@ Basit yargılama usulü, **alt sınırı 2 yıl veya daha az hapis cezası** ön
 
 ---
 
+### ⚡ Seri Muhakeme Usulü Kontrol Sistemi (YENİ)
+**Dosyalar:**
+- `seri_muhakeme_kurallar.json` - Seri muhakeme kuralları ve uygulanamayacağı haller
+- `seri_muhakeme_kontrol.js` - Kontrol ve doğrulama modülü
+- `seri_muhakeme_editor.html` - Web tabanlı kontrol arayüzü
+- `test_seri_muhakeme.js` - Otomatik test suite (21 test, %100 başarı)
+
+**Özellikler:**
+- CMK Madde 250 uyarınca seri muhakeme uygunluk kontrolü
+- 6 temel uygulanamama durumunun otomatik kontrolü
+- Kullanıcı dostu web arayüzü
+- Gerçek zamanlı doğrulama ve uyarılar
+- Kapsamlı test coverage
+
+**Seri Muhakemenin Uygulanamayacağı Haller:**
+1. Şüpheliye ulaşılamama (yurt dışı, adres bulunamama)
+2. Önödeme ve uzlaştırma kapsamındaki suçlar
+3. Şüphelinin mazeretsiz mahkemeye gelmemesi
+4. İştirak halinde işlenme ve şüphelilerden birinin kabul etmemesi
+5. Seri muhakeme kapsamında olmayan başka suçla birlikte işlenme
+6. Yaş küçüklüğü, akıl hastalığı, sağır ve dilsizlik halleri
+
+**Kullanım:**
+1. `seri_muhakeme_editor.html` dosyasını bir tarayıcıda açın
+2. Suç türünü seçin ve durumları işaretleyin
+3. Kontrol Et butonuna tıklayın
+4. Testleri çalıştırmak için: `node test_seri_muhakeme.js`
+
+**Prosedür:**
+- Cumhuriyet Savcısı şüpheliye seri muhakeme usulünü teklif eder
+- Kabul halinde ceza yarısı oranında indirim yapılır
+- Mahkeme 10 gün içinde duruşma yaparak karar verir
+- Verilen hüküm kesindir, istinaf yoluna başvurulamaz
+
+---
+
 ### 1. Tensip Zaptı (Ön Karar)
 **Dosya:** `1_Tensip_Zapti_CMK251.md`
 
@@ -322,11 +358,17 @@ Basit-Yargılama-Editör/
 │   ├── HIZLI_BASVURU.md
 │   └── IS_AKIS_SEMASI.md
 │
-└── 🗂️ Suç Türleri Kütüphanesi (YENİ)
-    ├── suc_turleri_kutuphanesi.json - Veri tabanı
-    ├── suc_kutuphanesi_editor.html - Görselleştirme arayüzü
-    ├── test_suc_kutuphanesi.js - Node.js test suite
-    └── test_suc_kutuphanesi.html - Tarayıcı test suite
+├── 🗂️ Suç Türleri Kütüphanesi
+│   ├── suc_turleri_kutuphanesi.json - Veri tabanı
+│   ├── suc_kutuphanesi_editor.html - Görselleştirme arayüzü
+│   ├── test_suc_kutuphanesi.js - Node.js test suite
+│   └── test_suc_kutuphanesi.html - Tarayıcı test suite
+│
+└── ⚡ Seri Muhakeme Kontrol Sistemi (YENİ)
+    ├── seri_muhakeme_kurallar.json - Kurallar ve haller
+    ├── seri_muhakeme_kontrol.js - Kontrol modülü
+    ├── seri_muhakeme_editor.html - Web arayüzü
+    └── test_seri_muhakeme.js - Test suite (21 test)
 ```
 
 ---
