@@ -15,8 +15,8 @@ class SeriMuhakemeKontrol {
     async yukle() {
         try {
             // Seri muhakeme kurallarını yükle
-            const kuralarResponse = await fetch('seri_muhakeme_kurallar.json');
-            this.kurallar = await kuralarResponse.json();
+            const kurallarResponse = await fetch('seri_muhakeme_kurallar.json');
+            this.kurallar = await kurallarResponse.json();
 
             // Suç kütüphanesini yükle
             const sucResponse = await fetch('suc_turleri_kutuphanesi.json');

@@ -46,14 +46,14 @@ function assertEquals(actual, expected, message) {
 }
 
 // Load data files
-const kuralarPath = path.join(__dirname, 'seri_muhakeme_kurallar.json');
+const kurallarPath = path.join(__dirname, 'seri_muhakeme_kurallar.json');
 const sucKutuphanePath = path.join(__dirname, 'suc_turleri_kutuphanesi.json');
 
 let kurallarData;
 let sucKutuphanesi;
 
 try {
-    kurallarData = JSON.parse(fs.readFileSync(kuralarPath, 'utf8'));
+    kurallarData = JSON.parse(fs.readFileSync(kurallarPath, 'utf8'));
     sucKutuphanesi = JSON.parse(fs.readFileSync(sucKutuphanePath, 'utf8'));
     console.log(`${colors.cyan}📁 Veri dosyaları başarıyla yüklendi${colors.reset}\n`);
 } catch (error) {
