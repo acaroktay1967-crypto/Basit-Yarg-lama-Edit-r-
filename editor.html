@@ -210,6 +210,21 @@
                 return;
             }
             
+            // Whitelist of allowed templates
+            const allowedTemplates = [
+                '1_Tensip_Zapti_CMK251.md',
+                '2_Basit_Yargilama_Karar_Sablonu_TCK86.md',
+                '3_HAGB_Karar_Sablonu.md',
+                '4_Mahkumiyet_Karar_Sablonu.md',
+                '5_Itiraz_Uzerine_Durusma_Acilmasi.md',
+                '6_Itiraz_Inceleme_Karar.md'
+            ];
+            
+            if (!allowedTemplates.includes(select.value)) {
+                showAlert('editorAlert', 'Geçersiz şablon seçimi!', 'error');
+                return;
+            }
+            
             try {
                 const response = await fetch(select.value);
                 if (!response.ok) throw new Error('Şablon yüklenemedi');
@@ -260,10 +275,24 @@
                 return;
             }
             
-            textarea.select();
-            document.execCommand('copy');
-            
-            showAlert('editorAlert', 'Metin panoya kopyalandı!', 'success');
+            // Use modern Clipboard API
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(textarea.value)
+                    .then(() => {
+                        showAlert('editorAlert', 'Metin panoya kopyalandı!', 'success');
+                    })
+                    .catch(() => {
+                        // Fallback to older method
+                        textarea.select();
+                        document.execCommand('copy');
+                        showAlert('editorAlert', 'Metin panoya kopyalandı!', 'success');
+                    });
+            } else {
+                // Fallback for older browsers
+                textarea.select();
+                document.execCommand('copy');
+                showAlert('editorAlert', 'Metin panoya kopyalandı!', 'success');
+            }
         }
 
         // Clear editor
@@ -401,18 +430,52 @@
             const card = document.createElement('div');
             card.className = 'decision-card';
             
-            card.innerHTML = `
-                <div class="decision-header">
-                    <span class="decision-number">${decision.karar_no}</span>
-                    <span class="decision-date">${decision.tarih} - ${decision.daire}</span>
-                </div>
-                <div class="decision-title">${decision.konu}</div>
-                <div class="decision-summary">${decision.ozet}</div>
-                <div class="decision-tags">
-                    ${decision.ilgili_maddeler.map(m => `<span class="tag article">${m}</span>`).join('')}
-                    ${decision.anahtar_kelimeler.slice(0, 3).map(k => `<span class="tag">${k}</span>`).join('')}
-                </div>
-            `;
+            // Create elements safely
+            const header = document.createElement('div');
+            header.className = 'decision-header';
+            
+            const number = document.createElement('span');
+            number.className = 'decision-number';
+            number.textContent = decision.karar_no;
+            
+            const date = document.createElement('span');
+            date.className = 'decision-date';
+            date.textContent = `${decision.tarih} - ${decision.daire}`;
+            
+            header.appendChild(number);
+            header.appendChild(date);
+            
+            const title = document.createElement('div');
+            title.className = 'decision-title';
+            title.textContent = decision.konu;
+            
+            const summary = document.createElement('div');
+            summary.className = 'decision-summary';
+            summary.textContent = decision.ozet;
+            
+            const tags = document.createElement('div');
+            tags.className = 'decision-tags';
+            
+            // Add article tags
+            decision.ilgili_maddeler.forEach(m => {
+                const tag = document.createElement('span');
+                tag.className = 'tag article';
+                tag.textContent = m;
+                tags.appendChild(tag);
+            });
+            
+            // Add keyword tags (max 3)
+            decision.anahtar_kelimeler.slice(0, 3).forEach(k => {
+                const tag = document.createElement('span');
+                tag.className = 'tag';
+                tag.textContent = k;
+                tags.appendChild(tag);
+            });
+            
+            card.appendChild(header);
+            card.appendChild(title);
+            card.appendChild(summary);
+            card.appendChild(tags);
             
             return card;
         }
@@ -468,27 +531,56 @@
             const container = document.getElementById('decisionsContainer');
             container.innerHTML = '';
             
+            // Escape HTML to prevent XSS
+            const escapeHtml = (text) => {
+                const div = document.createElement('div');
+                div.textContent = text;
+                return div.innerHTML;
+            };
+            
+            const escapedSearchTerm = escapeHtml(searchTerm);
+            
             if (results.length === 0) {
                 showAlert('searchAlert', 
-                    `"${searchTerm}" için sonuç bulunamadı. Farklı anahtar kelimeler deneyin veya kategori filtresini kullanın.`, 
+                    `"${escapedSearchTerm}" için sonuç bulunamadı. Farklı anahtar kelimeler deneyin veya kategori filtresini kullanın.`, 
                     'error');
                 
-                container.innerHTML = `
-                    <div style="text-align: center; padding: 40px; color: #7f8c8d;">
-                        <h3>🔍 Sonuç Bulunamadı</h3>
-                        <p>Arama önerileriniz:</p>
-                        <ul style="list-style: none; padding: 0;">
-                            <li>• Farklı anahtar kelimeler deneyin</li>
-                            <li>• Madde numarası ile arama yapın (örn: CMK 251)</li>
-                            <li>• Kategori filtrelerini kullanın</li>
-                        </ul>
-                    </div>
-                `;
+                const noResults = document.createElement('div');
+                noResults.style.textAlign = 'center';
+                noResults.style.padding = '40px';
+                noResults.style.color = '#7f8c8d';
+                
+                const heading = document.createElement('h3');
+                heading.textContent = '🔍 Sonuç Bulunamadı';
+                
+                const para = document.createElement('p');
+                para.textContent = 'Arama önerileriniz:';
+                
+                const list = document.createElement('ul');
+                list.style.listStyle = 'none';
+                list.style.padding = '0';
+                
+                const suggestions = [
+                    '• Farklı anahtar kelimeler deneyin',
+                    '• Madde numarası ile arama yapın (örn: CMK 251)',
+                    '• Kategori filtrelerini kullanın'
+                ];
+                
+                suggestions.forEach(text => {
+                    const li = document.createElement('li');
+                    li.textContent = text;
+                    list.appendChild(li);
+                });
+                
+                noResults.appendChild(heading);
+                noResults.appendChild(para);
+                noResults.appendChild(list);
+                container.appendChild(noResults);
                 return;
             }
             
             showAlert('searchAlert', 
-                `"${searchTerm}" için ${results.length} sonuç bulundu.`, 
+                `"${escapedSearchTerm}" için ${results.length} sonuç bulundu.`, 
                 'success');
             
             const resultsTitle = document.createElement('h3');
@@ -506,7 +598,14 @@
         function showAlert(elementId, message, type) {
             const alertDiv = document.getElementById(elementId);
             alertDiv.className = `alert alert-${type} show`;
-            alertDiv.innerHTML = `<strong>${type === 'success' ? '✅' : type === 'error' ? '❌' : 'ℹ️'}</strong> ${message}`;
+            
+            const icon = type === 'success' ? '✅' : type === 'error' ? '❌' : 'ℹ️';
+            const strong = document.createElement('strong');
+            strong.textContent = icon;
+            
+            alertDiv.innerHTML = '';
+            alertDiv.appendChild(strong);
+            alertDiv.appendChild(document.createTextNode(' ' + message));
             
             // Auto hide after 5 seconds
             setTimeout(() => {
