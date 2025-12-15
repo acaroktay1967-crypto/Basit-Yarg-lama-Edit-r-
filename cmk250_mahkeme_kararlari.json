@@ -1,0 +1,517 @@
+{
+  "metadata": {
+    "version": "1.0",
+    "last_updated": "2024-12-15",
+    "description": "CMK 250 Uyarınca Uzlaştırma Kapsamındaki Örnek Mahkeme Hükümleri",
+    "legal_basis": "5271 sayılı CMK Madde 250 - Uzlaştırma"
+  },
+  "court_decisions": [
+    {
+      "id": 1,
+      "case_number": "2023/245 E., 2023/318 K.",
+      "court_name": "Ankara 5. Asliye Ceza Mahkemesi",
+      "decision_date": "15.03.2023",
+      "identity_information": {
+        "defendant": {
+          "name": "Ahmet YILMAZ",
+          "father_name": "Mehmet",
+          "mother_name": "Ayşe",
+          "birth_date": "15.05.1985",
+          "birth_place": "Ankara",
+          "tc_id": "12345678901",
+          "address": "Çankaya, Ankara",
+          "occupation": "Özel Sektör Çalışanı",
+          "criminal_record": "Yok"
+        },
+        "plaintiff": {
+          "name": "Zeynep KAYA",
+          "father_name": "Ali",
+          "mother_name": "Fatma",
+          "birth_date": "20.08.1990",
+          "birth_place": "Ankara",
+          "tc_id": "98765432109",
+          "address": "Keçiören, Ankara"
+        }
+      },
+      "crime_definition": {
+        "crime_name": "Basit Yaralama",
+        "tck_article": "TCK m. 86/2",
+        "crime_description": "Sanığın, mağdureye karşı basit tıbbi müdahale ile giderilebilir nitelikte kasten yaralama fiilini işlediği iddiası",
+        "crime_category": "Kişilere Karşı Suçlar",
+        "penalty_range": "4 ay - 1 yıl hapis",
+        "eligible_for_mediation": true,
+        "mediation_basis": "CMK 253/4 gereğince uzlaştırma kapsamında"
+      },
+      "case_summary": "Sanık ile mağdur arasında 10.01.2023 tarihinde Çankaya ilçesinde meydana gelen tartışma sonucu sanığın mağdureye tokat atması sonucu basit yaralanmaya neden olduğu iddia edilmektedir. Mağdurun sağlık raporu basit tıbbi müdahale ile giderilebilir nitelikte yaralanma tespit etmiştir.",
+      "procedural_steps": [
+        "Dosya 15.02.2023 tarihinde mahkemeye intikal etmiştir",
+        "CMK 253 gereğince uzlaştırma için Uzlaştırma Bürosuna gönderilmiştir (20.02.2023)",
+        "Uzlaştırma görüşmeleri 3 oturum halinde gerçekleştirilmiştir",
+        "Taraflar uzlaşmaya varmış ve anlaşma protokolü imzalanmıştır (10.03.2023)",
+        "Uzlaştırma sonucu mahkemeye bildirilmiştir"
+      ],
+      "mediation_outcome": {
+        "mediation_successful": true,
+        "mediation_date": "10.03.2023",
+        "agreement_terms": [
+          "Sanık mağdurdan özür dilemiştir",
+          "Sanık mağdura 5.000 TL manevi tazminat ödemeyi kabul etmiştir",
+          "Ödeme 2 taksitte yapılacaktır (15.03.2023 ve 15.04.2023)",
+          "Taraflar karşılıklı şikayetlerinden vazgeçmiştir"
+        ],
+        "agreement_fulfilled": true
+      },
+      "decision_rationale": {
+        "legal_basis": [
+          "5271 sayılı CMK'nın 253. maddesi",
+          "Uzlaştırma Yönetmeliği",
+          "Yargıtay ilgili içtihatları"
+        ],
+        "court_evaluation": "Sanık ile mağdur arasında CMK 253. maddesi kapsamında uzlaştırma sağlanmış, taraflar anlaşma protokolünü imzalamış ve sanık yükümlülüklerini yerine getirmiştir. Uzlaştırmanın hukuka uygun olduğu anlaşılmıştır.",
+        "reasoning": [
+          "Suç CMK 253/4 kapsamında uzlaştırma kapsamındadır",
+          "Uzlaştırma usulüne uygun şekilde gerçekleştirilmiştir",
+          "Taraflar özgür iradeleriyle uzlaşmıştır",
+          "Sanık yükümlülüklerini yerine getirmiştir",
+          "Kamu düzenine aykırı bir durum bulunmamaktadır"
+        ]
+      },
+      "decision_outcome": {
+        "decision_type": "Düşme Kararı",
+        "main_decision": "Uzlaştırma sağlandığından CMK 253/9 gereğince KAMU DAVASININ DÜŞMESİNE",
+        "penalties": {
+          "imprisonment": null,
+          "monetary_fine": null,
+          "compensation": {
+            "amount": "5.000 TL",
+            "recipient": "Mağdur Zeynep KAYA",
+            "paid": true
+          }
+        },
+        "additional_provisions": [
+          "Sanık hakkında herhangi bir ceza verilmemiştir",
+          "Kamu davası düşmüştür",
+          "Karar kesinleşmiştir"
+        ],
+        "appeal_rights": {
+          "appealable": false,
+          "appeal_period": null,
+          "appeal_court": null,
+          "reason": "Uzlaştırma sonucu verilen düşme kararı kesindir"
+        }
+      },
+      "final_status": "Kesinleşmiş",
+      "notes": "CMK 250 kapsamında soruşturma evresinde uzlaştırma sağlanmış, dosya mahkemeye gelmeden önce Cumhuriyet Savcılığı tarafından takipsizlik kararı verilmesi de mümkündür. Bu örnekte, dava açıldıktan sonra CMK 253 kapsamında kovuşturma evresinde uzlaştırma yapılmıştır."
+    },
+    {
+      "id": 2,
+      "case_number": "2023/156 E., 2023/201 K.",
+      "court_name": "İstanbul Anadolu 12. Asliye Ceza Mahkemesi",
+      "decision_date": "22.05.2023",
+      "identity_information": {
+        "defendant": {
+          "name": "Mustafa DEMİR",
+          "father_name": "Hasan",
+          "mother_name": "Emine",
+          "birth_date": "10.11.1978",
+          "birth_place": "İstanbul",
+          "tc_id": "11223344556",
+          "address": "Kadıköy, İstanbul",
+          "occupation": "Esnaf",
+          "criminal_record": "Yok"
+        },
+        "plaintiff": {
+          "name": "Can ÖZTÜRK",
+          "father_name": "Kemal",
+          "mother_name": "Sevgi",
+          "birth_date": "05.03.1992",
+          "birth_place": "İstanbul",
+          "tc_id": "66778899001",
+          "address": "Üsküdar, İstanbul"
+        }
+      },
+      "crime_definition": {
+        "crime_name": "Tehdit",
+        "tck_article": "TCK m. 106/1",
+        "crime_description": "Sanığın mağduru hayatına, vücut veya cinsel dokunulmazlığına yönelik saldırı gerçekleştireceğinden bahisle tehdit ettiği iddiası",
+        "crime_category": "Kişilere Karşı Suçlar",
+        "penalty_range": "6 ay - 2 yıl hapis",
+        "eligible_for_mediation": true,
+        "mediation_basis": "CMK 253/3 gereğince uzlaştırma kapsamında"
+      },
+      "case_summary": "Sanık ile mağdur arasında ticari anlaşmazlık nedeniyle 25.02.2023 tarihinde telefon görüşmesinde tartışma yaşanmış, sanığın mağdura 'seni bulurum hesabını sorarım' şeklinde sözler sarf ettiği iddia edilmektedir.",
+      "procedural_steps": [
+        "Soruşturma başlatılmıştır (28.02.2023)",
+        "CMK 250 gereğince soruşturma evresinde uzlaştırmaya sevk edilmiştir (05.03.2023)",
+        "Uzlaştırma görüşmeleri yapılmıştır",
+        "Taraflar uzlaşmaya varamamıştır",
+        "İddianame düzenlenmiş ve dava açılmıştır (10.04.2023)",
+        "Mahkemede yargılama yapılmıştır"
+      ],
+      "mediation_outcome": {
+        "mediation_successful": false,
+        "mediation_date": "15.03.2023",
+        "failure_reason": "Taraflar uzlaşma şartları konusunda anlaşamadılar",
+        "agreement_terms": null,
+        "agreement_fulfilled": false
+      },
+      "decision_rationale": {
+        "legal_basis": [
+          "5237 sayılı TCK'nın 106. maddesi",
+          "5271 sayılı CMK'nın 250-253. maddeleri",
+          "TCK 50, 51, 52 maddeleri"
+        ],
+        "court_evaluation": "Uzlaştırma görüşmelerinde taraflar anlaşmaya varamadığından yargılama devam etmiştir. Dosya kapsamında toplanan deliller değerlendirilmiş, sanığın TCK 106/1 kapsamında tehdit suçunu işlediği sabit görülmüştür.",
+        "reasoning": [
+          "Mağdurun beyanı tutarlı ve inandırıcıdır",
+          "Telefon kayıtları mağdur beyanını desteklemektedir",
+          "Tanık beyanları olayla uyumludur",
+          "Sanık savunması dosya kapsamı ile çelişmektedir",
+          "Suçun unsurları oluşmuştur"
+        ]
+      },
+      "decision_outcome": {
+        "decision_type": "Mahkumiyet Kararı",
+        "main_decision": "Sanığın TCK 106/1 maddesi gereğince CEZALANDIRILMASINA",
+        "penalties": {
+          "imprisonment": {
+            "base_penalty": "10 ay hapis",
+            "after_tck_50": "8 ay hapis",
+            "final_penalty": "8 ay hapis",
+            "suspended": true,
+            "suspension_period": "3 yıl",
+            "suspension_conditions": [
+              "Denetim süresi içinde kasıtlı bir suç işlememek",
+              "Mağdura 3.000 TL manevi tazminat ödemek"
+            ]
+          },
+          "monetary_fine": null,
+          "compensation": {
+            "amount": "3.000 TL",
+            "recipient": "Mağdur Can ÖZTÜRK",
+            "paid": false,
+            "payment_deadline": "30 gün içinde"
+          }
+        },
+        "additional_provisions": [
+          "TCK 51 gereğince hapis cezası ertelenmiştir",
+          "Erteleme koşullarına uyulmaması halinde ceza infaz edilecektir",
+          "Adli sicil kaydına işlenecektir"
+        ],
+        "appeal_rights": {
+          "appealable": true,
+          "appeal_period": "7 gün",
+          "appeal_court": "İstanbul Bölge Adliye Mahkemesi",
+          "reason": "CMK 260 gereğince itiraz hakkı vardır"
+        }
+      },
+      "final_status": "Kesinleşmemiş - İtiraz süresi içinde",
+      "notes": "Uzlaştırma başarısız olsa da, mahkeme TCK 51 gereğince erteleme kararı vermiştir. Bu, failin topluma kazandırılması açısından önemlidir."
+    },
+    {
+      "id": 3,
+      "case_number": "2023/89 E., 2023/112 K.",
+      "court_name": "İzmir Konak 3. Asliye Ceza Mahkemesi",
+      "decision_date": "10.06.2023",
+      "identity_information": {
+        "defendant": {
+          "name": "Elif ŞAHIN",
+          "father_name": "Osman",
+          "mother_name": "Zehra",
+          "birth_date": "18.07.1995",
+          "birth_place": "İzmir",
+          "tc_id": "33445566778",
+          "address": "Konak, İzmir",
+          "occupation": "Öğretmen",
+          "criminal_record": "Yok"
+        },
+        "plaintiff": {
+          "name": "Aylin YILDIRIM",
+          "father_name": "Selim",
+          "mother_name": "Gülşen",
+          "birth_date": "12.09.1993",
+          "birth_place": "İzmir",
+          "tc_id": "55667788990",
+          "address": "Bornova, İzmir"
+        }
+      },
+      "crime_definition": {
+        "crime_name": "Hakaret",
+        "tck_article": "TCK m. 125/1",
+        "crime_description": "Sanığın mağdura karşı onur, şeref ve saygınlığını rencide edici sözler sarf ettiği iddiası",
+        "crime_category": "Kişilere Karşı Suçlar",
+        "penalty_range": "3 ay - 2 yıl hapis veya adli para cezası",
+        "eligible_for_mediation": true,
+        "mediation_basis": "CMK 253/3 gereğince uzlaştırma kapsamında"
+      },
+      "case_summary": "Sanık ile mağdur arasında komşuluk ilişkisinden kaynaklanan anlaşmazlık sonucu 05.04.2023 tarihinde apartman önünde meydana gelen tartışmada sanığın mağdura hakaret içerikli sözler söylediği iddia edilmektedir.",
+      "procedural_steps": [
+        "Soruşturma başlatılmıştır (08.04.2023)",
+        "CMK 250 gereğince uzlaştırmaya sevk edilmiştir (12.04.2023)",
+        "Uzlaştırma görüşmeleri gerçekleştirilmiştir",
+        "Taraflar uzlaşmaya varmıştır (28.04.2023)",
+        "Anlaşma protokolü imzalanmıştır",
+        "Cumhuriyet Savcılığı takipsizlik kararı vermiştir (05.05.2023)",
+        "Mağdur itiraz etmiş, mahkeme iddianamenin düzenlenmesine karar vermiştir",
+        "Kovuşturma evresinde yeniden uzlaştırma teklif edilmiştir",
+        "Taraflar yeni bir uzlaşma sağlamıştır"
+      ],
+      "mediation_outcome": {
+        "mediation_successful": true,
+        "mediation_date": "25.05.2023",
+        "agreement_terms": [
+          "Sanık mağdurdan özür dilemiştir",
+          "Sanık mağdura 2.500 TL manevi tazminat ödeyecektir",
+          "Ödeme peşin yapılacaktır",
+          "Taraflar birbirlerine karşı saygılı davranacaklarını taahhüt etmiştir"
+        ],
+        "agreement_fulfilled": true,
+        "payment_proof": "Dekont ve imzalı teslim belgesi dosyaya sunulmuştur"
+      },
+      "decision_rationale": {
+        "legal_basis": [
+          "5271 sayılı CMK'nın 253. maddesi",
+          "CMK 253/9 maddesi",
+          "Uzlaştırma Yönetmeliği"
+        ],
+        "court_evaluation": "Kovuşturma evresinde taraflar arasında uzlaştırma sağlanmış, anlaşma şartları yerine getirilmiştir. Uzlaştırma usul ve esaslarına uygun gerçekleştirilmiştir.",
+        "reasoning": [
+          "Suç uzlaştırma kapsamındadır",
+          "Taraflar özgür iradeleriyle uzlaşmıştır",
+          "Anlaşma şartları yerine getirilmiştir",
+          "Kamu düzenine aykırılık bulunmamaktadır",
+          "CMK 253/9 gereğince düşme kararı verilmesi gerekmektedir"
+        ]
+      },
+      "decision_outcome": {
+        "decision_type": "Düşme Kararı",
+        "main_decision": "Uzlaştırma sağlandığından CMK 253/9 gereğince KAMU DAVASININ DÜŞMESİNE",
+        "penalties": {
+          "imprisonment": null,
+          "monetary_fine": null,
+          "compensation": {
+            "amount": "2.500 TL",
+            "recipient": "Mağdur Aylin YILDIRIM",
+            "paid": true
+          }
+        },
+        "additional_provisions": [
+          "Uzlaşma neticesinde sanık hakkında herhangi bir ceza verilmemiştir",
+          "Kamu davası düşmüştür",
+          "Karar kesindir"
+        ],
+        "appeal_rights": {
+          "appealable": false,
+          "appeal_period": null,
+          "appeal_court": null,
+          "reason": "Uzlaştırma sonucu verilen düşme kararı CMK 253/9 gereğince kesindir"
+        }
+      },
+      "final_status": "Kesinleşmiş",
+      "notes": "Bu örnekte, soruşturma evresinde uzlaştırma sağlanmasına rağmen mağdurun itirazı üzerine dava açılmış, kovuşturma evresinde yeniden uzlaştırma yapılarak kamu davası düşürülmüştür."
+    },
+    {
+      "id": 4,
+      "case_number": "2023/334 E., 2023/445 K.",
+      "court_name": "Bursa İnegöl Asliye Ceza Mahkemesi",
+      "decision_date": "18.07.2023",
+      "identity_information": {
+        "defendant": {
+          "name": "Mehmet ARSLAN",
+          "father_name": "İbrahim",
+          "mother_name": "Hatice",
+          "birth_date": "22.04.1988",
+          "birth_place": "Bursa",
+          "tc_id": "44556677889",
+          "address": "İnegöl, Bursa",
+          "occupation": "Serbest Meslek",
+          "criminal_record": "Yok"
+        },
+        "plaintiff": {
+          "name": "Hüseyin KURT",
+          "father_name": "Ahmet",
+          "mother_name": "Meryem",
+          "birth_date": "30.06.1990",
+          "birth_place": "Bursa",
+          "tc_id": "77889900112",
+          "address": "İnegöl, Bursa"
+        }
+      },
+      "crime_definition": {
+        "crime_name": "Mala Zarar Verme",
+        "tck_article": "TCK m. 151/1",
+        "crime_description": "Sanığın mağdura ait aracın lastiklerini kestiği iddiası",
+        "crime_category": "Malvarlığına Karşı Suçlar",
+        "penalty_range": "4 ay - 3 yıl hapis veya adli para cezası",
+        "eligible_for_mediation": true,
+        "mediation_basis": "CMK 253/3 gereğince uzlaştırma kapsamında"
+      },
+      "case_summary": "Sanık ile mağdur arasında park yeri anlaşmazlığı nedeniyle 15.05.2023 tarihinde sanığın mağdura ait aracın 4 lastiğini kestiği, yaklaşık 8.000 TL maddi zarar meydana geldiği iddia edilmektedir.",
+      "procedural_steps": [
+        "Soruşturma başlatılmıştır (16.05.2023)",
+        "CMK 250 gereğince uzlaştırmaya sevk edilmiştir (20.05.2023)",
+        "Uzlaştırma görüşmeleri gerçekleştirilmiştir",
+        "Taraflar uzlaşmaya varmıştır (10.06.2023)",
+        "Cumhuriyet Savcılığı takipsizlik kararı vermiştir (15.06.2023)"
+      ],
+      "mediation_outcome": {
+        "mediation_successful": true,
+        "mediation_date": "10.06.2023",
+        "agreement_terms": [
+          "Sanık fiilini kabul etmiş ve özür dilemiştir",
+          "Sanık mağdura 10.000 TL tazminat ödemeyi kabul etmiştir (maddi ve manevi)",
+          "Ödeme 2 taksitte yapılacaktır",
+          "1. taksit: 5.000 TL (15.06.2023)",
+          "2. taksit: 5.000 TL (15.07.2023)"
+        ],
+        "agreement_fulfilled": true
+      },
+      "decision_rationale": {
+        "legal_basis": [
+          "5271 sayılı CMK'nın 250. maddesi",
+          "CMK 253/9 maddesi"
+        ],
+        "court_evaluation": "Soruşturma evresinde CMK 250 kapsamında uzlaştırma sağlanmış, sanık yükümlülüklerini tam olarak yerine getirmiş, Cumhuriyet Savcılığı tarafından takipsizlik kararı verilmiştir. Mağdur bu karara itiraz etmemiştir.",
+        "reasoning": [
+          "Uzlaştırma usulüne uygun gerçekleştirilmiştir",
+          "Taraflar gönüllü olarak uzlaşmıştır",
+          "Tazminat ödemeleri zamanında yapılmıştır",
+          "Mağdur memnuniyetini beyan etmiştir"
+        ]
+      },
+      "decision_outcome": {
+        "decision_type": "Takipsizlik Kararı (Soruşturma Evresi)",
+        "main_decision": "CMK 250 gereğince uzlaştırma sağlandığından KOVUŞTURMAYA YER OLMADIĞINA",
+        "penalties": {
+          "imprisonment": null,
+          "monetary_fine": null,
+          "compensation": {
+            "amount": "10.000 TL",
+            "recipient": "Mağdur Hüseyin KURT",
+            "paid": true
+          }
+        },
+        "additional_provisions": [
+          "Soruşturma evresinde uzlaştırma sağlanmıştır",
+          "Takipsizlik kararı verilmiştir",
+          "Sanık hakkında adli sicil kaydı oluşmamıştır"
+        ],
+        "appeal_rights": {
+          "appealable": true,
+          "appeal_period": "15 gün",
+          "appeal_court": "Bursa Bölge Adliye Mahkemesi Cumhuriyet Başsavcılığı",
+          "reason": "CMK 173 gereğince takipsizlik kararına itiraz edilebilir"
+        }
+      },
+      "final_status": "Kesinleşmiş - İtiraz edilmemiştir",
+      "notes": "Soruşturma evresinde uzlaştırma en ideal sonuçtur. Sanık adli sicil kaydı olmadan, mağdur da zararını karşılayarak süreç sonlandırılmıştır."
+    },
+    {
+      "id": 5,
+      "case_number": "2023/567 E., 2023/678 K.",
+      "court_name": "Antalya 8. Asliye Ceza Mahkemesi",
+      "decision_date": "05.09.2023",
+      "identity_information": {
+        "defendant": {
+          "name": "Cemre AYDIN",
+          "father_name": "Ramazan",
+          "mother_name": "Şükran",
+          "birth_date": "14.02.1997",
+          "birth_place": "Antalya",
+          "tc_id": "22334455667",
+          "address": "Muratpaşa, Antalya",
+          "occupation": "Üniversite Öğrencisi",
+          "criminal_record": "Yok"
+        },
+        "plaintiff": {
+          "name": "Deniz ÇELIK",
+          "father_name": "Murat",
+          "mother_name": "Selin",
+          "birth_date": "08.11.1998",
+          "birth_place": "Antalya",
+          "tc_id": "88990011223",
+          "address": "Kepez, Antalya"
+        }
+      },
+      "crime_definition": {
+        "crime_name": "Kişilerin Huzur ve Sükûnunu Bozma",
+        "tck_article": "TCK m. 123/1",
+        "crime_description": "Sanığın mağduru sürekli telefonla arayarak rahatsız ettiği iddiası",
+        "crime_category": "Kişilere Karşı Suçlar",
+        "penalty_range": "3 ay - 1 yıl adli para cezası",
+        "eligible_for_mediation": true,
+        "mediation_basis": "CMK 253/3 gereğince uzlaştırma kapsamında"
+      },
+      "case_summary": "Sanık ile mağdur eski arkadaştır. 01.06.2023 - 15.06.2023 tarihleri arasında sanığın mağduru günde ortalama 20-30 kez arayarak rahatsız ettiği, sosyal medya üzerinden mesaj bombardımanı yaptığı iddia edilmektedir.",
+      "procedural_steps": [
+        "Soruşturma başlatılmıştır (18.06.2023)",
+        "CMK 250 gereğince uzlaştırmaya sevk edilmiştir (22.06.2023)",
+        "Uzlaştırma görüşmeleri yapılmıştır",
+        "İlk görüşmede uzlaşma sağlanamamıştır",
+        "İkinci görüşme talep edilmiştir",
+        "Taraflar uzlaşmaya varmıştır (15.07.2023)",
+        "Cumhuriyet Savcılığı takipsizlik kararı vermiştir (20.07.2023)"
+      ],
+      "mediation_outcome": {
+        "mediation_successful": true,
+        "mediation_date": "15.07.2023",
+        "agreement_terms": [
+          "Sanık davranışlarından dolayı özür dilemiştir",
+          "Sanık mağduru bir daha aramayacağını taahhüt etmiştir",
+          "Sanık sosyal medyadan mağduru takip etmeyecektir",
+          "Sanık mağdura 1.500 TL manevi tazminat ödemiştir",
+          "Taraflar karşılıklı iletişim kurmayacaklardır"
+        ],
+        "agreement_fulfilled": true
+      },
+      "decision_rationale": {
+        "legal_basis": [
+          "5271 sayılı CMK'nın 250. maddesi",
+          "Uzlaştırma Yönetmeliği"
+        ],
+        "court_evaluation": "Taraflar arasında uzlaştırma sağlanmış, anlaşma şartları yerine getirilmiş, Cumhuriyet Savcılığı takipsizlik kararı vermiştir. Karar kesinleşmiştir.",
+        "reasoning": [
+          "İlk görüşmede uzlaşma sağlanamamış ancak ikinci görüşmede başarılı olunmuştur",
+          "Sanık samimi şekilde özür dilemiştir",
+          "Mağdur uzlaşmaya razı olmuştur",
+          "Tazminat ödenmiştir",
+          "Kamu yararı açısından sorun yoktur"
+        ]
+      },
+      "decision_outcome": {
+        "decision_type": "Takipsizlik Kararı (Soruşturma Evresi)",
+        "main_decision": "CMK 250 gereğince uzlaştırma sağlandığından KOVUŞTURMAYA YER OLMADIĞINA",
+        "penalties": {
+          "imprisonment": null,
+          "monetary_fine": null,
+          "compensation": {
+            "amount": "1.500 TL",
+            "recipient": "Mağdur Deniz ÇELIK",
+            "paid": true
+          }
+        },
+        "additional_provisions": [
+          "Soruşturma evresinde uzlaştırma başarılı olmuştur",
+          "Sanık hakkında adli sicil kaydı oluşmamıştır",
+          "İrtibat yasağı taahhüdü alınmıştır"
+        ],
+        "appeal_rights": {
+          "appealable": true,
+          "appeal_period": "15 gün",
+          "appeal_court": "Antalya Bölge Adliye Mahkemesi Cumhuriyet Başsavcılığı",
+          "reason": "CMK 173 gereğince itiraz hakkı vardır"
+        }
+      },
+      "final_status": "Kesinleşmiş - İtiraz edilmemiştir",
+      "notes": "Uzlaştırma görüşmelerinde ilk seferde başarısız olunsa da, ikinci görüşmede anlaşma sağlanabilmiştir. Bu, uzlaştırmanın sabır gerektiren bir süreç olduğunu göstermektedir."
+    }
+  ],
+  "statistics": {
+    "total_decisions": 5,
+    "successful_mediations": 4,
+    "failed_mediations": 1,
+    "investigation_phase_mediations": 3,
+    "prosecution_phase_mediations": 2,
+    "average_compensation": "4.400 TL"
+  }
+}
