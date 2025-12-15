@@ -329,6 +329,7 @@
                     <option value="all">Tüm Suçlar</option>
                     <option value="eligible">Basit Yargılama Uygun</option>
                     <option value="not-eligible">Basit Yargılama Uygun Değil</option>
+                    <option value="expedited">Seri Muhakeme Uygun</option>
                 </select>
             </div>
 
@@ -343,6 +344,10 @@
             <div class="stat-item">
                 <div class="stat-number" id="eligibleCount">0</div>
                 <div class="stat-label">Basit Yargılama Uygun</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" id="expeditedCount">0</div>
+                <div class="stat-label">Seri Muhakeme Uygun</div>
             </div>
             <div class="stat-item">
                 <div class="stat-number" id="displayedCount">0</div>
@@ -450,6 +455,8 @@
                         ${offense.eligible_for_simple_trial ? '✅ Basit Yargılama Uygun' : '⚠️ Dikkatli Değerlendirme Gerekir'}
                     </div>
                     
+                    ${offense.eligible_for_expedited_trial ? '<div class="eligibility-badge yes" style="margin-top: 5px;">⚡ Seri Muhakeme Uygun</div>' : ''}
+                    
                     ${offense.notes ? `<div class="notes">💡 ${offense.notes}</div>` : ''}
                 </div>
             `).join('');
@@ -459,10 +466,12 @@
         function updateStats() {
             const total = offenseData.offenses.length;
             const eligible = offenseData.offenses.filter(o => o.eligible_for_simple_trial).length;
+            const expedited = offenseData.offenses.filter(o => o.eligible_for_expedited_trial).length;
             const displayed = filteredOffenses.length;
             
             document.getElementById('totalCount').textContent = total;
             document.getElementById('eligibleCount').textContent = eligible;
+            document.getElementById('expeditedCount').textContent = expedited;
             document.getElementById('displayedCount').textContent = displayed;
         }
 
@@ -489,6 +498,8 @@
                     matchesEligibility = offense.eligible_for_simple_trial === true;
                 } else if (eligibilityFilter === 'not-eligible') {
                     matchesEligibility = offense.eligible_for_simple_trial === false;
+                } else if (eligibilityFilter === 'expedited') {
+                    matchesEligibility = offense.eligible_for_expedited_trial === true;
                 }
                 
                 return matchesSearch && matchesCategory && matchesEligibility;

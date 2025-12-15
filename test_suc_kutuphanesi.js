@@ -101,8 +101,11 @@ test('ID değerleri benzersiz', () => {
 
 test('TCK maddeleri formatı doğru', () => {
     offenseData.offenses.forEach(offense => {
-        assert(offense.tck_article.startsWith('TCK'), 
-            `${offense.tck_article} geçersiz format - 'TCK' ile başlamalı`);
+        // TCK veya özel kanun numarası (örn: 6136 S.K., 6831 S.K.) ile başlamalı
+        const isValid = offense.tck_article.startsWith('TCK') || 
+                       /^\d{4}\s*S\.K\./.test(offense.tck_article);
+        assert(isValid, 
+            `${offense.tck_article} geçersiz format - 'TCK' veya özel kanun formatında olmalı`);
     });
 });
 
@@ -155,16 +158,65 @@ test('Kategoriler tutarlı', () => {
     const categories = [...new Set(offenseData.offenses.map(o => o.category))];
     assert(categories.length >= 2, 'En az 2 kategori olmalı');
     categories.forEach(category => {
-        assert(category.includes('Karşı'), 'Kategori standart formatta değil');
+        assert(category.includes('Karşı') || category.includes('Seri Muhakeme'), 'Kategori standart formatta değil');
     });
 });
 
 test('Penalty types geçerli', () => {
-    const validTypes = ['Hapis', 'Adli Para Cezası', 'Hapis veya Adli Para Cezası', 'Temel cezada indirim'];
+    const validTypes = ['Hapis', 'Adli Para Cezası', 'Hapis veya Adli Para Cezası', 'Temel cezada indirim', 'Değişken'];
     offenseData.offenses.forEach(offense => {
         const isValid = validTypes.includes(offense.penalty_type);
         assert(isValid, `${offense.tck_article} için geçersiz ceza türü: ${offense.penalty_type}`);
     });
+});
+
+console.log(`\n${colors.yellow}⚡ Seri Muhakeme Usulü Testleri${colors.reset}`);
+test('Seri muhakeme usulüne tabi suçlar var', () => {
+    const expedited = offenseData.offenses.filter(o => o.eligible_for_expedited_trial === true);
+    assert(expedited.length > 0, 'Seri muhakeme usulüne tabi suç bulunamadı');
+});
+
+test('En az 13 seri muhakeme suçu tanımlı', () => {
+    const expedited = offenseData.offenses.filter(o => o.eligible_for_expedited_trial === true);
+    assert(expedited.length >= 13, 
+        `En az 13 seri muhakeme suçu bekleniyor, ${expedited.length} bulundu`);
+});
+
+test('Seri muhakeme kategorisi mevcut', () => {
+    const categories = [...new Set(offenseData.offenses.map(o => o.category))];
+    const hasExpeditedCategory = categories.some(cat => cat.includes('Seri Muhakeme'));
+    assert(hasExpeditedCategory, 'Seri Muhakeme Usulüne Tabi Suçlar kategorisi bulunamadı');
+});
+
+test('Gerekli seri muhakeme suçları mevcut', () => {
+    const requiredExpeditedOffenses = [
+        'TCK m.154/2-3',  // Hakkı olmayan yere tecavüz
+        'TCK m.170',      // Genel güvenliğin kasten tehlikeye sokulması
+        'TCK m.179/2-3',  // Trafik güvenliğini tehlikeye sokma
+        'TCK m.183',      // Gürültüye neden olma
+        'TCK m.197/2-3',  // Parada sahtecilik
+        'TCK m.203',      // Mühür bozma
+        'TCK m.206',      // Resmi belgenin düzenlenmesinde yalan beyan
+        'TCK m.228/1',    // Kumar oynanması için yer ve imkan sağlama
+        'TCK m.268'       // Başkasına ait kimlik veya kimlik bilgilerinin kullanılması
+    ];
+    
+    const articles = offenseData.offenses.map(o => o.tck_article);
+    
+    requiredExpeditedOffenses.forEach(required => {
+        assert(articles.includes(required), 
+            `Gerekli seri muhakeme suçu ${required} kütüphanede bulunamadı`);
+    });
+});
+
+test('Özel kanunlardan suçlar mevcut', () => {
+    const hasSpecialLaws = offenseData.offenses.some(o => 
+        o.tck_article.includes('6136') || 
+        o.tck_article.includes('6831') || 
+        o.tck_article.includes('1072') || 
+        o.tck_article.includes('1163')
+    );
+    assert(hasSpecialLaws, 'Özel kanunlardan (6136, 6831, 1072, 1163) seri muhakeme suçları bulunamadı');
 });
 
 // Print summary
@@ -185,6 +237,7 @@ console.log(`${colors.cyan}📈 Kütüphane İstatistikleri${colors.reset}`);
 console.log(`Toplam Suç Türü:                    ${offenseData.offenses.length}`);
 console.log(`Basit Yargılamaya Uygun:            ${offenseData.offenses.filter(o => o.eligible_for_simple_trial).length}`);
 console.log(`Basit Yargılamaya Uygun Olmayan:    ${offenseData.offenses.filter(o => !o.eligible_for_simple_trial).length}`);
+console.log(`Seri Muhakeme Usulüne Tabi:         ${offenseData.offenses.filter(o => o.eligible_for_expedited_trial).length}`);
 console.log(`Kategori Sayısı:                    ${[...new Set(offenseData.offenses.map(o => o.category))].length}\n`);
 
 if (testsFailed === 0) {
