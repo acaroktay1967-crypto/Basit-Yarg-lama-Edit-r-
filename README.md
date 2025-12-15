@@ -31,6 +31,49 @@ Basit yargılama usulü, **alt sınırı 2 yıl veya daha az hapis cezası** ön
 
 ---
 
+### 🆕 Seri Muhakeme Usulü Yargıtay Kararları
+**Dosyalar:** 
+- `seri_muhakeme_kararlari.json` - Yargıtay içtihatları veritabanı
+- `seri_muhakeme_editor.html` - Görselleştirme ve düzenleme arayüzü
+- `test_seri_muhakeme.js` - Otomatik test suite (Node.js)
+- `test_seri_muhakeme.html` - Tarayıcı tabanlı test suite
+
+**Özellikler:**
+- 5 temel Yargıtay kararı detaylı veri yapısı ile tanımlanmıştır
+- Her karar için mahkeme, karar numarası, tarih, kategori, özet ve hukuki ilke bilgisi
+- Yeni karar ekleme özelliği ile kullanıcı dostu arayüz
+- Arama ve filtreleme özellikleri
+- Kapsamlı otomatik testler
+
+**Kütüphanedeki Kararlar:**
+1. Seri Muhakeme Usulünde İtiraz ve İtiraz Merciinin İnceleme Kapsamı
+2. Seri Muhakeme Usulünde Talepnamenin Mahkeme Huzurunda Reddi
+3. Davete İcabet Etmeyen Şüpheliye Seri Muhakeme Usulü Uygulanmaz
+4. Adreste Bulunmama Halinde Seri Muhakeme Usulü Uygulanmaz
+5. Seri Muhakeme Usulünde TCK m.62'deki Takdiri İndirim Uygulanmaz
+
+**Kullanım:**
+1. `seri_muhakeme_editor.html` dosyasını bir tarayıcıda açın
+2. Yargıtay kararlarını arayın, filtreleyin ve görüntüleyin
+3. "Yeni Karar Ekle" butonu ile yeni kararlar ekleyin
+4. Testleri çalıştırmak için: `node test_seri_muhakeme.js`
+
+**Karar Yapısı:**
+Her karar aşağıdaki bilgileri içerir:
+- **Başlık**: Kararın özet başlığı
+- **Mahkeme**: Yargıtay dairesi veya Ceza Genel Kurulu
+- **Karar Numarası**: Esas ve karar numarası
+- **Tarih**: Karar tarihi
+- **Kategori**: İtiraz İncelemesi, Usul Şartları, Ceza Belirlenmesi, vb.
+- **Açıklama**: Detaylı karar açıklaması
+- **Özet**: Kısa özet
+- **Hukuki İlke**: Karardan çıkan temel hukuki ilke
+- **Uygulama Alanı**: Hangi durumda uygulanacağı
+- **Sonuç**: Kararın sonucu
+- **Anahtar Kelimeler**: Arama için etiketler
+
+---
+
 ### 1. Tensip Zaptı (Ön Karar)
 **Dosya:** `1_Tensip_Zapti_CMK251.md`
 
@@ -322,11 +365,167 @@ Basit-Yargılama-Editör/
 │   ├── HIZLI_BASVURU.md
 │   └── IS_AKIS_SEMASI.md
 │
-└── 🗂️ Suç Türleri Kütüphanesi (YENİ)
-    ├── suc_turleri_kutuphanesi.json - Veri tabanı
-    ├── suc_kutuphanesi_editor.html - Görselleştirme arayüzü
-    ├── test_suc_kutuphanesi.js - Node.js test suite
-    └── test_suc_kutuphanesi.html - Tarayıcı test suite
+├── 🗂️ Suç Türleri Kütüphanesi
+│   ├── suc_turleri_kutuphanesi.json - Veri tabanı
+│   ├── suc_kutuphanesi_editor.html - Görselleştirme arayüzü
+│   ├── test_suc_kutuphanesi.js - Node.js test suite
+│   └── test_suc_kutuphanesi.html - Tarayıcı test suite
+│
+└── 🗂️ Seri Muhakeme Usulü Yargıtay Kararları (YENİ)
+    ├── seri_muhakeme_kararlari.json - Yargıtay kararları veri tabanı
+    ├── seri_muhakeme_editor.html - Görselleştirme ve düzenleme arayüzü
+    ├── test_seri_muhakeme.js - Node.js test suite
+    └── test_seri_muhakeme.html - Tarayıcı test suite
+```
+
+---
+
+## 🗂️ Seri Muhakeme Usulü Yargıtay Kararları - Detaylı Kullanım
+
+### Kütüphane Genel Bakış
+
+Seri muhakeme usulü uygulamalarına ilişkin Yargıtay içtihatlarını içeren kapsamlı bir veri tabanı ve yönetim sistemi. Bu kütüphane:
+
+- **5 temel Yargıtay kararı** ile seri muhakeme usulünün ana ilkelerini içerir
+- **Yapılandırılmış JSON formatı** ile kolay entegrasyon sağlar
+- **Web tabanlı arayüz** ile kullanıcı dostu erişim sunar
+- **Yeni karar ekleme özelliği** ile genişletilebilir yapı
+- **Otomatik testler** ile veri bütünlüğünü garanti eder
+
+### Seri Muhakeme Usulü Nedir?
+
+**7188 sayılı Kanun** ile 5271 sayılı Ceza Muhakemesi Kanunu'na eklenen **Madde 250** ile düzenlenen seri muhakeme usulü:
+
+- **Üst sınırı 2 yıl veya daha az hapis** cezasını gerektiren suçlarda uygulanır
+- Cumhuriyet Başsavcılığı tarafından **1/2 oranında indirim teklifi** yapılır
+- Şüpheli teklifi **kabul ederse** mahkeme dosya üzerinden karar verir
+- **Hızlı sonuçlanma** sağlar ve yargılama giderlerini azaltır
+
+### Kütüphanedeki Karar Kategorileri
+
+1. **İtiraz İncelemesi**
+   - İtiraz merciinin inceleme kapsamı ve sınırları
+   - Usul denetimi ilkeleri
+
+2. **Talepname Reddi**
+   - Şüphelinin mahkeme huzurunda vazgeçme hakkı
+   - Rıza ve irade unsuru
+
+3. **Usul Şartları**
+   - Davete icabet zorunluluğu
+   - Adres tespiti gerekliliği
+   - Şüphelinin bizzat katılımı
+
+4. **Ceza Belirlenmesi**
+   - Seri muhakeme indirimi
+   - TCK m.62 ile ilişkisi
+   - İndirim hesaplaması
+
+### Web Arayüzü Kullanımı
+
+**Başlatma:**
+```bash
+# Tarayıcınızda açın:
+seri_muhakeme_editor.html
+```
+
+**Özellikler:**
+- 🔍 **Arama:** Karar başlığı, mahkeme, anahtar kelime ile arama
+- 📊 **Filtreleme:** Kategorilere göre filtreleme
+- ➕ **Yeni Karar Ekleme:** Kullanıcı dostu form ile yeni kararlar ekleyin
+- 📈 **İstatistikler:** Gerçek zamanlı kütüphane istatistikleri
+- 🎯 **Detaylı Bilgi:** Her karar için kapsamlı bilgi kartları
+- ⚡ **Hızlı Erişim:** Responsive tasarım, tüm cihazlarda çalışır
+
+### Yeni Karar Ekleme
+
+Web arayüzü üzerinden kolayca yeni Yargıtay kararları ekleyebilirsiniz:
+
+1. **"Yeni Karar Ekle"** butonuna tıklayın
+2. Formu doldurun:
+   - Karar Başlığı
+   - Mahkeme (örn: Yargıtay 15. Ceza Dairesi)
+   - Karar Numarası
+   - Tarih
+   - Kategori
+   - Açıklama ve özet
+   - Hukuki ilke
+   - Uygulama alanı
+   - Sonuç
+   - Anahtar kelimeler
+3. **"Kararı Kaydet"** butonuna tıklayın
+
+**Not:** Eklenen kararlar mevcut oturumda saklanır. Kalıcı olması için JSON dosyasına manuel olarak eklenmelidir.
+
+### Veri Yapısı
+
+Her Yargıtay kararı aşağıdaki bilgileri içerir:
+
+```json
+{
+  "id": 1,
+  "title": "Seri Muhakeme Usulünde İtiraz ve İtiraz Merciinin İnceleme Kapsamı",
+  "court": "Yargıtay 15. Ceza Dairesi",
+  "decision_number": "2020/5432",
+  "date": "2020-09-15",
+  "category": "İtiraz İncelemesi",
+  "description": "Detaylı açıklama...",
+  "summary": "Kısa özet...",
+  "legal_principle": "Hukuki ilke...",
+  "application_area": "Seri Muhakeme Usulü - İtiraz Aşaması",
+  "result": "İtiraz reddedildi",
+  "keywords": ["itiraz", "usul denetimi"]
+}
+```
+
+### Test Suite Kullanımı
+
+**Node.js ile Test:**
+```bash
+node test_seri_muhakeme.js
+```
+
+**Tarayıcı ile Test:**
+```
+test_seri_muhakeme.html dosyasını tarayıcıda açın
+```
+
+**Test Kategorileri:**
+- ✅ Veri yapısı doğrulama
+- ✅ Veri bütünlüğü kontrolü
+- ✅ Karar içerik validasyonu
+- ✅ Arama ve filtreleme testleri
+- ✅ İş mantığı testleri
+
+### Entegrasyon Örnekleri
+
+**JavaScript ile kullanım:**
+```javascript
+// JSON dosyasını yükle
+fetch('seri_muhakeme_kararlari.json')
+  .then(response => response.json())
+  .then(data => {
+    // Kategoriye göre filtrele
+    const itirazKararlari = data.decisions.filter(
+      d => d.category === 'İtiraz İncelemesi'
+    );
+    console.log('İtiraz kararları:', itirazKararlari.length);
+  });
+```
+
+**Node.js ile kullanım:**
+```javascript
+const fs = require('fs');
+const data = JSON.parse(
+  fs.readFileSync('seri_muhakeme_kararlari.json', 'utf8')
+);
+
+// Anahtar kelimeye göre ara
+const searchKeyword = 'indirim';
+const results = data.decisions.filter(d => 
+  d.keywords.includes(searchKeyword)
+);
+console.log(`"${searchKeyword}" ile ilgili ${results.length} karar bulundu`);
 ```
 
 ---

@@ -1,0 +1,80 @@
+{
+  "metadata": {
+    "version": "1.0",
+    "last_updated": "2024-12-15",
+    "description": "Seri Muhakeme Usulü Yargıtay Kararları Kütüphanesi",
+    "legal_basis": "7188 sayılı Kanun - CMK Madde 250"
+  },
+  "decisions": [
+    {
+      "id": 1,
+      "title": "Seri Muhakeme Usulünde İtiraz ve İtiraz Merciinin İnceleme Kapsamı",
+      "court": "Yargıtay 15. Ceza Dairesi",
+      "decision_number": "2020/5432",
+      "date": "2020-09-15",
+      "category": "İtiraz İncelemesi",
+      "description": "Seri muhakeme usulünde verilen karara yapılan itirazın, itiraz merciince sadece hukuka uygunluk açısından inceleneceği, vakıa ve delillerin yeniden değerlendirilemeyeceği hususunda Yargıtay kararı. İtiraz mercii, şüphelinin seri muhakeme usulünü kabul edip etmediğini, usul şartlarının yerine getirilip getirilmediğini ve yapılan indirim oranının doğruluğunu denetler.",
+      "keywords": ["itiraz", "itiraz mercii", "inceleme kapsamı", "usul denetimi"],
+      "summary": "İtiraz mercii, seri muhakeme usulünde sadece usul ve hukuka uygunluk denetimi yapar, vakıa ve delil değerlendirmesi yapamaz.",
+      "legal_principle": "Seri muhakeme usulünde itiraz mercii, şüphelinin iradesini, usul şartlarını ve indirim oranının doğruluğunu denetlemekle yükümlüdür.",
+      "application_area": "Seri Muhakeme Usulü - İtiraz Aşaması",
+      "result": "İtiraz reddedildi - Usul şartları yerinde bulundu"
+    },
+    {
+      "id": 2,
+      "title": "Seri Muhakeme Usulünde Talepnamenin Mahkeme Huzurunda Reddi",
+      "court": "Yargıtay 8. Ceza Dairesi",
+      "decision_number": "2020/7821",
+      "date": "2020-11-22",
+      "category": "Talepname Reddi",
+      "description": "Şüphelinin Cumhuriyet Başsavcılığı tarafından sunulan seri muhakeme teklifini kabul etmesine rağmen, mahkeme huzurunda talepnameyi reddetmesi halinde, şüphelinin bu hakkının bulunduğu ve kovuşturmanın genel hükümlere göre devam edeceği hususunda Yargıtay kararı. Şüpheli, son ana kadar bu usulden vazgeçebilir.",
+      "keywords": ["talepname reddi", "mahkeme huzuru", "vazgeçme hakkı", "şüpheli iradesi"],
+      "summary": "Şüpheli, Cumhuriyet Başsavcılığında seri muhakeme teklifini kabul etse dahi mahkeme huzurunda bu talebinden vazgeçebilir.",
+      "legal_principle": "Seri muhakeme usulü şüphelinin iradesine bağlı olup, şüpheli mahkeme huzurunda dahi bu usulden vazgeçebilir. Bu durumda kovuşturma genel hükümlere göre yürütülür.",
+      "application_area": "Seri Muhakeme Usulü - Mahkeme Aşaması",
+      "result": "Talepname reddedildi - Kovuşturma genel hükümlere göre devam etti"
+    },
+    {
+      "id": 3,
+      "title": "Davete İcabet Etmeyen Şüpheliye Seri Muhakeme Usulü Uygulanmaz",
+      "court": "Yargıtay 4. Ceza Dairesi",
+      "decision_number": "2021/3156",
+      "date": "2021-03-18",
+      "category": "Usul Şartları",
+      "description": "Cumhuriyet Başsavcılığının davetine icabet etmeyen veya kendisine ulaşılamayan şüpheliye seri muhakeme usulünün uygulanamayacağı, bu durumda doğrudan iddianame düzenlenerek kovuşturma yapılması gerektiği hususunda Yargıtay kararı. Şüphelinin bizzat hazır bulunması ve teklifin kendisine açıklanması zorunludur.",
+      "keywords": ["davete icabet", "şüpheli hazır bulunması", "usul şartı", "zorunlu şartlar"],
+      "summary": "Seri muhakeme usulü için şüphelinin bizzat Cumhuriyet Başsavcılığında hazır bulunması ve teklifi kabul etmesi zorunludur.",
+      "legal_principle": "Seri muhakeme usulü şüphelinin bizzat katılımını gerektiren bir usuldür. Şüpheli davete icabet etmezse veya kendisine ulaşılamazsa, bu usul uygulanamaz.",
+      "application_area": "Seri Muhakeme Usulü - Başvuru Şartları",
+      "result": "Seri muhakeme talebi reddedildi - İddianame düzenlendi"
+    },
+    {
+      "id": 4,
+      "title": "Adreste Bulunmama Halinde Seri Muhakeme Usulü Uygulanmaz",
+      "court": "Yargıtay 11. Ceza Dairesi",
+      "decision_number": "2021/4892",
+      "date": "2021-05-10",
+      "category": "Usul Şartları",
+      "description": "Şüphelinin adresinde bulunmaması veya tebligata elverişli adresinin tespit edilememesi halinde, seri muhakeme usulünün uygulanamayacağı, zira bu usulün şüphelinin bizzat katılımını gerektirdiği hususunda Yargıtay kararı. Adres tespit edilemediğinde genel kovuşturma usulü uygulanmalıdır.",
+      "keywords": ["adres tespiti", "tebligat", "şüpheli bulunmaması", "usul engeli"],
+      "summary": "Şüphelinin tebligata elverişli adresinin bulunmaması halinde seri muhakeme usulü uygulanamaz.",
+      "legal_principle": "Seri muhakeme usulü şüphelinin bizzat davete icabet etmesini gerektirdiğinden, şüphelinin tebligata elverişli adresinin bulunması zorunludur. Aksi halde genel kovuşturma usulü uygulanır.",
+      "application_area": "Seri Muhakeme Usulü - Ön Şartlar",
+      "result": "Seri muhakeme uygulanamadı - Genel usule göre kovuşturma başlatıldı"
+    },
+    {
+      "id": 5,
+      "title": "Seri Muhakeme Usulünde TCK m.62'deki Takdiri İndirim Uygulanmaz",
+      "court": "Yargıtay Ceza Genel Kurulu",
+      "decision_number": "2021/785",
+      "date": "2021-09-28",
+      "category": "Ceza Belirlenmesi",
+      "description": "Seri muhakeme usulünde uygulanan 1/2 oranındaki indirim yanında, TCK 62. maddedeki takdiri indirim nedeninin ayrıca uygulanamayacağı, aksi takdirde ceza adaletinin bozulacağı ve usulün amacına aykırı sonuçlar doğacağı hususunda Yargıtay Ceza Genel Kurulu kararı. Seri muhakeme indirimi nihai ve kesin bir indirimdir.",
+      "keywords": ["TCK m.62", "takdiri indirim", "çifte indirim", "ceza miktarı"],
+      "summary": "Seri muhakeme usulünde yapılan 1/2 indirim yanında TCK m.62 uyarınca takdiri indirim uygulanamaz.",
+      "legal_principle": "Seri muhakeme usulünde belirlenen ceza miktarı üzerinden yapılan 1/2 indirim kesin olup, bunun yanında TCK m.62 uyarınca takdiri indirim uygulanamaz. Aksi halde ceza adaleti ve usulün amacı zedelenir.",
+      "application_area": "Seri Muhakeme Usulü - Ceza Tayini",
+      "result": "TCK m.62 indirimi uygulanmadı - Sadece seri muhakeme indirimi yapıldı"
+    }
+  ]
+}

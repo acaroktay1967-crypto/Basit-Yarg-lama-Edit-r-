@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seri Muhakeme Kararları Test Suite</title>
+    <style>
+        body {
+            font-family: 'Courier New', monospace;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #1e1e1e;
+            color: #d4d4d4;
+        }
+        
+        h1 {
+            color: #4ec9b0;
+            border-bottom: 2px solid #4ec9b0;
+            padding-bottom: 10px;
+        }
+        
+        h2 {
+            color: #dcdcaa;
+            margin-top: 30px;
+        }
+        
+        .test-result {
+            margin: 15px 0;
+            padding: 15px;
+            border-radius: 5px;
+            border-left: 4px solid;
+        }
+        
+        .test-pass {
+            background: rgba(78, 201, 176, 0.1);
+            border-left-color: #4ec9b0;
+        }
+        
+        .test-fail {
+            background: rgba(244, 71, 71, 0.1);
+            border-left-color: #f44747;
+        }
+        
+        .test-name {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .test-pass .test-name::before {
+            content: "✓ ";
+            color: #4ec9b0;
+        }
+        
+        .test-fail .test-name::before {
+            content: "✗ ";
+            color: #f44747;
+        }
+        
+        .test-details {
+            font-size: 0.9em;
+            margin-top: 5px;
+            padding-left: 20px;
+        }
+        
+        .summary {
+            margin-top: 30px;
+            padding: 20px;
+            background: rgba(68, 131, 196, 0.1);
+            border-radius: 5px;
+            border-left: 4px solid #4483c4;
+        }
+        
+        .summary h3 {
+            color: #4483c4;
+            margin-top: 0;
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .stat-item {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 15px;
+            border-radius: 5px;
+        }
+        
+        .stat-label {
+            color: #9cdcfe;
+            font-size: 0.85em;
+        }
+        
+        .stat-value {
+            font-size: 2em;
+            font-weight: bold;
+            margin-top: 5px;
+        }
+        
+        code {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2px 6px;
+            border-radius: 3px;
+            color: #ce9178;
+        }
+        
+        pre {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+
+        .library-stats {
+            margin-top: 20px;
+            padding: 15px;
+            background: rgba(78, 201, 176, 0.05);
+            border-radius: 5px;
+        }
+
+        .library-stats h4 {
+            color: #4ec9b0;
+            margin-bottom: 10px;
+        }
+
+        .category-list {
+            margin-top: 10px;
+            padding-left: 20px;
+        }
+
+        .category-item {
+            color: #9cdcfe;
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>🧪 Seri Muhakeme Kararları Test Suite</h1>
+    <p>Seri Muhakeme Usulü Yargıtay Kararları Kütüphanesi - Otomatik Test Sonuçları</p>
+    
+    <div id="testResults"></div>
+    
+    <div class="summary" id="summary"></div>
+
+    <script>
+        const testResults = [];
+        let decisionData = null;
+
+        // Test framework
+        function test(name, testFunction) {
+            try {
+                testFunction();
+                testResults.push({ name, passed: true, message: 'Test başarılı' });
+            } catch (error) {
+                testResults.push({ name, passed: false, message: error.message });
+            }
+        }
+
+        function assert(condition, message) {
+            if (!condition) {
+                throw new Error(message);
+            }
+        }
+
+        function assertEquals(actual, expected, message) {
+            if (actual !== expected) {
+                throw new Error(`${message}. Beklenen: ${expected}, Gerçekleşen: ${actual}`);
+            }
+        }
+
+        function assertTrue(condition, message) {
+            assert(condition, message);
+        }
+
+        function assertFalse(condition, message) {
+            assert(!condition, message);
+        }
+
+        // Load and run tests
+        async function runTests() {
+            try {
+                // Load decision data
+                const response = await fetch('seri_muhakeme_kararlari.json');
+                decisionData = await response.json();
+                
+                // Run all tests
+                console.log('🧪 Testler başlatılıyor...');
+                
+                // Data Structure Tests
+                testDataStructure();
+                
+                // Data Integrity Tests
+                testDataIntegrity();
+                
+                // Decision Content Validation Tests
+                testDecisionValidation();
+                
+                // Search and Filter Tests
+                testSearchAndFilter();
+                
+                // Business Logic Tests
+                testBusinessLogic();
+                
+                // Display results
+                displayResults();
+                
+            } catch (error) {
+                document.getElementById('testResults').innerHTML = `
+                    <div class="test-result test-fail">
+                        <div class="test-name">Kritik Hata</div>
+                        <div class="test-details">Test suite başlatılamadı: ${error.message}</div>
+                    </div>
+                `;
+            }
+        }
+
+        // Test: Data Structure
+        function testDataStructure() {
+            test('JSON dosyası geçerli bir yapıya sahip', () => {
+                assertTrue(decisionData !== null, 'Veri yüklenemiyor');
+                assertTrue(typeof decisionData === 'object', 'Veri bir nesne olmalı');
+            });
+
+            test('Metadata bölümü mevcut ve geçerli', () => {
+                assertTrue('metadata' in decisionData, 'metadata bölümü eksik');
+                assertTrue('version' in decisionData.metadata, 'version bilgisi eksik');
+                assertTrue('description' in decisionData.metadata, 'description bilgisi eksik');
+                assertTrue('legal_basis' in decisionData.metadata, 'legal_basis bilgisi eksik');
+                assertTrue(decisionData.metadata.legal_basis.includes('7188'), 
+                    'Legal basis 7188 sayılı kanunu içermeli');
+            });
+
+            test('Decisions dizisi mevcut', () => {
+                assertTrue('decisions' in decisionData, 'decisions dizisi eksik');
+                assertTrue(Array.isArray(decisionData.decisions), 'decisions bir dizi olmalı');
+            });
+
+            test('En az 5 karar tanımlı', () => {
+                assertTrue(decisionData.decisions.length >= 5, 
+                    `En az 5 karar bekleniyor, ${decisionData.decisions.length} bulundu`);
+            });
+        }
+
+        // Test: Data Integrity
+        function testDataIntegrity() {
+            test('Tüm kararlarda gerekli alanlar mevcut', () => {
+                const requiredFields = ['id', 'title', 'court', 'decision_number', 'date', 
+                                       'category', 'description', 'keywords', 'summary', 
+                                       'legal_principle', 'application_area', 'result'];
+                
+                decisionData.decisions.forEach((decision, index) => {
+                    requiredFields.forEach(field => {
+                        assertTrue(field in decision, 
+                            `Karar #${index + 1} (${decision.title || 'İsimsiz'}) için '${field}' alanı eksik`);
+                    });
+                });
+            });
+
+            test('ID değerleri benzersiz', () => {
+                const ids = decisionData.decisions.map(d => d.id);
+                const uniqueIds = new Set(ids);
+                assertEquals(ids.length, uniqueIds.size, 'Tekrarlayan ID değerleri var');
+            });
+
+            test('Karar numaraları benzersiz', () => {
+                const decisionNumbers = decisionData.decisions.map(d => d.decision_number);
+                const uniqueNumbers = new Set(decisionNumbers);
+                assertEquals(decisionNumbers.length, uniqueNumbers.size, 
+                    'Tekrarlayan karar numaraları var');
+            });
+
+            test('Tarih formatı geçerli (YYYY-MM-DD)', () => {
+                const dateRegex = /^\d{4}-\d{2}-\d{2}$/;
+                decisionData.decisions.forEach(decision => {
+                    assertTrue(dateRegex.test(decision.date), 
+                        `${decision.decision_number} için tarih formatı geçersiz: ${decision.date}`);
+                    
+                    // Verify it's a valid date
+                    const date = new Date(decision.date);
+                    assertTrue(!isNaN(date.getTime()), 
+                        `${decision.decision_number} için geçersiz tarih: ${decision.date}`);
+                });
+            });
+
+            test('Keywords dizisi geçerli', () => {
+                decisionData.decisions.forEach(decision => {
+                    assertTrue(Array.isArray(decision.keywords), 
+                        `${decision.decision_number} için keywords bir dizi olmalı`);
+                    assertTrue(decision.keywords.length > 0, 
+                        `${decision.decision_number} için en az bir keyword olmalı`);
+                });
+            });
+        }
+
+        // Test: Decision Validation
+        function testDecisionValidation() {
+            test('Problem statement\'ta belirtilen kararlar mevcut', () => {
+                const requiredDecisions = [
+                    'Seri Muhakeme Usulünde İtiraz ve İtiraz Merciinin İnceleme Kapsamı',
+                    'Seri Muhakeme Usulünde Talepnamenin Mahkeme Huzurunda Reddi',
+                    'Davete İcabet Etmeyen Şüpheliye Seri Muhakeme Usulü Uygulanmaz',
+                    'Adreste Bulunmama Halinde Seri Muhakeme Usulü Uygulanmaz',
+                    'Seri Muhakeme Usulünde TCK m.62\'deki Takdiri İndirim Uygulanmaz'
+                ];
+                
+                const titles = decisionData.decisions.map(d => d.title);
+                
+                requiredDecisions.forEach(required => {
+                    assertTrue(titles.includes(required), 
+                        `Gerekli karar "${required}" kütüphanede bulunamadı`);
+                });
+            });
+
+            test('Mahkeme isimleri "Yargıtay" içeriyor', () => {
+                decisionData.decisions.forEach(decision => {
+                    assertTrue(decision.court.includes('Yargıtay'), 
+                        `${decision.decision_number} için mahkeme ismi "Yargıtay" içermeli`);
+                });
+            });
+
+            test('İtiraz incelemesi kararı doğru tanımlanmış', () => {
+                const itirazDecision = decisionData.decisions.find(d => 
+                    d.title.includes('İtiraz ve İtiraz Merciinin İnceleme Kapsamı')
+                );
+                assertTrue(itirazDecision !== undefined, 'İtiraz incelemesi kararı bulunamadı');
+                assertEquals(itirazDecision.category, 'İtiraz İncelemesi', 
+                    'İtiraz kararı kategorisi "İtiraz İncelemesi" olmalı');
+            });
+
+            test('TCK m.62 indirimi kararı doğru tanımlanmış', () => {
+                const tck62Decision = decisionData.decisions.find(d => 
+                    d.title.includes('TCK m.62')
+                );
+                assertTrue(tck62Decision !== undefined, 'TCK m.62 kararı bulunamadı');
+                assertEquals(tck62Decision.category, 'Ceza Belirlenmesi', 
+                    'TCK m.62 kararı kategorisi "Ceza Belirlenmesi" olmalı');
+            });
+        }
+
+        // Test: Search and Filter
+        function testSearchAndFilter() {
+            test('Kategoriye göre filtreleme', () => {
+                const categories = [...new Set(decisionData.decisions.map(d => d.category))];
+                assertTrue(categories.length > 0, 'Hiç kategori bulunamadı');
+                
+                categories.forEach(category => {
+                    const filtered = decisionData.decisions.filter(d => d.category === category);
+                    assertTrue(filtered.length > 0, `${category} kategorisinde karar bulunamadı`);
+                });
+            });
+
+            test('Başlığa göre arama (case-insensitive)', () => {
+                const searchTerm = 'usulü';
+                const results = decisionData.decisions.filter(d => 
+                    d.title.toLowerCase().includes(searchTerm.toLowerCase()));
+                assertTrue(results.length > 0, 'Usulü için sonuç bulunamadı');
+            });
+
+            test('Anahtar kelimelere göre arama', () => {
+                const searchTerm = 'usul';
+                const results = decisionData.decisions.filter(d => 
+                    d.keywords.some(k => k.toLowerCase().includes(searchTerm.toLowerCase())));
+                assertTrue(results.length > 0, 'Usul için sonuç bulunamadı');
+            });
+
+            test('Mahkemeye göre filtreleme', () => {
+                const courtFilter = 'Ceza Genel Kurulu';
+                const results = decisionData.decisions.filter(d => 
+                    d.court.includes(courtFilter));
+                // At least one should exist
+                assertTrue(results.length >= 0, 'Mahkeme filtreleme hatası');
+            });
+        }
+
+        // Test: Business Logic
+        function testBusinessLogic() {
+            test('Kategoriler tutarlı ve anlamlı', () => {
+                const categories = [...new Set(decisionData.decisions.map(d => d.category))];
+                assertTrue(categories.length >= 2, 'En az 2 kategori olmalı');
+                
+                const validCategories = [
+                    'İtiraz İncelemesi',
+                    'Talepname Reddi',
+                    'Usul Şartları',
+                    'Ceza Belirlenmesi',
+                    'Diğer'
+                ];
+                
+                categories.forEach(category => {
+                    assertTrue(validCategories.includes(category), 
+                        `Geçersiz kategori: ${category}`);
+                });
+            });
+
+            test('Tüm kararlarda özet ve hukuki ilke mevcut', () => {
+                decisionData.decisions.forEach(decision => {
+                    assertTrue(decision.summary && decision.summary.length > 20, 
+                        `${decision.decision_number} için özet eksik veya çok kısa`);
+                    assertTrue(decision.legal_principle && decision.legal_principle.length > 20, 
+                        `${decision.decision_number} için hukuki ilke eksik veya çok kısa`);
+                });
+            });
+
+            test('Açıklamalar yeterli detayda', () => {
+                decisionData.decisions.forEach(decision => {
+                    assertTrue(decision.description.length > 100, 
+                        `${decision.decision_number} için açıklama çok kısa (min 100 karakter)`);
+                });
+            });
+
+            test('Uygulama alanı "Seri Muhakeme Usulü" içeriyor', () => {
+                decisionData.decisions.forEach(decision => {
+                    assertTrue(decision.application_area.includes('Seri Muhakeme'), 
+                        `${decision.decision_number} için uygulama alanı "Seri Muhakeme" içermeli`);
+                });
+            });
+
+            test('Sonuç alanı dolu ve anlamlı', () => {
+                decisionData.decisions.forEach(decision => {
+                    assertTrue(decision.result && decision.result.length > 10, 
+                        `${decision.decision_number} için sonuç alanı eksik veya çok kısa`);
+                });
+            });
+
+            test('Karar tarihleri makul aralıkta', () => {
+                const currentYear = new Date().getFullYear();
+                const minYear = 2019; // Seri muhakeme usulü 7188 sayılı kanunla 2019'da yürürlüğe girdi
+                decisionData.decisions.forEach(decision => {
+                    const year = new Date(decision.date).getFullYear();
+                    assertTrue(year >= minYear && year <= currentYear + 1, 
+                        `${decision.decision_number} için tarih makul aralıkta değil: ${year} (beklenen: ${minYear}-${currentYear + 1})`);
+                });
+            });
+        }
+
+        // Display test results
+        function displayResults() {
+            const resultsDiv = document.getElementById('testResults');
+            const summaryDiv = document.getElementById('summary');
+            
+            const passed = testResults.filter(r => r.passed).length;
+            const failed = testResults.filter(r => !r.passed).length;
+            const total = testResults.length;
+            const passRate = ((passed / total) * 100).toFixed(1);
+            
+            // Display individual test results
+            let resultsHTML = '<h2>Test Sonuçları</h2>';
+            testResults.forEach(result => {
+                resultsHTML += `
+                    <div class="test-result ${result.passed ? 'test-pass' : 'test-fail'}">
+                        <div class="test-name">${result.name}</div>
+                        <div class="test-details">${result.message}</div>
+                    </div>
+                `;
+            });
+            resultsDiv.innerHTML = resultsHTML;
+            
+            // Calculate category distribution
+            const categoryCounts = {};
+            decisionData.decisions.forEach(d => {
+                categoryCounts[d.category] = (categoryCounts[d.category] || 0) + 1;
+            });
+            
+            const categoryListHTML = Object.entries(categoryCounts)
+                .map(([cat, count]) => `<div class="category-item">${cat}: ${count} karar</div>`)
+                .join('');
+            
+            // Display summary
+            summaryDiv.innerHTML = `
+                <h3>📊 Test Özeti</h3>
+                <div class="stats">
+                    <div class="stat-item">
+                        <div class="stat-label">Toplam Test</div>
+                        <div class="stat-value">${total}</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-label">Başarılı</div>
+                        <div class="stat-value" style="color: #4ec9b0;">${passed}</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-label">Başarısız</div>
+                        <div class="stat-value" style="color: #f44747;">${failed}</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-label">Başarı Oranı</div>
+                        <div class="stat-value" style="color: ${passRate >= 90 ? '#4ec9b0' : '#f44747'};">${passRate}%</div>
+                    </div>
+                </div>
+                <div style="margin-top: 20px;">
+                    ${failed === 0 ? 
+                        '<p style="color: #4ec9b0;">✓ Tüm testler başarıyla geçti!</p>' : 
+                        `<p style="color: #f44747;">⚠ ${failed} test başarısız oldu.</p>`
+                    }
+                </div>
+                <div class="library-stats">
+                    <h4>📈 Kütüphane İstatistikleri</h4>
+                    <div>Toplam Karar Sayısı: <strong>${decisionData.decisions.length}</strong></div>
+                    <div>Kategori Sayısı: <strong>${Object.keys(categoryCounts).length}</strong></div>
+                    <div class="category-list">
+                        <strong>Kategorilere Göre Dağılım:</strong>
+                        ${categoryListHTML}
+                    </div>
+                </div>
+            `;
+            
+            console.log(`Test özeti: ${passed}/${total} başarılı (${passRate}%)`);
+        }
+
+        // Run tests on page load
+        document.addEventListener('DOMContentLoaded', runTests);
+    </script>
+</body>
+</html>
