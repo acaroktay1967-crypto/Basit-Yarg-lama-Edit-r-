@@ -215,7 +215,7 @@
       "category": "Kamu Güvenliğine Karşı Suçlar",
       "name": "Tehlikeli maddelerin terk edilmesi",
       "tck_article": "TCK m.177/1",
-      "description": "Patlayıcı, parlayıcı, yakıcı, yakıcı, nükleer veya radyoaktif maddeleri terk ederek kişilerin hayatı, sağlığı veya malvarlığı bakımından somut bir tehlike oluşturan kişi",
+      "description": "Patlayıcı, parlayıcı, yakıcı, nükleer veya radyoaktif maddeleri terk ederek kişilerin hayatı, sağlığı veya malvarlığı bakımından somut bir tehlike oluşturan kişi",
       "penalty_min": "6 ay",
       "penalty_max": "3 yıl",
       "penalty_type": "Hapis",

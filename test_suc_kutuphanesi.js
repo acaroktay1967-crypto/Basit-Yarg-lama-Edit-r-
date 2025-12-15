@@ -160,10 +160,10 @@ test('Kategoriler tutarlı', () => {
 });
 
 test('Penalty types geçerli', () => {
-    const validTypes = ['Hapis', 'Adli Para Cezası', 'veya'];
+    const validTypes = ['Hapis', 'Adli Para Cezası', 'Hapis veya Adli Para Cezası', 'Temel cezada indirim'];
     offenseData.offenses.forEach(offense => {
-        const hasValidType = validTypes.some(type => offense.penalty_type.includes(type));
-        assert(hasValidType, `${offense.tck_article} için geçersiz ceza türü: ${offense.penalty_type}`);
+        const isValid = validTypes.includes(offense.penalty_type);
+        assert(isValid, `${offense.tck_article} için geçersiz ceza türü: ${offense.penalty_type}`);
     });
 });
 
