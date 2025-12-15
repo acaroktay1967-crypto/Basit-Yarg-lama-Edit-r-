@@ -10,6 +10,39 @@ Basit yargılama usulü, **alt sınırı 2 yıl veya daha az hapis cezası** ön
 
 ## 📚 İçindekiler
 
+### 🆕 CMK 250 Mahkeme Kararları Sistemi (YENİ!)
+**Dosyalar:**
+- `cmk250_mahkeme_kararlari.json` - CMK 250 uyarınca uzlaştırma kapsamındaki örnek mahkeme hükümleri veritabanı
+- `cmk250_mahkeme_editor.html` - Mahkeme kararları görüntüleme ve yönetim arayüzü
+- `test_cmk250_kararlari.js` - Otomatik test suite (Node.js)
+
+**Özellikler:**
+- 5+ gerçekçi örnek mahkeme kararı (CMK 250 - Uzlaştırma kapsamında)
+- Tam kimlik bilgileri (sanık, davacı/mağdur)
+- Detaylı suç tanımları ve hukuki gerekçeler
+- Uzlaştırma süreç bilgileri ve sonuçları
+- Karar türleri ve yaptırımlar
+- Dinamik karar ekleme özelliği
+- Gelişmiş arama ve filtreleme
+- Validasyon mekanizması (eksik alan kontrolü)
+- İstatistiksel analiz ve raporlama
+
+**Kullanım:**
+1. `cmk250_mahkeme_editor.html` dosyasını bir tarayıcıda açın
+2. "Kararları Görüntüle" sekmesinde mevcut kararları inceleyin
+3. "Yeni Karar Ekle" sekmesinden yeni mahkeme kararları ekleyin
+4. "İstatistikler" sekmesinde genel istatistikleri görüntüleyin
+5. Testleri çalıştırmak için: `node test_cmk250_kararlari.js`
+
+**Örnek Mahkeme Kararları İçermesi Gereken Alanlar:**
+- ✅ **Kimlik Bilgileri:** Sanık, davacı ve mağdur hakkında tam detaylar
+- ✅ **Suç Tanımı:** CMK 250 kapsamındaki suç sınıflandırmaları ve ayrıntılar
+- ✅ **Karar Gerekçeleri:** Mahkemenin verdiği kararın dayanakları ve gerekçeleri
+- ✅ **Sonuç:** Uzlaştırma sonucu, tazminat, ceza ve diğer yaptırımlar
+- ✅ **Uzlaştırma Süreci:** Uzlaştırma görüşmeleri ve anlaşma şartları
+
+---
+
 ### 🆕 Suç Türleri Kütüphanesi
 **Dosyalar:** 
 - `suc_turleri_kutuphanesi.json` - Kapsamlı suç türleri veritabanı
@@ -310,7 +343,7 @@ Basit-Yargılama-Editör/
 │
 ├── README.md (Bu dosya)
 │
-├── 📚 Karar Şablonları
+├── 📚 Karar Şablonları (CMK 251)
 │   ├── 1_Tensip_Zapti_CMK251.md
 │   ├── 2_Basit_Yargilama_Karar_Sablonu_TCK86.md
 │   ├── 3_HAGB_Karar_Sablonu.md
@@ -322,11 +355,16 @@ Basit-Yargılama-Editör/
 │   ├── HIZLI_BASVURU.md
 │   └── IS_AKIS_SEMASI.md
 │
-└── 🗂️ Suç Türleri Kütüphanesi (YENİ)
-    ├── suc_turleri_kutuphanesi.json - Veri tabanı
-    ├── suc_kutuphanesi_editor.html - Görselleştirme arayüzü
-    ├── test_suc_kutuphanesi.js - Node.js test suite
-    └── test_suc_kutuphanesi.html - Tarayıcı test suite
+├── 🗂️ Suç Türleri Kütüphanesi
+│   ├── suc_turleri_kutuphanesi.json - Veri tabanı
+│   ├── suc_kutuphanesi_editor.html - Görselleştirme arayüzü
+│   ├── test_suc_kutuphanesi.js - Node.js test suite
+│   └── test_suc_kutuphanesi.html - Tarayıcı test suite
+│
+└── ⚖️ CMK 250 Mahkeme Kararları Sistemi (YENİ)
+    ├── cmk250_mahkeme_kararlari.json - Örnek mahkeme kararları veri tabanı
+    ├── cmk250_mahkeme_editor.html - Karar görüntüleme ve yönetim arayüzü
+    └── test_cmk250_kararlari.js - Node.js test suite
 ```
 
 ---
@@ -475,6 +513,170 @@ console.log(offense.name); // "Tehdit suçu..."
 ---
 
 ## 📞 Yasal Dayanak
+
+- 5271 Sayılı Ceza Muhakemesi Kanunu Madde 250 (Uzlaştırma)
+- 5271 Sayılı Ceza Muhakemesi Kanunu Madde 251 (Basit Yargılama)
+- 5237 Sayılı Türk Ceza Kanunu Madde 50, 51, 52, 86
+- Uzlaştırma Yönetmeliği
+- Yargıtay İçtihatları (basit yargılama ve uzlaştırma ile ilgili)
+
+---
+
+## 🤝 CMK 250 - Uzlaştırma Sistemi Detaylı Kullanım
+
+### CMK 250 Nedir?
+
+**CMK 250 - Uzlaştırma**, 5271 sayılı Ceza Muhakemesi Kanunu'nun 250. maddesi kapsamında düzenlenen, **mağdur ile fail arasında anlaşma sağlanarak** kamu davasının açılmaması veya açılmış davanın düşürülmesini amaçlayan alternatif çözüm yöntemidir.
+
+### Uzlaştırma Kapsamındaki Suçlar
+
+**CMK 253/3 ve 253/4** uyarınca uzlaştırma kapsamındaki suçlar:
+
+1. **Kişilere Karşı Suçlar:**
+   - Basit yaralama (TCK 86/2)
+   - Tehdit (TCK 106/1)
+   - Hakaret (TCK 125/1)
+   - Kişilerin huzur ve sükûnunu bozma (TCK 123/1)
+   - Cinsel taciz (TCK 105/1)
+   - Konut dokunulmazlığının ihlali (TCK 116)
+
+2. **Malvarlığına Karşı Suçlar:**
+   - Mala zarar verme (TCK 151/1)
+   - Hırsızlık (belirli hallerde)
+
+### Uzlaştırma Süreci
+
+**1. Soruşturma Evresi (CMK 250):**
+   - Cumhuriyet Savcılığı tarafından uzlaştırma bürosuna sevk
+   - Uzlaştırma görüşmeleri yapılır
+   - Başarılı olursa: Kovuşturmaya yer olmadığına karar
+   - Başarısız olursa: İddianame düzenlenir
+
+**2. Kovuşturma Evresi (CMK 253):**
+   - Mahkeme tarafından uzlaştırma teklif edilir
+   - Uzlaştırma görüşmeleri yapılır
+   - Başarılı olursa: Kamu davasının düşmesine karar
+   - Başarısız olursa: Yargılama devam eder
+
+### Uzlaştırmanın Avantajları
+
+✅ **Hızlı Çözüm:** Uzun yargılama süreçlerinden kaçınılır
+✅ **Adli Sicil:** Başarılı uzlaştırmada sanık adli sicil kaydı oluşmaz
+✅ **Mağdur Memnuniyeti:** Mağdur zararını telafi eder
+✅ **Topluma Kazandırma:** Fail toplumla bütünleşir
+✅ **Maliyet:** Yargılama masrafları azalır
+
+### CMK 250 Mahkeme Kararları Sistemi - Özellikler
+
+#### 1. **Veri Formatı (JSON)**
+- Yapılandırılmış, standart JSON formatı
+- Kolay entegrasyon ve veri paylaşımı
+- Programatik erişim imkanı
+- Otomatik doğrulama desteği
+
+#### 2. **Arayüz Özellikleri**
+- **Görüntüleme:** Tüm kararları liste ve detay görünümünde inceleyin
+- **Arama:** Dosya numarası, isim, suç türü ile hızlı arama
+- **Filtreleme:** Uzlaştırma sonucu ve suç kategorisine göre filtre
+- **İstatistikler:** Başarı oranları, ortalama tazminat, kategori dağılımı
+
+#### 3. **Dinamik Karar Ekleme**
+- Kullanıcı dostu form arayüzü
+- Adım adım veri girişi
+- Tüm gerekli alanlar için form validasyonu
+- Gerçek zamanlı hata kontrolü
+
+#### 4. **Validasyon Mekanizması**
+- **Otomatik Kontrol:** Eksik alan tespiti
+- **TC Kimlik Doğrulama:** 11 haneli TC no kontrolü
+- **Tarih Formatı:** Doğru tarih formatı kontrolü
+- **Zorunlu Alanlar:** Tüm kritik alanların doldurulması zorunlu
+- **Uyarı Sistemi:** Hatalı veya eksik girişlerde uyarı mesajları
+
+#### 5. **Test Suite**
+- 21 farklı test senaryosu
+- Veri bütünlüğü kontrolü
+- Tutarlılık testleri
+- Otomatik doğrulama
+
+### Örnek Mahkeme Kararı Yapısı
+
+```json
+{
+  "id": 1,
+  "case_number": "2023/245 E., 2023/318 K.",
+  "court_name": "Ankara 5. Asliye Ceza Mahkemesi",
+  "decision_date": "15.03.2023",
+  "identity_information": {
+    "defendant": { /* Sanık bilgileri */ },
+    "plaintiff": { /* Mağdur bilgileri */ }
+  },
+  "crime_definition": {
+    "crime_name": "Basit Yaralama",
+    "tck_article": "TCK m. 86/2",
+    /* Diğer suç bilgileri */
+  },
+  "mediation_outcome": {
+    "mediation_successful": true,
+    "agreement_terms": [ /* Uzlaşma şartları */ ]
+  },
+  "decision_outcome": {
+    "decision_type": "Düşme Kararı",
+    "main_decision": "CMK 253/9 gereğince kamu davasının düşmesine",
+    "penalties": { /* Ceza ve tazminat bilgileri */ }
+  }
+}
+```
+
+### Sistem Kullanım Senaryoları
+
+**Senaryo 1: Kararları İnceleme**
+1. `cmk250_mahkeme_editor.html` dosyasını açın
+2. "Kararları Görüntüle" sekmesinde örnek kararları inceleyin
+3. Bir karara tıklayarak detayları görüntüleyin
+4. Arama ve filtre ile istediğiniz kararı bulun
+
+**Senaryo 2: Yeni Karar Ekleme**
+1. "Yeni Karar Ekle" sekmesine geçin
+2. Dava bilgilerini girin (dosya no, mahkeme, tarih)
+3. Sanık ve mağdur kimlik bilgilerini doldurun
+4. Suç tanımını ve dava özetini yazın
+5. Uzlaştırma sonucunu ve şartlarını girin
+6. Karar gerekçeleri ve sonucunu belirtin
+7. "Kararı Kaydet" butonuna tıklayın
+8. Form validasyonu otomatik çalışır
+
+**Senaryo 3: İstatistik Analizi**
+1. "İstatistikler" sekmesine geçin
+2. Genel başarı oranlarını görüntüleyin
+3. Kategori bazlı dağılımı inceleyin
+4. Ortalama tazminat miktarlarını gözlemleyin
+
+**Senaryo 4: Veri Doğrulama**
+1. Terminal'de `node test_cmk250_kararlari.js` komutunu çalıştırın
+2. Tüm testlerin geçtiğinden emin olun
+3. Hata varsa düzeltin ve tekrar test edin
+
+### En İyi Uygulamalar
+
+**Karar Girişi İçin:**
+- ✅ Tüm zorunlu alanları eksiksiz doldurun
+- ✅ TC kimlik numaralarını 11 haneli olarak girin
+- ✅ Tarihleri GG.AA.YYYY formatında girin
+- ✅ Uzlaşma şartlarını detaylı ve net yazın
+- ✅ Hukuki gerekçeleri eksiksiz belirtin
+
+**Veri Güvenliği İçin:**
+- 🔒 Gerçek kişisel verileri kullanmayın (örnek veriler kullanın)
+- 🔒 Hassas bilgileri paylaşmadan önce anonimleştirin
+- 🔒 JSON dosyasını düzenli olarak yedekleyin
+
+**Sistem Bakımı İçin:**
+- 🔧 Düzenli olarak testleri çalıştırın
+- 🔧 Veri bütünlüğünü kontrol edin
+- 🔧 Yeni kararları standart formatta ekleyin
+
+---
 
 - 5271 Sayılı Ceza Muhakemesi Kanunu Madde 251
 - 5237 Sayılı Türk Ceza Kanunu Madde 50, 51, 52, 86
