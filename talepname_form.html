@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Talepname Usulleri Kontrol Mekanizması</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+        }
+
+        header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            opacity: 0.9;
+            font-size: 1.1em;
+        }
+
+        .progress-bar {
+            background: #e9ecef;
+            height: 8px;
+            position: relative;
+        }
+
+        .progress-fill {
+            background: linear-gradient(90deg, #28a745 0%, #20c997 100%);
+            height: 100%;
+            width: 0%;
+            transition: width 0.5s ease;
+        }
+
+        .form-container {
+            padding: 30px;
+        }
+
+        .section {
+            margin-bottom: 30px;
+            padding: 25px;
+            border: 2px solid #e9ecef;
+            border-radius: 12px;
+            background: #f8f9fa;
+            transition: all 0.3s;
+        }
+
+        .section.complete {
+            border-color: #28a745;
+            background: #d4edda;
+        }
+
+        .section.incomplete {
+            border-color: #ffc107;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            cursor: pointer;
+        }
+
+        .section-title {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #2c3e50;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-status {
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 600;
+        }
+
+        .status-complete {
+            background: #28a745;
+            color: white;
+        }
+
+        .status-incomplete {
+            background: #ffc107;
+            color: #000;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #495057;
+        }
+
+        label .required {
+            color: #dc3545;
+            margin-left: 3px;
+        }
+
+        input[type="text"],
+        input[type="date"],
+        input[type="number"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #dee2e6;
+            border-radius: 8px;
+            font-size: 1em;
+            transition: all 0.3s;
+            font-family: inherit;
+        }
+
+        input:focus,
+        textarea:focus,
+        select:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            padding: 30px;
+            background: #f8f9fa;
+            border-top: 2px solid #e9ecef;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background: #667eea;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #5568d3;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-success {
+            background: #28a745;
+            color: white;
+        }
+
+        .btn-success:hover {
+            background: #218838;
+        }
+
+        .btn-secondary {
+            background: #6c757d;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: #5a6268;
+        }
+
+        .validation-result {
+            margin: 30px;
+            padding: 25px;
+            border-radius: 12px;
+            display: none;
+        }
+
+        .validation-result.show {
+            display: block;
+        }
+
+        .validation-result.basarili {
+            background: #d4edda;
+            border: 2px solid #28a745;
+        }
+
+        .validation-result.hatali {
+            background: #f8d7da;
+            border: 2px solid #dc3545;
+        }
+
+        .validation-result h3 {
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+
+        .validation-result .ozet {
+            margin-bottom: 20px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 8px;
+        }
+
+        .eksik-alanlar,
+        .uyarilar,
+        .detaylar {
+            margin-top: 20px;
+        }
+
+        .eksik-alanlar h4,
+        .uyarilar h4,
+        .detaylar h4 {
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+
+        .eksik-alanlar ul,
+        .uyarilar ul,
+        .detaylar ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .eksik-alanlar li,
+        .uyarilar li,
+        .detaylar li {
+            padding: 8px 15px;
+            margin-bottom: 8px;
+            background: white;
+            border-radius: 6px;
+            border-left: 4px solid #dc3545;
+        }
+
+        .uyarilar li {
+            border-left-color: #ffc107;
+        }
+
+        .detaylar li {
+            border-left-color: #28a745;
+        }
+
+        .eksik-sayisi {
+            color: #dc3545;
+            font-size: 0.9em;
+            font-weight: 600;
+        }
+
+        .tip-uyari {
+            color: #856404;
+            font-weight: bold;
+        }
+
+        .tip-format {
+            color: #004085;
+            font-weight: bold;
+        }
+
+        .tip-kalite {
+            color: #155724;
+            font-weight: bold;
+        }
+
+        .tip-hukuki {
+            color: #721c24;
+            font-weight: bold;
+        }
+
+        .collapsible-content {
+            max-height: 2000px;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .collapsible-content.collapsed {
+            max-height: 0;
+        }
+
+        footer {
+            background: #2c3e50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .button-group {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        .help-text {
+            font-size: 0.85em;
+            color: #6c757d;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>⚖️ Talepname Usulleri Kontrol Mekanizması</h1>
+            <p>Talepname (İddianame) Gerekliliklerini Kontrol Edin</p>
+        </header>
+
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+        </div>
+
+        <div class="form-container">
+            <form id="talepnameForm">
+                <!-- Bölüm 1: Şüphelinin Kimliği ve Müdafii -->
+                <div class="section" data-section="supheliKimlik">
+                    <div class="section-header" onclick="toggleSection('supheliKimlik')">
+                        <div class="section-title">
+                            <span>1️⃣</span>
+                            <span>Şüphelinin Kimliği ve Müdafii</span>
+                        </div>
+                        <span class="section-status status-incomplete">Eksik</span>
+                    </div>
+                    <div class="collapsible-content" id="content-supheliKimlik">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Adı Soyadı <span class="required">*</span></label>
+                                <input type="text" name="supheliKimlik.adiSoyadi" placeholder="Şüphelinin adı ve soyadı">
+                            </div>
+                            <div class="form-group">
+                                <label>T.C. Kimlik No <span class="required">*</span></label>
+                                <input type="text" name="supheliKimlik.tcKimlikNo" placeholder="11 haneli TC kimlik numarası" maxlength="11">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Baba Adı <span class="required">*</span></label>
+                                <input type="text" name="supheliKimlik.babaAdi" placeholder="Babasının adı">
+                            </div>
+                            <div class="form-group">
+                                <label>Ana Adı <span class="required">*</span></label>
+                                <input type="text" name="supheliKimlik.anaAdi" placeholder="Annesinin adı">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Doğum Tarihi/Yeri <span class="required">*</span></label>
+                                <input type="text" name="supheliKimlik.dogumTarihiYeri" placeholder="ör: 15/05/1985 - İstanbul">
+                            </div>
+                            <div class="form-group">
+                                <label>Nüfusa Kayıtlı Olduğu Yer <span class="required">*</span></label>
+                                <input type="text" name="supheliKimlik.nufusaKayitliYer" placeholder="İl/İlçe/Mahalle">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Müdafii Bilgileri <span class="required">*</span></label>
+                            <textarea name="supheliKimlik.mudafii" placeholder="Müdafii adı, soyadı, baro bilgileri"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bölüm 2: Mağdur veya Suçtan Zarar Görenlerin Kimlik Bilgileri -->
+                <div class="section" data-section="magdurKimlik">
+                    <div class="section-header" onclick="toggleSection('magdurKimlik')">
+                        <div class="section-title">
+                            <span>2️⃣</span>
+                            <span>Mağdur veya Suçtan Zarar Görenlerin Kimlik Bilgileri</span>
+                        </div>
+                        <span class="section-status status-incomplete">Eksik</span>
+                    </div>
+                    <div class="collapsible-content" id="content-magdurKimlik">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Adı Soyadı <span class="required">*</span></label>
+                                <input type="text" name="magdurKimlik.adiSoyadi" placeholder="Mağdurun adı ve soyadı">
+                            </div>
+                            <div class="form-group">
+                                <label>T.C. Kimlik No (varsa) <span class="required">*</span></label>
+                                <input type="text" name="magdurKimlik.tcKimlikNo" placeholder="11 haneli TC kimlik numarası" maxlength="11">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>İletişim Bilgileri <span class="required">*</span></label>
+                            <textarea name="magdurKimlik.iletisimBilgileri" placeholder="Adres, telefon, e-posta vb."></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bölüm 3: İsnat Olunan Suç ve İlgili Kanun Maddeleri -->
+                <div class="section" data-section="isnatOlunanSuc">
+                    <div class="section-header" onclick="toggleSection('isnatOlunanSuc')">
+                        <div class="section-title">
+                            <span>3️⃣</span>
+                            <span>İsnat Olunan Suç ve İlgili Kanun Maddeleri</span>
+                        </div>
+                        <span class="section-status status-incomplete">Eksik</span>
+                    </div>
+                    <div class="collapsible-content" id="content-isnatOlunanSuc">
+                        <div class="form-group">
+                            <label>Suç Tanımı <span class="required">*</span></label>
+                            <input type="text" name="isnatOlunanSuc.sucTanimi" placeholder="ör: Tehdit suçu">
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>İlgili TCK Maddesi <span class="required">*</span></label>
+                                <input type="text" name="isnatOlunanSuc.tckMaddesi" placeholder="ör: TCK m.106/1">
+                                <div class="help-text">Format: TCK m.XXX/X</div>
+                            </div>
+                            <div class="form-group">
+                                <label>Diğer İlgili Mevzuat (varsa) <span class="required">*</span></label>
+                                <input type="text" name="isnatOlunanSuc.digeMevzuat" placeholder="Varsa diğer ilgili kanunlar">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bölüm 4: İsnat Edilen Suçun İşlendiği Yer, Tarih ve Zaman Dilimi -->
+                <div class="section" data-section="sucunIslendigiYerZaman">
+                    <div class="section-header" onclick="toggleSection('sucunIslendigiYerZaman')">
+                        <div class="section-title">
+                            <span>4️⃣</span>
+                            <span>İsnat Edilen Suçun İşlendiği Yer, Tarih ve Zaman Dilimi</span>
+                        </div>
+                        <span class="section-status status-incomplete">Eksik</span>
+                    </div>
+                    <div class="collapsible-content" id="content-sucunIslendigiYerZaman">
+                        <div class="form-group">
+                            <label>Suçun İşlendiği Yer <span class="required">*</span></label>
+                            <input type="text" name="sucunIslendigiYerZaman.yer" placeholder="Suçun işlendiği adres veya konum">
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Suçun İşlendiği Tarih <span class="required">*</span></label>
+                                <input type="text" name="sucunIslendigiYerZaman.tarih" placeholder="ör: 15.12.2024">
+                            </div>
+                            <div class="form-group">
+                                <label>Zaman Dilimi (saat bilgisi) <span class="required">*</span></label>
+                                <input type="text" name="sucunIslendigiYerZaman.zamanDilimi" placeholder="ör: 14:30 - 15:00 arası">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bölüm 5: Şüphelinin Tutuklu Olup Olmadığı -->
+                <div class="section" data-section="tutuklulukDurumu">
+                    <div class="section-header" onclick="toggleSection('tutuklulukDurumu')">
+                        <div class="section-title">
+                            <span>5️⃣</span>
+                            <span>Şüphelinin Tutuklu Olup Olmadığı, Gözaltı ve Tutuklama Tarihleri</span>
+                        </div>
+                        <span class="section-status status-incomplete">Eksik</span>
+                    </div>
+                    <div class="collapsible-content" id="content-tutuklulukDurumu">
+                        <div class="form-group">
+                            <label>Tutuklu mu? <span class="required">*</span></label>
+                            <select name="tutuklulukDurumu.tutuklumu" onchange="toggleTutuklulukAlanlari()">
+                                <option value="">Seçiniz...</option>
+                                <option value="Evet">Evet</option>
+                                <option value="Hayır">Hayır</option>
+                            </select>
+                        </div>
+                        <div id="tutuklulukAlanlari" style="display: none;">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Gözaltı Tarihi (varsa) <span class="required">*</span></label>
+                                    <input type="text" name="tutuklulukDurumu.gozaltiTarihi" placeholder="ör: 10.12.2024">
+                                </div>
+                                <div class="form-group">
+                                    <label>Gözaltı Süresi (varsa) <span class="required">*</span></label>
+                                    <input type="text" name="tutuklulukDurumu.gozaltiSuresi" placeholder="ör: 24 saat">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Tutuklama Tarihi (varsa) <span class="required">*</span></label>
+                                    <input type="text" name="tutuklulukDurumu.tutuklamaTarihi" placeholder="ör: 11.12.2024">
+                                </div>
+                                <div class="form-group">
+                                    <label>Tutuklama Süresi (varsa) <span class="required">*</span></label>
+                                    <input type="text" name="tutuklulukDurumu.tutuklamaSuresi" placeholder="ör: 30 gün">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bölüm 6: Olayların Özeti -->
+                <div class="section" data-section="olayinOzeti">
+                    <div class="section-header" onclick="toggleSection('olayinOzeti')">
+                        <div class="section-title">
+                            <span>6️⃣</span>
+                            <span>Olayların Özeti</span>
+                        </div>
+                        <span class="section-status status-incomplete">Eksik</span>
+                    </div>
+                    <div class="collapsible-content" id="content-olayinOzeti">
+                        <div class="form-group">
+                            <label>Olayın Detaylı Özeti <span class="required">*</span></label>
+                            <textarea name="olayinOzeti.ozetMetin" rows="6" placeholder="Olayların sırasıyla ve detaylı açıklaması..."></textarea>
+                            <div class="help-text">En az 50 karakter olması önerilir</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bölüm 7: Şüpheliye Teklif Edilen Usul -->
+                <div class="section" data-section="teklifEdilenUsul">
+                    <div class="section-header" onclick="toggleSection('teklifEdilenUsul')">
+                        <div class="section-title">
+                            <span>7️⃣</span>
+                            <span>Şüpheliye Teklif Edilen Usul ve Kabul Bilgileri</span>
+                        </div>
+                        <span class="section-status status-incomplete">Eksik</span>
+                    </div>
+                    <div class="collapsible-content" id="content-teklifEdilenUsul">
+                        <div class="form-group">
+                            <label>Teklif Edilen Usul <span class="required">*</span></label>
+                            <input type="text" name="teklifEdilenUsul.teklifEdilenUsul" placeholder="ör: Basit Yargılama Usulü">
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Müdafii Huzurunda Teklif Edildi mi? <span class="required">*</span></label>
+                                <select name="teklifEdilenUsul.mudafiiHuzurundamiTeklif">
+                                    <option value="">Seçiniz...</option>
+                                    <option value="Evet">Evet</option>
+                                    <option value="Hayır">Hayır</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Teklif Kabul Edildi mi? <span class="required">*</span></label>
+                                <select name="teklifEdilenUsul.teklifKabulEdildiMi">
+                                    <option value="">Seçiniz...</option>
+                                    <option value="Evet">Evet</option>
+                                    <option value="Hayır">Hayır</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Teklif Tarihi <span class="required">*</span></label>
+                            <input type="text" name="teklifEdilenUsul.teklifTarihi" placeholder="ör: 15.12.2024">
+                        </div>
+                        <div class="form-group">
+                            <label>Şüphelinin Beyanı <span class="required">*</span></label>
+                            <textarea name="teklifEdilenUsul.beyanMetni" placeholder="Şüphelinin usul teklifine ilişkin beyanı"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bölüm 8: Belirlenen Ceza ve/veya Güvenlik Tedbirleri -->
+                <div class="section" data-section="cezaVeTedbirler">
+                    <div class="section-header" onclick="toggleSection('cezaVeTedbirler')">
+                        <div class="section-title">
+                            <span>8️⃣</span>
+                            <span>Belirlenen Ceza ve/veya Güvenlik Tedbirleri</span>
+                        </div>
+                        <span class="section-status status-incomplete">Eksik</span>
+                    </div>
+                    <div class="collapsible-content" id="content-cezaVeTedbirler">
+                        <div class="form-group">
+                            <label>Temel Ceza <span class="required">*</span></label>
+                            <input type="text" name="cezaVeTedbirler.temelCeza" placeholder="ör: Hapis cezası">
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Ceza Alt Sınırı <span class="required">*</span></label>
+                                <input type="text" name="cezaVeTedbirler.cezaAltSinir" placeholder="ör: 6 ay">
+                            </div>
+                            <div class="form-group">
+                                <label>Ceza Üst Sınırı <span class="required">*</span></label>
+                                <input type="text" name="cezaVeTedbirler.cezaUstSinir" placeholder="ör: 2 yıl">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Güvenlik Tedbirleri (varsa) <span class="required">*</span></label>
+                            <input type="text" name="cezaVeTedbirler.guvenlikTedbirleri" placeholder="Varsa güvenlik tedbirleri">
+                        </div>
+                        <div class="form-group">
+                            <label>Ceza ve Tedbirlere İlişkin Açıklamalar <span class="required">*</span></label>
+                            <textarea name="cezaVeTedbirler.aciklama" placeholder="Ceza ve güvenlik tedbirlerine ilişkin açıklamalar"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div class="button-group">
+            <button type="button" class="btn btn-primary" onclick="validateForm()">
+                🔍 Talepnameyi Kontrol Et
+            </button>
+            <button type="button" class="btn btn-success" onclick="saveForm()">
+                💾 Formu Kaydet
+            </button>
+            <button type="button" class="btn btn-secondary" onclick="resetForm()">
+                🔄 Formu Sıfırla
+            </button>
+        </div>
+
+        <div id="validationResult" class="validation-result"></div>
+
+        <footer>
+            <p>&copy; 2024 Basit Yargılama Editörü | MIT License</p>
+            <p style="margin-top: 10px; font-size: 0.9em; opacity: 0.8;">
+                Talepname Usulleri Kontrol Mekanizması
+            </p>
+        </footer>
+    </div>
+
+    <script src="talepname_kontrol.js"></script>
+    <script>
+        const kontrol = new TalepnameKontrol();
+
+        // Form verilerini topla
+        function getFormData() {
+            const form = document.getElementById('talepnameForm');
+            const formData = new FormData(form);
+            const data = {};
+
+            for (const [key, value] of formData.entries()) {
+                const keys = key.split('.');
+                if (keys.length === 2) {
+                    if (!data[keys[0]]) {
+                        data[keys[0]] = {};
+                    }
+                    data[keys[0]][keys[1]] = value;
+                }
+            }
+
+            return data;
+        }
+
+        // Formu kontrol et
+        function validateForm() {
+            const formData = getFormData();
+            const result = kontrol.kontrolEt(formData);
+            
+            displayValidationResult(result);
+            updateProgress(result.tamamlanmaOrani);
+            updateSectionStatuses(result.detaylar);
+            
+            kontrol.konsolRaporuOlustur(result);
+        }
+
+        // Validasyon sonucunu göster
+        function displayValidationResult(result) {
+            const resultDiv = document.getElementById('validationResult');
+            const html = kontrol.raporOlustur(result);
+            
+            resultDiv.innerHTML = html;
+            resultDiv.className = 'validation-result show ' + (result.basarili ? 'basarili' : 'hatali');
+            
+            resultDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
+        // İlerleme çubuğunu güncelle
+        function updateProgress(percentage) {
+            const progressFill = document.getElementById('progressFill');
+            progressFill.style.width = percentage + '%';
+        }
+
+        // Bölüm durumlarını güncelle
+        function updateSectionStatuses(detaylar) {
+            detaylar.forEach(detay => {
+                const section = document.querySelector(`[data-section="${detay.alanKodu}"]`);
+                if (section) {
+                    const statusBadge = section.querySelector('.section-status');
+                    if (detay.tamamlandiMi) {
+                        section.classList.add('complete');
+                        section.classList.remove('incomplete');
+                        statusBadge.textContent = 'Tamamlandı ✓';
+                        statusBadge.className = 'section-status status-complete';
+                    } else {
+                        section.classList.add('incomplete');
+                        section.classList.remove('complete');
+                        statusBadge.textContent = 'Eksik';
+                        statusBadge.className = 'section-status status-incomplete';
+                    }
+                }
+            });
+        }
+
+        // Bölüm açma/kapama
+        function toggleSection(sectionId) {
+            const content = document.getElementById('content-' + sectionId);
+            content.classList.toggle('collapsed');
+        }
+
+        // Tutukluluk alanlarını göster/gizle
+        function toggleTutuklulukAlanlari() {
+            const select = document.querySelector('[name="tutuklulukDurumu.tutuklumu"]');
+            const allanlar = document.getElementById('tutuklulukAlanlari');
+            
+            if (select.value === 'Evet') {
+                allanlar.style.display = 'block';
+            } else {
+                allanlar.style.display = 'none';
+            }
+        }
+
+        // Formu kaydet
+        function saveForm() {
+            const formData = getFormData();
+            const jsonData = JSON.stringify(formData, null, 2);
+            
+            const blob = new Blob([jsonData], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'talepname_' + new Date().getTime() + '.json';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            
+            alert('✅ Form başarıyla kaydedildi!');
+        }
+
+        // Formu sıfırla
+        function resetForm() {
+            if (confirm('Tüm form verileri silinecek. Emin misiniz?')) {
+                document.getElementById('talepnameForm').reset();
+                document.getElementById('validationResult').className = 'validation-result';
+                updateProgress(0);
+                
+                document.querySelectorAll('.section').forEach(section => {
+                    section.classList.remove('complete', 'incomplete');
+                    const statusBadge = section.querySelector('.section-status');
+                    statusBadge.textContent = 'Eksik';
+                    statusBadge.className = 'section-status status-incomplete';
+                });
+                
+                alert('✅ Form sıfırlandı!');
+            }
+        }
+
+        // Sayfa yüklendiğinde ilerleme çubuğunu başlat
+        window.addEventListener('load', () => {
+            updateProgress(0);
+        });
+
+        // Form alanları değiştiğinde otomatik kontrol (isteğe bağlı)
+        document.getElementById('talepnameForm').addEventListener('input', () => {
+            // Otomatik kontrol için bu fonksiyonu kullanabilirsiniz
+            // validateForm(); // Sürekli kontrol etmek isterseniz bu satırı açın
+        });
+    </script>
+</body>
+</html>
