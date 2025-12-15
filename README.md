@@ -18,8 +18,9 @@ Basit yargılama usulü, **alt sınırı 2 yıl veya daha az hapis cezası** ön
 - `test_suc_kutuphanesi.html` - Tarayıcı tabanlı test suite
 
 **Özellikler:**
-- 20+ suç türü detaylı veri yapısı ile tanımlanmıştır
-- Her suç için TCK maddesi, kategori, ceza aralığı ve basit yargılama uygunluğu bilgisi
+- 33 suç türü detaylı veri yapısı ile tanımlanmıştır
+- Her suç için TCK maddesi, kategori, ceza aralığı ve basit yargılama/seri muhakeme uygunluğu bilgisi
+- 13 seri muhakeme usulüne tabi suç (CMK m.250)
 - Arama, filtreleme ve sınıflandırma özellikleri
 - Kullanıcı dostu web arayüzü
 - Kapsamlı otomatik testler
@@ -230,6 +231,19 @@ Dosya geldiğinde ilk olarak basit yargılama koşullarını kontrol edin:
 - İtiraz süresi 7 gündür
 - İtiraz üzerine genel hükümlere göre duruşma açılır
 
+### CMK 250 - Seri Muhakeme Usulü
+
+**Temel İlkeler:**
+- Şüpheli ile müdafi huzurunda seri muhakeme usulü uygulanabilir
+- Cezada indirim uygulanır (hapis cezasında 1/2'ye kadar, adli para cezasında 2/3'e kadar)
+- Şüphelinin kabul etmesi şarttır
+- Hükümden önce uzlaşma imkanı vardır
+- Kamu davası açılmadan önce uygulanır
+
+**Uygulanabileceği Suçlar:**
+- Kanunda belirtilen 13 suç türü (TCK ve özel kanunlar kapsamında)
+- Bu kütüphanede "Seri Muhakeme Usulüne Tabi Suçlar" kategorisi altında bulunabilir
+
 ### TCK 50 - Cezanın Bireyselleştirilmesi
 
 Ceza belirlenirken dikkate alınır:
@@ -366,6 +380,21 @@ Basit yargılama usulüne tabi suç türlerini içeren kapsamlı bir veri taban�
 4. **Kamu İdaresine Karşı Suçlar**
    - Görevi yaptırmamak için direnme (TCK 265/1)
 
+5. **Seri Muhakeme Usulüne Tabi Suçlar** (CMK m.250)
+   - Hakkı olmayan yere tecavüz (TCK m.154/2-3)
+   - Genel güvenliğin kasten tehlikeye sokulması (TCK m.170)
+   - Trafik güvenliğini tehlikeye sokma (TCK m.179/2-3)
+   - Gürültüye neden olma (TCK m.183)
+   - Parada sahtecilik (TCK m.197/2-3)
+   - Mühür bozma (TCK m.203)
+   - Resmi belgenin düzenlenmesinde yalan beyan (TCK m.206)
+   - Kumar oynanması için yer ve imkan sağlama (TCK m.228/1)
+   - Başkasına ait kimlik veya kimlik bilgilerinin kullanılması (TCK m.268)
+   - 6136 sayılı Kanun (Ateşli silahlar) kapsamında suçlar
+   - 6831 sayılı Orman Kanunu kapsamında suçlar
+   - 1072 sayılı Kanun (Oyun alet ve makinaları) kapsamında suçlar
+   - 1163 sayılı Kooperatifler Kanunu kapsamında suçlar
+
 ### Web Arayüzü Kullanımı
 
 **Başlatma:**
@@ -476,9 +505,14 @@ console.log(offense.name); // "Tehdit suçu..."
 
 ## 📞 Yasal Dayanak
 
-- 5271 Sayılı Ceza Muhakemesi Kanunu Madde 251
+- 5271 Sayılı Ceza Muhakemesi Kanunu Madde 250 (Seri Muhakeme Usulü)
+- 5271 Sayılı Ceza Muhakemesi Kanunu Madde 251 (Basit Yargılama Usulü)
 - 5237 Sayılı Türk Ceza Kanunu Madde 50, 51, 52, 86
-- Yargıtay İçtihatları (basit yargılama ile ilgili)
+- 6136 Sayılı Ateşli Silahlar ve Bıçaklar ile Diğer Aletler Hakkında Kanun
+- 6831 Sayılı Orman Kanunu
+- 1072 Sayılı Rulet, Tilt, Langırt ve Benzeri Oyun Alet ve Makinaları Hakkında Kanun
+- 1163 Sayılı Kooperatifler Kanunu
+- Yargıtay İçtihatları (basit yargılama ve seri muhakeme ile ilgili)
 
 ---
 

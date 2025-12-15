@@ -1,9 +1,9 @@
 {
   "metadata": {
-    "version": "1.0",
+    "version": "1.1",
     "last_updated": "2024-12-15",
-    "description": "Basit Yargılama Usulüne Tabi Suç Türleri Kütüphanesi",
-    "legal_basis": "5271 sayılı Ceza Muhakemesi Kanunu Madde 251"
+    "description": "Basit Yargılama ve Seri Muhakeme Usulüne Tabi Suç Türleri Kütüphanesi",
+    "legal_basis": "5271 sayılı Ceza Muhakemesi Kanunu Madde 250 (Seri Muhakeme) ve Madde 251 (Basit Yargılama)"
   },
   "offenses": [
     {
@@ -245,6 +245,175 @@
       "penalty_type": "Hapis",
       "eligible_for_simple_trial": false,
       "notes": "Alt sınır 1 yıl - genellikle basit yargılama için uygun değildir, ancak dosyanın niteliğine göre değerlendirilebilir"
+    },
+    {
+      "id": 21,
+      "category": "Seri Muhakeme Usulüne Tabi Suçlar",
+      "name": "Hakkı olmayan yere tecavüz",
+      "tck_article": "TCK m.154/2-3",
+      "description": "Hakkı olmayan yere tecavüz suçunun ikinci ve üçüncü fıkrası",
+      "penalty_min": "Değişken",
+      "penalty_max": "Değişken",
+      "penalty_type": "Hapis veya Adli Para Cezası",
+      "eligible_for_simple_trial": false,
+      "eligible_for_expedited_trial": true,
+      "notes": "CMK m.250 kapsamında seri muhakeme usulüne tabidir"
+    },
+    {
+      "id": 22,
+      "category": "Seri Muhakeme Usulüne Tabi Suçlar",
+      "name": "Genel güvenliğin kasten tehlikeye sokulması",
+      "tck_article": "TCK m.170",
+      "description": "Genel güvenliği kasten tehlikeye sokan kişi hakkında uygulanan suç",
+      "penalty_min": "1 yıl",
+      "penalty_max": "5 yıl",
+      "penalty_type": "Hapis",
+      "eligible_for_simple_trial": false,
+      "eligible_for_expedited_trial": true,
+      "notes": "CMK m.250 kapsamında seri muhakeme usulüne tabidir"
+    },
+    {
+      "id": 23,
+      "category": "Seri Muhakeme Usulüne Tabi Suçlar",
+      "name": "Trafik güvenliğini tehlikeye sokma",
+      "tck_article": "TCK m.179/2-3",
+      "description": "Trafik güvenliğini tehlikeye sokma suçunun ikinci ve üçüncü fıkrası",
+      "penalty_min": "Değişken",
+      "penalty_max": "Değişken",
+      "penalty_type": "Hapis",
+      "eligible_for_simple_trial": false,
+      "eligible_for_expedited_trial": true,
+      "notes": "CMK m.250 kapsamında seri muhakeme usulüne tabidir"
+    },
+    {
+      "id": 24,
+      "category": "Seri Muhakeme Usulüne Tabi Suçlar",
+      "name": "Gürültüye neden olma",
+      "tck_article": "TCK m.183",
+      "description": "Gürültüye neden olarak kamu düzenini bozan kişi hakkında uygulanan suç",
+      "penalty_min": "3 ay",
+      "penalty_max": "1 yıl",
+      "penalty_type": "Adli Para Cezası",
+      "eligible_for_simple_trial": true,
+      "eligible_for_expedited_trial": true,
+      "notes": "CMK m.250 kapsamında seri muhakeme usulüne tabidir. Basit yargılama için de uygun olabilir"
+    },
+    {
+      "id": 25,
+      "category": "Seri Muhakeme Usulüne Tabi Suçlar",
+      "name": "Parada sahtecilik",
+      "tck_article": "TCK m.197/2-3",
+      "description": "Parada sahtecilik suçunun ikinci ve üçüncü fıkrası",
+      "penalty_min": "Değişken",
+      "penalty_max": "Değişken",
+      "penalty_type": "Hapis",
+      "eligible_for_simple_trial": false,
+      "eligible_for_expedited_trial": true,
+      "notes": "CMK m.250 kapsamında seri muhakeme usulüne tabidir"
+    },
+    {
+      "id": 26,
+      "category": "Seri Muhakeme Usulüne Tabi Suçlar",
+      "name": "Mühür bozma",
+      "tck_article": "TCK m.203",
+      "description": "Mühür bozma suçu",
+      "penalty_min": "1 yıl",
+      "penalty_max": "3 yıl",
+      "penalty_type": "Hapis",
+      "eligible_for_simple_trial": false,
+      "eligible_for_expedited_trial": true,
+      "notes": "CMK m.250 kapsamında seri muhakeme usulüne tabidir"
+    },
+    {
+      "id": 27,
+      "category": "Seri Muhakeme Usulüne Tabi Suçlar",
+      "name": "Resmi belgenin düzenlenmesinde yalan beyan",
+      "tck_article": "TCK m.206",
+      "description": "Resmi belgenin düzenlenmesinde yalan beyan suçu",
+      "penalty_min": "3 ay",
+      "penalty_max": "2 yıl",
+      "penalty_type": "Hapis",
+      "eligible_for_simple_trial": true,
+      "eligible_for_expedited_trial": true,
+      "notes": "CMK m.250 kapsamında seri muhakeme usulüne tabidir. Basit yargılama için de uygun olabilir"
+    },
+    {
+      "id": 28,
+      "category": "Seri Muhakeme Usulüne Tabi Suçlar",
+      "name": "Kumar oynanması için yer ve imkan sağlama",
+      "tck_article": "TCK m.228/1",
+      "description": "Kumar oynanması için yer ve imkan sağlama suçunun birinci fıkrası",
+      "penalty_min": "1 yıl",
+      "penalty_max": "3 yıl",
+      "penalty_type": "Hapis",
+      "eligible_for_simple_trial": false,
+      "eligible_for_expedited_trial": true,
+      "notes": "CMK m.250 kapsamında seri muhakeme usulüne tabidir"
+    },
+    {
+      "id": 29,
+      "category": "Seri Muhakeme Usulüne Tabi Suçlar",
+      "name": "Başkasına ait kimlik veya kimlik bilgilerinin kullanılması",
+      "tck_article": "TCK m.268",
+      "description": "Başkasına ait kimlik veya kimlik bilgilerini kullanma suçu",
+      "penalty_min": "6 ay",
+      "penalty_max": "2 yıl",
+      "penalty_type": "Hapis",
+      "eligible_for_simple_trial": true,
+      "eligible_for_expedited_trial": true,
+      "notes": "CMK m.250 kapsamında seri muhakeme usulüne tabidir. Basit yargılama için de uygun olabilir"
+    },
+    {
+      "id": 30,
+      "category": "Seri Muhakeme Usulüne Tabi Suçlar",
+      "name": "Ateşli silahlar ve bıçaklar hakkında suçlar",
+      "tck_article": "6136 S.K. m.13/3, m.15/1-2-3",
+      "description": "6136 sayılı Ateşli Silahlar ve Bıçaklar ile Diğer Aletler Hakkında Kanun'un 13. maddesinin üçüncü fıkrası ile 15. maddesinin birinci, ikinci ve üçüncü fıkralarında belirtilen suçlar",
+      "penalty_min": "Değişken",
+      "penalty_max": "Değişken",
+      "penalty_type": "Hapis veya Adli Para Cezası",
+      "eligible_for_simple_trial": false,
+      "eligible_for_expedited_trial": true,
+      "notes": "CMK m.250 kapsamında seri muhakeme usulüne tabidir. 6136 sayılı Kanun kapsamında"
+    },
+    {
+      "id": 31,
+      "category": "Seri Muhakeme Usulüne Tabi Suçlar",
+      "name": "Orman suçları",
+      "tck_article": "6831 S.K. m.93/1",
+      "description": "6831 sayılı Orman Kanununun 93. maddesinin birinci fıkrasında belirtilen suç",
+      "penalty_min": "Değişken",
+      "penalty_max": "Değişken",
+      "penalty_type": "Hapis veya Adli Para Cezası",
+      "eligible_for_simple_trial": false,
+      "eligible_for_expedited_trial": true,
+      "notes": "CMK m.250 kapsamında seri muhakeme usulüne tabidir. 6831 sayılı Orman Kanunu kapsamında"
+    },
+    {
+      "id": 32,
+      "category": "Seri Muhakeme Usulüne Tabi Suçlar",
+      "name": "Oyun alet ve makinaları hakkında suçlar",
+      "tck_article": "1072 S.K. m.2",
+      "description": "1072 sayılı Rulet, Tilt, Langırt ve Benzeri Oyun Alet ve Makinaları Hakkında Kanunun 2. maddesinde belirtilen suç",
+      "penalty_min": "Değişken",
+      "penalty_max": "Değişken",
+      "penalty_type": "Hapis veya Adli Para Cezası",
+      "eligible_for_simple_trial": false,
+      "eligible_for_expedited_trial": true,
+      "notes": "CMK m.250 kapsamında seri muhakeme usulüne tabidir. 1072 sayılı Kanun kapsamında"
+    },
+    {
+      "id": 33,
+      "category": "Seri Muhakeme Usulüne Tabi Suçlar",
+      "name": "Kooperatifler hakkında suçlar",
+      "tck_article": "1163 S.K. ek m.2/1-1",
+      "description": "1163 sayılı Kooperatifler Kanununun ek 2. maddesinin birinci fıkrasının (1) numaralı bendinde belirtilen suç",
+      "penalty_min": "Değişken",
+      "penalty_max": "Değişken",
+      "penalty_type": "Hapis veya Adli Para Cezası",
+      "eligible_for_simple_trial": false,
+      "eligible_for_expedited_trial": true,
+      "notes": "CMK m.250 kapsamında seri muhakeme usulüne tabidir. 1163 sayılı Kooperatifler Kanunu kapsamında"
     }
   ]
 }
