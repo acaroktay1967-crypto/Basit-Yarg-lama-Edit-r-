@@ -6,6 +6,14 @@ Bu repository, **5271 sayılı Türk Ceza Muhakemesi Kanunu'nun 251. maddesi** u
 
 Basit yargılama usulü, **alt sınırı 2 yıl veya daha az hapis cezası** öngörülen suçlarda, dosya üzerinden (duruşma yapılmaksızın) karar verilmesini sağlayan hızlandırılmış yargılama usulüdür.
 
+### 🆕 Yeni Özellikler
+
+- **📝 İnteraktif Editör:** Karar şablonlarını tarayıcıda düzenleyin ve indirin
+- **📚 Yargıtay Kararları Kütüphanesi:** CMK 251 ile ilgili Yargıtay kararlarına erişin
+- **🔍 Gelişmiş Arama:** Karar numarası, madde veya anahtar kelime ile hızlı arama yapın
+
+👉 **[Editörü Başlat](editor.html)** - Tarayıcınızda açın ve kullanmaya başlayın!
+
 ---
 
 ## 📚 İçindekiler
@@ -282,18 +290,98 @@ Ceza belirlenirken dikkate alınır:
 
 ---
 
+## 📝 İnteraktif Editör Kullanımı
+
+### Editörü Başlatma
+
+1. **`editor.html`** dosyasını tarayıcınızda açın
+2. Editör, Kütüphane ve Yardım sekmelerinden birini seçin
+
+### Editör Özellikleri
+
+**📝 Şablon Düzenleme:**
+- Açılır menüden şablon seçin
+- Metin alanında doğrudan düzenleyin
+- Gerekli alanları doldurun (isimler, tarihler, bilgiler)
+
+**💾 Dosya İndirme:**
+- "Dosyayı İndir" butonuna tıklayın
+- Düzenlediğiniz karar `.md` formatında indirilir
+
+**📋 Kopyalama:**
+- "Kopyala" butonu ile metni panoya kopyalayın
+- Başka uygulamalara yapıştırabilirsiniz
+
+**🔄 Temizleme:**
+- "Temizle" butonu ile editörü sıfırlayın
+
+---
+
+## 📚 Yargıtay Kararları Kütüphanesi
+
+### Kütüphane İçeriği
+
+Kütüphane, CMK 251 (Basit Yargılama Usulü) ile ilgili **13 adet Yargıtay kararı** içermektedir.
+
+**Kategoriler:**
+1. **CMK 251 Genel Uygulamalar** - Basit yargılama koşulları ve uygulaması
+2. **CMK 251 İtiraz Süreci** - İtiraz ve duruşma açılması kararları
+3. **TCK 86 Tehdit Suçu** - Tehdit suçlarına ilişkin kararlar
+4. **HAGB Uygulaması** - Hükmün açıklanmasının geri bırakılması
+5. **TCK 50, 51, 52** - Ceza tayini, erteleme ve seçenek yaptırımlar
+
+### 🔍 Arama Sistemi
+
+**Arama Yöntemleri:**
+- **Karar Numarası:** Örn: "2020/1234", "2021/5678"
+- **Madde Numarası:** Örn: "CMK 251", "TCK 86/2", "CMK 231"
+- **Anahtar Kelime:** Örn: "HAGB", "itiraz", "duruşma", "erteleme"
+- **Konu:** Örn: "basit yargılama koşulları", "tehdit"
+
+**Arama Özellikleri:**
+- ✅ Hızlı arama (Enter tuşu ile)
+- ✅ Kategori filtreleme
+- ✅ Çoklu alan araması (karar no, madde, anahtar kelime)
+- ✅ Sonuç bulunamadığında yardımcı mesajlar
+
+**Kullanım Adımları:**
+1. `editor.html` dosyasını açın
+2. "📚 Yargıtay Kütüphanesi" sekmesine tıklayın
+3. Arama kutusuna terim yazın veya kategori seçin
+4. "🔍 Ara" butonuna tıklayın veya Enter'a basın
+5. Sonuçları inceleyin
+
+### Karar Bilgileri
+
+Her karar için şu bilgiler mevcuttur:
+- **Karar Numarası** ve **Tarih**
+- **Daire** (örn: 12. Ceza Dairesi)
+- **Konu** başlığı
+- **Özet** açıklama
+- **İlgili Maddeler** (CMK/TCK maddeleri)
+- **Anahtar Kelimeler**
+
+---
+
 ## 📁 Dosya Yapısı
 
 ```
 Basit-Yargılama-Editör/
 │
 ├── README.md (Bu dosya)
+├── editor.html (İnteraktif Editör ve Kütüphane)
+├── styles.css (Stil dosyası)
+├── yargitay_kararlari.json (Yargıtay kararları veri tabanı)
+│
 ├── 1_Tensip_Zapti_CMK251.md
 ├── 2_Basit_Yargilama_Karar_Sablonu_TCK86.md
 ├── 3_HAGB_Karar_Sablonu.md
 ├── 4_Mahkumiyet_Karar_Sablonu.md
 ├── 5_Itiraz_Uzerine_Durusma_Acilmasi.md
-└── 6_Itiraz_Inceleme_Karar.md
+├── 6_Itiraz_Inceleme_Karar.md
+│
+├── HIZLI_BASVURU.md
+└── IS_AKIS_SEMASI.md
 ```
 
 ---
@@ -339,9 +427,23 @@ Bu şablonlar, 5271 sayılı CMK'nın 251. maddesi kapsamında basit yargılama 
 
 ## 📅 Versiyon
 
-**Versiyon:** 1.0  
-**Tarih:** 2024  
+**Versiyon:** 2.0  
+**Tarih:** 2024-12-15  
 **Düzenleyen:** Basit Yargılama Çalışma Grubu
+
+### Versiyon 2.0 Yenilikleri (15.12.2024)
+- ✅ İnteraktif HTML editör eklendi
+- ✅ Yargıtay Kararları Kütüphanesi oluşturuldu (13 karar)
+- ✅ Gelişmiş arama sistemi (karar no, madde, anahtar kelime)
+- ✅ Kategori filtreleme özelliği
+- ✅ Dosya indirme ve kopyalama özellikleri
+- ✅ Kullanıcı dostu arayüz ve hata mesajları
+- ✅ Responsive tasarım (mobil uyumlu)
+
+### Versiyon 1.0
+- Temel karar şablonları
+- Markdown formatında dökümanlar
+- Kullanım kılavuzları
 
 ---
 

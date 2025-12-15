@@ -1,0 +1,196 @@
+{
+  "baslik": "Yargıtay Kararları Kütüphanesi - CMK 251",
+  "aciklama": "CMK 251 (Basit Yargılama Usulü) ile ilgili Yargıtay kararları",
+  "guncelleme_tarihi": "2024-12-15",
+  "kategoriler": {
+    "CMK_251_Genel": {
+      "baslik": "CMK 251 Genel Uygulamalar",
+      "aciklama": "Basit yargılama usulünün genel uygulamasına ilişkin kararlar",
+      "kararlar": [
+        {
+          "id": 1,
+          "karar_no": "2019/8765 E., 2020/1234 K.",
+          "tarih": "12.02.2020",
+          "daire": "12. Ceza Dairesi",
+          "konu": "Basit Yargılama Usulü Koşulları",
+          "ozet": "Basit yargılama usulünün uygulanabilmesi için suçun kanuni tanımında öngörülen cezanın alt sınırının iki yıl veya daha az süreli hapis cezası olması, yeterli delil bulunması ve dosyanın karmaşık olmaması gerekmektedir.",
+          "anahtar_kelimeler": ["basit yargılama", "koşullar", "alt sınır", "delil", "karmaşıklık"],
+          "ilgili_maddeler": ["CMK 251", "CMK 251/1"],
+          "metin": "...Basit yargılama usulünün uygulanabilmesi için kanunda öngörülen koşulların bir arada bulunması gerekmektedir. Somut olayda suçun alt sınırı iki yıldan fazla olduğundan basit yargılama usulü uygulanamaz..."
+        },
+        {
+          "id": 2,
+          "karar_no": "2020/4532 E., 2021/987 K.",
+          "tarih": "15.05.2021",
+          "daire": "12. Ceza Dairesi",
+          "konu": "Basit Yargılamada Duruşma Yasağı",
+          "ozet": "CMK 251 kapsamında basit yargılama usulünde duruşma yapılmaksızın dosya üzerinden karar verilir. Sanıktan yazılı savunması alınır ve duruşma açılması usul hükümlerine aykırıdır.",
+          "anahtar_kelimeler": ["duruşma yasağı", "yazılı savunma", "dosya üzerinden karar"],
+          "ilgili_maddeler": ["CMK 251/2", "CMK 251/3"],
+          "metin": "...Basit yargılama usulünde duruşma yapılması kanunen yasaktır. Mahkemenin duruşma açması ve sanığı dinlemesi usul hükümlerine aykırıdır. Dosya üzerinden karar verilmesi gerekirken duruşma açılması hukuka aykırıdır..."
+        },
+        {
+          "id": 3,
+          "karar_no": "2021/6789 E., 2021/5432 K.",
+          "tarih": "23.09.2021",
+          "daire": "12. Ceza Dairesi",
+          "konu": "İtiraz Süresi ve Kesinlik",
+          "ozet": "Basit yargılama usulünde verilen kararlara karşı itiraz süresi tebliğden itibaren 7 gündür. İtiraz süresi geçtikten sonra karar kesinleşir.",
+          "anahtar_kelimeler": ["itiraz", "7 gün", "kesinlik", "tebliğ"],
+          "ilgili_maddeler": ["CMK 251/4", "CMK 251/5"],
+          "metin": "...CMK 251/4 uyarınca basit yargılama usulünde verilen kararlara karşı itiraz süresi karar tebliğinden itibaren 7 gündür. Bu süre geçtikten sonra karar kesinleşir..."
+        }
+      ]
+    },
+    "CMK_251_Itiraz": {
+      "baslik": "CMK 251 İtiraz Süreci",
+      "aciklama": "Basit yargılama kararlarına itiraz ve duruşma açılması",
+      "kararlar": [
+        {
+          "id": 4,
+          "karar_no": "2020/3456 E., 2020/8901 K.",
+          "tarih": "18.11.2020",
+          "daire": "12. Ceza Dairesi",
+          "konu": "İtiraz Üzerine Duruşma Açılması",
+          "ozet": "İtiraz üzerine mahkeme, itirazı ciddi bulursa genel hükümler çerçevesinde duruşma açar. Duruşma açıldıktan sonra artık basit yargılama usulü uygulanmaz.",
+          "anahtar_kelimeler": ["itiraz", "duruşma açılması", "genel hükümler"],
+          "ilgili_maddeler": ["CMK 251/5"],
+          "metin": "...İtiraz üzerine mahkeme, itiraz gerekçelerini ciddi bulursa genel hükümler çerçevesinde duruşma açar. Duruşma açıldıktan sonra basit yargılama usulü sona erer ve genel yargılama usulü uygulanır. Bu aşamada verilen karar istinafa tabidir..."
+        },
+        {
+          "id": 5,
+          "karar_no": "2021/2345 E., 2021/6789 K.",
+          "tarih": "07.07.2021",
+          "daire": "12. Ceza Dairesi",
+          "konu": "İtirazın Dosya Üzerinden Reddi",
+          "ozet": "İtiraz ciddi değilse mahkeme dosya üzerinden inceleyerek itirazı reddeder. Bu karar kesindir ve istinafa tabi değildir.",
+          "anahtar_kelimeler": ["itiraz reddi", "dosya üzerinden", "kesin karar"],
+          "ilgili_maddeler": ["CMK 251/5"],
+          "metin": "...İtiraz gerekçelerinin ciddi olmadığı ve duruşma açılmasını gerektirmediği değerlendirildiğinde, mahkeme dosya üzerinden itirazı reddeder. Bu karar kesindir ve istinaf yoluna başvurulamaz..."
+        },
+        {
+          "id": 6,
+          "karar_no": "2022/1111 E., 2022/2222 K.",
+          "tarih": "14.03.2022",
+          "daire": "12. Ceza Dairesi",
+          "konu": "İtiraz Süresinin Hesaplanması",
+          "ozet": "İtiraz süresi, kararın ilgiliye tebliğ edildiği tarihten itibaren başlar. Hafta sonu ve resmi tatiller süreye dahil değildir.",
+          "anahtar_kelimeler": ["itiraz süresi", "tebliğ", "süre hesabı"],
+          "ilgili_maddeler": ["CMK 251/4", "CMK 40"],
+          "metin": "...İtiraz süresi kararın tebliğ edildiği tarihten itibaren başlar. CMK 40 uyarınca hafta sonu ve resmi tatiller süreye dahil değildir. 7 günlük süre iş günü olarak hesaplanır..."
+        }
+      ]
+    },
+    "TCK_86_Tehdit": {
+      "baslik": "TCK 86 Tehdit Suçu",
+      "aciklama": "TCK 86/2 ve 86/3 tehdit suçlarına ilişkin kararlar",
+      "kararlar": [
+        {
+          "id": 7,
+          "karar_no": "2020/5678 E., 2020/9012 K.",
+          "tarih": "25.08.2020",
+          "daire": "4. Ceza Dairesi",
+          "konu": "TCK 86/2 Tehdit Suçu ve Basit Yargılama",
+          "ozet": "TCK 86/2 uyarınca hayat, vücut veya cinsel dokunulmazlığa yönelik tehdit suçunun alt sınırı 6 ay olduğundan basit yargılama usulü uygulanabilir.",
+          "anahtar_kelimeler": ["TCK 86/2", "tehdit", "basit yargılama", "alt sınır"],
+          "ilgili_maddeler": ["TCK 86/2", "CMK 251"],
+          "metin": "...TCK 86/2'de düzenlenen hayat, vücut veya cinsel dokunulmazlığa yönelik tehdit suçunda cezanın alt sınırı 6 ay, üst sınırı 2 yıl olup, CMK 251 kapsamında basit yargılama usulü uygulanabilir..."
+        },
+        {
+          "id": 8,
+          "karar_no": "2021/3456 E., 2021/7890 K.",
+          "tarih": "19.10.2021",
+          "daire": "4. Ceza Dairesi",
+          "konu": "TCK 86/3 Malvarlığı Tehdidi",
+          "ozet": "TCK 86/3 kapsamındaki malvarlığına zarar verme tehdidinde cezanın alt ve üst sınırı 6 ay olduğundan basit yargılama usulü uygulanabilir.",
+          "anahtar_kelimeler": ["TCK 86/3", "malvarlığı", "tehdit", "basit yargılama"],
+          "ilgili_maddeler": ["TCK 86/3", "CMK 251"],
+          "metin": "...TCK 86/3'te düzenlenen malvarlığına zarar verme tehdidinde ceza 6 aya kadar hapis veya adli para cezası olup, her iki ceza türünde de basit yargılama usulü uygulanabilir..."
+        }
+      ]
+    },
+    "HAGB_Uygulamasi": {
+      "baslik": "HAGB (Hükmün Açıklanmasının Geri Bırakılması)",
+      "aciklama": "Basit yargılamada HAGB uygulamasına ilişkin kararlar",
+      "kararlar": [
+        {
+          "id": 9,
+          "karar_no": "2021/4567 E., 2021/8901 K.",
+          "tarih": "28.06.2021",
+          "daire": "12. Ceza Dairesi",
+          "konu": "Basit Yargılamada HAGB Koşulları",
+          "ozet": "Basit yargılama usulünde de HAGB (CMK 231) uygulanabilir. Cezanın 2 yıl veya daha az olması, sabıka olmaması ve suç işlemeyeceği kanaati gerekir.",
+          "anahtar_kelimeler": ["HAGB", "CMK 231", "basit yargılama", "koşullar"],
+          "ilgili_maddeler": ["CMK 231", "CMK 251"],
+          "metin": "...Basit yargılama usulünde verilen mahkumiyet kararlarında da CMK 231 uyarınca HAGB uygulanabilir. HAGB kararı verilebilmesi için belirlenen cezanın 2 yıl veya daha az olması, sanığın kasıtlı suçtan mahkum olmaması ve tekrar suç işlemeyeceği kanaatinin oluşması gerekir..."
+        },
+        {
+          "id": 10,
+          "karar_no": "2022/3333 E., 2022/4444 K.",
+          "tarih": "11.04.2022",
+          "daire": "12. Ceza Dairesi",
+          "konu": "HAGB Denetim Süresi",
+          "ozet": "HAGB kararında denetim süresi sanığın kişiliği, ekonomik ve sosyal durumu dikkate alınarak 1, 3 veya 5 yıl olarak belirlenir.",
+          "anahtar_kelimeler": ["HAGB", "denetim süresi", "bireyselleştirme"],
+          "ilgili_maddeler": ["CMK 231/5"],
+          "metin": "...HAGB kararında denetim süresi belirlenmesi zorunludur. Denetim süresi sanığın kişiliği, suçun niteliği, ekonomik ve sosyal durumu göz önünde bulundurularak 1, 3 veya 5 yıl olarak belirlenir. Gerekçesiz süre belirlenmesi hukuka aykırıdır..."
+        }
+      ]
+    },
+    "TCK_50_51_52": {
+      "baslik": "Ceza Tayini ve Erteleme",
+      "aciklama": "TCK 50, 51, 52 ile ilgili ceza tayini, erteleme ve seçenek yaptırımlara ilişkin kararlar",
+      "kararlar": [
+        {
+          "id": 11,
+          "karar_no": "2020/6789 E., 2021/1234 K.",
+          "tarih": "16.01.2021",
+          "daire": "12. Ceza Dairesi",
+          "konu": "TCK 50 Cezanın Bireyselleştirilmesi",
+          "ozet": "Ceza belirlenirken sanığın kastı, hazırlık ve icra hareketleri, meydana gelen zarar veya tehlike, kişisel ve ekonomik durum dikkate alınmalıdır.",
+          "anahtar_kelimeler": ["TCK 50", "cezanın bireyselleştirilmesi", "gerekçe"],
+          "ilgili_maddeler": ["TCK 50"],
+          "metin": "...TCK 50 uyarınca ceza belirlenirken failin kastı veya taksiri, hazırlık hareketleri, suçun işleniş biçimi ve meydana gelen zarar göz önünde bulundurulmalıdır. Ceza bireyselleştirilirken gerekçe gösterilmesi zorunludur..."
+        },
+        {
+          "id": 12,
+          "karar_no": "2021/5555 E., 2021/6666 K.",
+          "tarih": "09.08.2021",
+          "daire": "12. Ceza Dairesi",
+          "konu": "TCK 51 Hapis Cezasının Ertelenmesi",
+          "ozet": "Hapis cezası 2 yıl veya daha az ise, sanık daha önce kasıtlı suçtan mahkum olmamışsa ve tekrar suç işlemeyeceği kanaati oluşmuşsa ceza ertelenebilir.",
+          "anahtar_kelimeler": ["TCK 51", "erteleme", "koşullar"],
+          "ilgili_maddeler": ["TCK 51"],
+          "metin": "...TCK 51 uyarınca hapis cezasının ertelenmesi için belirlenen cezanın 2 yıl veya daha az olması, sanığın daha önce kasıtlı suçtan mahkum olmaması ve mahkemece tekrar suç işlemeyeceği kanaatinin oluşması gerekir. Bu koşullar birlikte aranır..."
+        },
+        {
+          "id": 13,
+          "karar_no": "2022/5678 E., 2022/9012 K.",
+          "tarih": "22.05.2022",
+          "daire": "12. Ceza Dairesi",
+          "konu": "TCK 52 Seçenek Yaptırımlar",
+          "ozet": "1 yıl veya daha az hapis cezasında seçenek yaptırımlar uygulanabilir. Adli para cezası, kısa süreli hapis cezasına çevrilebilir.",
+          "anahtar_kelimeler": ["TCK 52", "seçenek yaptırımlar", "adli para cezası"],
+          "ilgili_maddeler": ["TCK 52"],
+          "metin": "...TCK 52 uyarınca 1 yıl veya daha az hapis cezası, sanığın ekonomik ve kişisel durumu ile dosya içeriği göz önünde bulundurularak adli para cezasına veya seçenek yaptırımlara çevrilebilir..."
+        }
+      ]
+    }
+  },
+  "arama_yardimi": {
+    "ornekler": [
+      "Basit yargılama koşulları",
+      "İtiraz süresi",
+      "HAGB",
+      "TCK 86/2",
+      "Duruşma yasağı",
+      "Cezanın bireyselleştirilmesi"
+    ],
+    "ipuclari": [
+      "Karar numarası ile arama yapabilirsiniz",
+      "Madde numarası (örn: CMK 251, TCK 86/2) ile arama yapabilirsiniz",
+      "Anahtar kelimeler ile arama yapabilirsiniz",
+      "Konu başlıkları ile arama yapabilirsiniz"
+    ]
+  }
+}

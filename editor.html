@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basit Yargılama Editörü - CMK 251</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>⚖️ Basit Yargılama Editörü</h1>
+            <p>CMK 251 Karar Şablonları ve Yargıtay Kararları</p>
+        </header>
+
+        <nav class="nav-tabs">
+            <button class="nav-tab active" onclick="showSection('editor')">📝 Editör</button>
+            <button class="nav-tab" onclick="showSection('library')">📚 Yargıtay Kütüphanesi</button>
+            <button class="nav-tab" onclick="showSection('help')">❓ Yardım</button>
+        </nav>
+
+        <main>
+            <!-- Editor Section -->
+            <section id="editor" class="section active">
+                <h2>Karar Şablonu Editörü</h2>
+                
+                <div class="alert alert-info show">
+                    <strong>ℹ️ Bilgi:</strong> Şablonu seçin, gerekli alanları doldurun ve düzenleyin. İşlem tamamlandığında dosyayı indirebilirsiniz.
+                </div>
+
+                <div class="form-group">
+                    <label for="templateSelect">Şablon Seçin:</label>
+                    <select id="templateSelect" onchange="loadTemplate()">
+                        <option value="">-- Şablon Seçiniz --</option>
+                        <option value="1_Tensip_Zapti_CMK251.md">1. Tensip Zaptı (CMK 251)</option>
+                        <option value="2_Basit_Yargilama_Karar_Sablonu_TCK86.md">2. Basit Yargılama Kararı (TCK 86)</option>
+                        <option value="3_HAGB_Karar_Sablonu.md">3. HAGB Karar Şablonu</option>
+                        <option value="4_Mahkumiyet_Karar_Sablonu.md">4. Mahkumiyet Karar Şablonu</option>
+                        <option value="5_Itiraz_Uzerine_Durusma_Acilmasi.md">5. İtiraz Üzerine Duruşma Açılması</option>
+                        <option value="6_Itiraz_Inceleme_Karar.md">6. İtiraz İnceleme Kararı</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="editorTextarea">Karar Metni:</label>
+                    <textarea id="editorTextarea" placeholder="Şablon seçildiğinde metin burada görünecektir..."></textarea>
+                </div>
+
+                <div>
+                    <button class="btn btn-success" onclick="downloadDocument()">💾 Dosyayı İndir</button>
+                    <button class="btn btn-warning" onclick="clearEditor()">🔄 Temizle</button>
+                    <button class="btn btn-primary" onclick="copyToClipboard()">📋 Kopyala</button>
+                </div>
+
+                <div id="editorAlert" class="alert"></div>
+            </section>
+
+            <!-- Library Section -->
+            <section id="library" class="section">
+                <h2>Yargıtay Kararları Kütüphanesi</h2>
+                
+                <!-- Search Bar -->
+                <div class="search-container">
+                    <input type="search" id="searchInput" class="search-input" 
+                           placeholder="Karar no, madde, anahtar kelime ile arayın... (örn: CMK 251, HAGB, itiraz)"
+                           onkeyup="handleSearchKeypress(event)">
+                    <button class="btn btn-primary search-btn" onclick="searchDecisions()">🔍 Ara</button>
+                </div>
+
+                <!-- Statistics -->
+                <div class="stats-container" id="statsContainer">
+                    <div class="stat-card">
+                        <div class="stat-number" id="totalDecisions">0</div>
+                        <div class="stat-label">Toplam Karar</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="totalCategories">0</div>
+                        <div class="stat-label">Kategori</div>
+                    </div>
+                </div>
+
+                <!-- Category Filter -->
+                <div class="category-filter" id="categoryFilter"></div>
+
+                <!-- Search Results Alert -->
+                <div id="searchAlert" class="alert"></div>
+
+                <!-- Decisions Container -->
+                <div id="decisionsContainer">
+                    <p style="text-align: center; color: #7f8c8d;">Kararları görüntülemek için kategori seçin veya arama yapın.</p>
+                </div>
+            </section>
+
+            <!-- Help Section -->
+            <section id="help" class="section">
+                <h2>Kullanım Kılavuzu</h2>
+                
+                <div class="help-box">
+                    <h3>📝 Editör Nasıl Kullanılır?</h3>
+                    <ul>
+                        <li><strong>Şablon Seçimi:</strong> Açılır menüden uygun şablonu seçin</li>
+                        <li><strong>Düzenleme:</strong> Metin alanında gerekli yerleri doldurun (örn: isimler, tarihler, bilgiler)</li>
+                        <li><strong>İndirme:</strong> "Dosyayı İndir" butonuna tıklayarak .md dosyası olarak kaydedin</li>
+                        <li><strong>Kopyalama:</strong> "Kopyala" butonuyla metni panoya kopyalayın</li>
+                        <li><strong>Temizleme:</strong> "Temizle" butonuyla editörü sıfırlayın</li>
+                    </ul>
+                </div>
+
+                <div class="help-box">
+                    <h3>📚 Yargıtay Kütüphanesi Nasıl Kullanılır?</h3>
+                    <ul>
+                        <li><strong>Kategori ile Arama:</strong> Kategori butonlarına tıklayarak ilgili kararları görüntüleyin</li>
+                        <li><strong>Arama Butonu:</strong> Arama kutusuna karar numarası, madde (örn: CMK 251, TCK 86/2) veya anahtar kelime yazın</li>
+                        <li><strong>Hızlı Arama:</strong> Enter tuşuna basarak hızlıca arama yapabilirsiniz</li>
+                        <li><strong>Sonuçlar:</strong> Eşleşen kararlar karar numarası, tarih, özet ve etiketlerle gösterilir</li>
+                    </ul>
+                </div>
+
+                <div class="help-box">
+                    <h3>🔍 Arama Örnekleri</h3>
+                    <ul>
+                        <li><strong>Madde ile:</strong> "CMK 251", "TCK 86/2", "CMK 231"</li>
+                        <li><strong>Karar no ile:</strong> "2020/1234", "2021/5678"</li>
+                        <li><strong>Konu ile:</strong> "HAGB", "itiraz", "duruşma", "basit yargılama"</li>
+                        <li><strong>Anahtar kelime ile:</strong> "erteleme", "tehdit", "7 gün"</li>
+                    </ul>
+                </div>
+
+                <div class="help-box">
+                    <h3>⚠️ Hata Mesajları</h3>
+                    <ul>
+                        <li><strong>"Sonuç bulunamadı":</strong> Arama kriterlerinizi değiştirerek tekrar deneyin</li>
+                        <li><strong>"Şablon seçilmedi":</strong> Editörde işlem yapmadan önce şablon seçin</li>
+                        <li><strong>"Kütüphane yüklenemedi":</strong> Sayfayı yenileyin, sorun devam ederse yöneticiye bildirin</li>
+                    </ul>
+                </div>
+
+                <div class="help-box">
+                    <h3>📋 Hızlı Referans</h3>
+                    <ul>
+                        <li><strong>CMK 251:</strong> Basit Yargılama Usulü (alt sınırı 2 yıl veya daha az)</li>
+                        <li><strong>İtiraz Süresi:</strong> 7 gün (tebliğden itibaren)</li>
+                        <li><strong>HAGB:</strong> Hükmün Açıklanmasının Geri Bırakılması (CMK 231)</li>
+                        <li><strong>TCK 50:</strong> Cezanın Bireyselleştirilmesi</li>
+                        <li><strong>TCK 51:</strong> Hapis Cezasının Ertelenmesi</li>
+                        <li><strong>TCK 52:</strong> Seçenek Yaptırımlar</li>
+                        <li><strong>TCK 86/2:</strong> Hayat, vücut, cinsel dokunulmazlık tehdidi (6 ay - 2 yıl)</li>
+                        <li><strong>TCK 86/3:</strong> Malvarlığına zarar tehdidi (6 aya kadar)</li>
+                    </ul>
+                </div>
+
+                <div class="help-box">
+                    <h3>ℹ️ Teknik Bilgiler</h3>
+                    <ul>
+                        <li><strong>Dosya Formatı:</strong> Markdown (.md)</li>
+                        <li><strong>Tarayıcı Desteği:</strong> Chrome, Firefox, Safari, Edge (güncel sürümler)</li>
+                        <li><strong>Veri Kaynağı:</strong> yargitay_kararlari.json</li>
+                        <li><strong>Güncelleme:</strong> 2024</li>
+                    </ul>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p><strong>Basit Yargılama Editörü</strong> - CMK 251 Karar Şablonları</p>
+            <p>© 2024 - Basit Yargılama Çalışma Grubu</p>
+            <p>Detaylı bilgi için: <a href="README.md" target="_blank">README.md</a> | <a href="HIZLI_BASVURU.md" target="_blank">Hızlı Başvuru</a></p>
+        </footer>
+    </div>
+
+    <script>
+        // Global variables
+        let decisionsData = null;
+        let currentCategory = 'all';
+
+        // Load decisions data on page load
+        window.addEventListener('DOMContentLoaded', async () => {
+            await loadDecisionsData();
+            updateStats();
+            renderCategoryFilters();
+        });
+
+        // Section navigation
+        function showSection(sectionId) {
+            // Hide all sections
+            document.querySelectorAll('.section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Remove active from all tabs
+            document.querySelectorAll('.nav-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Show selected section
+            document.getElementById(sectionId).classList.add('active');
+            
+            // Mark tab as active
+            event.target.classList.add('active');
+        }
+
+        // Load template
+        async function loadTemplate() {
+            const select = document.getElementById('templateSelect');
+            const textarea = document.getElementById('editorTextarea');
+            const alertDiv = document.getElementById('editorAlert');
+            
+            if (!select.value) {
+                textarea.value = '';
+                return;
+            }
+            
+            // Whitelist of allowed templates
+            const allowedTemplates = [
+                '1_Tensip_Zapti_CMK251.md',
+                '2_Basit_Yargilama_Karar_Sablonu_TCK86.md',
+                '3_HAGB_Karar_Sablonu.md',
+                '4_Mahkumiyet_Karar_Sablonu.md',
+                '5_Itiraz_Uzerine_Durusma_Acilmasi.md',
+                '6_Itiraz_Inceleme_Karar.md'
+            ];
+            
+            if (!allowedTemplates.includes(select.value)) {
+                showAlert('editorAlert', 'Geçersiz şablon seçimi!', 'error');
+                return;
+            }
+            
+            try {
+                const response = await fetch(select.value);
+                if (!response.ok) throw new Error('Şablon yüklenemedi');
+                
+                const text = await response.text();
+                textarea.value = text;
+                
+                showAlert('editorAlert', 'Şablon başarıyla yüklendi!', 'success');
+            } catch (error) {
+                showAlert('editorAlert', 'Şablon yüklenirken hata oluştu: ' + error.message, 'error');
+            }
+        }
+
+        // Download document
+        function downloadDocument() {
+            const select = document.getElementById('templateSelect');
+            const textarea = document.getElementById('editorTextarea');
+            
+            if (!select.value) {
+                showAlert('editorAlert', 'Lütfen önce bir şablon seçin!', 'error');
+                return;
+            }
+            
+            if (!textarea.value.trim()) {
+                showAlert('editorAlert', 'Metin alanı boş!', 'error');
+                return;
+            }
+            
+            const blob = new Blob([textarea.value], { type: 'text/markdown' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = select.value || 'karar.md';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            
+            showAlert('editorAlert', 'Dosya başarıyla indirildi!', 'success');
+        }
+
+        // Copy to clipboard
+        function copyToClipboard() {
+            const textarea = document.getElementById('editorTextarea');
+            
+            if (!textarea.value.trim()) {
+                showAlert('editorAlert', 'Kopyalanacak metin yok!', 'error');
+                return;
+            }
+            
+            // Use modern Clipboard API
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(textarea.value)
+                    .then(() => {
+                        showAlert('editorAlert', 'Metin panoya kopyalandı!', 'success');
+                    })
+                    .catch(() => {
+                        // Fallback to older method
+                        textarea.select();
+                        document.execCommand('copy');
+                        showAlert('editorAlert', 'Metin panoya kopyalandı!', 'success');
+                    });
+            } else {
+                // Fallback for older browsers
+                textarea.select();
+                document.execCommand('copy');
+                showAlert('editorAlert', 'Metin panoya kopyalandı!', 'success');
+            }
+        }
+
+        // Clear editor
+        function clearEditor() {
+            if (confirm('Editörü temizlemek istediğinizden emin misiniz?')) {
+                document.getElementById('templateSelect').value = '';
+                document.getElementById('editorTextarea').value = '';
+                showAlert('editorAlert', 'Editör temizlendi.', 'info');
+            }
+        }
+
+        // Load decisions data
+        async function loadDecisionsData() {
+            try {
+                const response = await fetch('yargitay_kararlari.json');
+                if (!response.ok) throw new Error('Kütüphane yüklenemedi');
+                
+                decisionsData = await response.json();
+            } catch (error) {
+                showAlert('searchAlert', 'Yargıtay kararları kütüphanesi yüklenirken hata oluştu: ' + error.message, 'error');
+            }
+        }
+
+        // Update statistics
+        function updateStats() {
+            if (!decisionsData) return;
+            
+            let totalDecisions = 0;
+            const categories = Object.keys(decisionsData.kategoriler);
+            
+            categories.forEach(cat => {
+                totalDecisions += decisionsData.kategoriler[cat].kararlar.length;
+            });
+            
+            document.getElementById('totalDecisions').textContent = totalDecisions;
+            document.getElementById('totalCategories').textContent = categories.length;
+        }
+
+        // Render category filters
+        function renderCategoryFilters() {
+            if (!decisionsData) return;
+            
+            const container = document.getElementById('categoryFilter');
+            container.innerHTML = '';
+            
+            // Add "All" button
+            const allBtn = document.createElement('button');
+            allBtn.className = 'category-btn active';
+            allBtn.textContent = 'Tümü';
+            allBtn.onclick = () => filterByCategory('all', allBtn);
+            container.appendChild(allBtn);
+            
+            // Add category buttons
+            Object.keys(decisionsData.kategoriler).forEach(catKey => {
+                const category = decisionsData.kategoriler[catKey];
+                const btn = document.createElement('button');
+                btn.className = 'category-btn';
+                btn.textContent = category.baslik;
+                btn.onclick = () => filterByCategory(catKey, btn);
+                container.appendChild(btn);
+            });
+        }
+
+        // Filter by category
+        function filterByCategory(category, buttonElement) {
+            currentCategory = category;
+            
+            // Update active button
+            document.querySelectorAll('.category-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            buttonElement.classList.add('active');
+            
+            // Display decisions
+            if (category === 'all') {
+                displayAllDecisions();
+            } else {
+                displayCategoryDecisions(category);
+            }
+            
+            // Clear search input
+            document.getElementById('searchInput').value = '';
+            hideAlert('searchAlert');
+        }
+
+        // Display all decisions
+        function displayAllDecisions() {
+            if (!decisionsData) return;
+            
+            const container = document.getElementById('decisionsContainer');
+            container.innerHTML = '';
+            
+            Object.keys(decisionsData.kategoriler).forEach(catKey => {
+                const category = decisionsData.kategoriler[catKey];
+                
+                const categoryTitle = document.createElement('h3');
+                categoryTitle.textContent = category.baslik;
+                categoryTitle.style.marginTop = '30px';
+                categoryTitle.style.color = 'var(--primary-color)';
+                container.appendChild(categoryTitle);
+                
+                category.kararlar.forEach(decision => {
+                    container.appendChild(createDecisionCard(decision));
+                });
+            });
+        }
+
+        // Display category decisions
+        function displayCategoryDecisions(categoryKey) {
+            if (!decisionsData) return;
+            
+            const category = decisionsData.kategoriler[categoryKey];
+            const container = document.getElementById('decisionsContainer');
+            container.innerHTML = '';
+            
+            const categoryTitle = document.createElement('h3');
+            categoryTitle.textContent = category.baslik;
+            categoryTitle.style.color = 'var(--primary-color)';
+            categoryTitle.style.marginBottom = '10px';
+            container.appendChild(categoryTitle);
+            
+            const categoryDesc = document.createElement('p');
+            categoryDesc.textContent = category.aciklama;
+            categoryDesc.style.color = '#7f8c8d';
+            categoryDesc.style.marginBottom = '20px';
+            container.appendChild(categoryDesc);
+            
+            category.kararlar.forEach(decision => {
+                container.appendChild(createDecisionCard(decision));
+            });
+        }
+
+        // Create decision card
+        function createDecisionCard(decision) {
+            const card = document.createElement('div');
+            card.className = 'decision-card';
+            
+            // Create elements safely
+            const header = document.createElement('div');
+            header.className = 'decision-header';
+            
+            const number = document.createElement('span');
+            number.className = 'decision-number';
+            number.textContent = decision.karar_no;
+            
+            const date = document.createElement('span');
+            date.className = 'decision-date';
+            date.textContent = `${decision.tarih} - ${decision.daire}`;
+            
+            header.appendChild(number);
+            header.appendChild(date);
+            
+            const title = document.createElement('div');
+            title.className = 'decision-title';
+            title.textContent = decision.konu;
+            
+            const summary = document.createElement('div');
+            summary.className = 'decision-summary';
+            summary.textContent = decision.ozet;
+            
+            const tags = document.createElement('div');
+            tags.className = 'decision-tags';
+            
+            // Add article tags
+            decision.ilgili_maddeler.forEach(m => {
+                const tag = document.createElement('span');
+                tag.className = 'tag article';
+                tag.textContent = m;
+                tags.appendChild(tag);
+            });
+            
+            // Add keyword tags (max 3)
+            decision.anahtar_kelimeler.slice(0, 3).forEach(k => {
+                const tag = document.createElement('span');
+                tag.className = 'tag';
+                tag.textContent = k;
+                tags.appendChild(tag);
+            });
+            
+            card.appendChild(header);
+            card.appendChild(title);
+            card.appendChild(summary);
+            card.appendChild(tags);
+            
+            return card;
+        }
+
+        // Search decisions
+        function searchDecisions() {
+            const searchTerm = document.getElementById('searchInput').value.trim().toLowerCase();
+            
+            if (!searchTerm) {
+                showAlert('searchAlert', 'Lütfen bir arama terimi girin!', 'error');
+                return;
+            }
+            
+            if (!decisionsData) {
+                showAlert('searchAlert', 'Kütüphane yüklenmedi!', 'error');
+                return;
+            }
+            
+            const results = [];
+            
+            Object.keys(decisionsData.kategoriler).forEach(catKey => {
+                const category = decisionsData.kategoriler[catKey];
+                
+                category.kararlar.forEach(decision => {
+                    // Search in multiple fields
+                    const searchableText = [
+                        decision.karar_no,
+                        decision.konu,
+                        decision.ozet,
+                        decision.daire,
+                        ...decision.anahtar_kelimeler,
+                        ...decision.ilgili_maddeler
+                    ].join(' ').toLowerCase();
+                    
+                    if (searchableText.includes(searchTerm)) {
+                        results.push(decision);
+                    }
+                });
+            });
+            
+            displaySearchResults(results, searchTerm);
+        }
+
+        // Handle search keypress
+        function handleSearchKeypress(event) {
+            if (event.key === 'Enter') {
+                searchDecisions();
+            }
+        }
+
+        // Display search results
+        function displaySearchResults(results, searchTerm) {
+            const container = document.getElementById('decisionsContainer');
+            container.innerHTML = '';
+            
+            // Escape HTML to prevent XSS
+            const escapeHtml = (text) => {
+                const div = document.createElement('div');
+                div.textContent = text;
+                return div.innerHTML;
+            };
+            
+            const escapedSearchTerm = escapeHtml(searchTerm);
+            
+            if (results.length === 0) {
+                showAlert('searchAlert', 
+                    `"${escapedSearchTerm}" için sonuç bulunamadı. Farklı anahtar kelimeler deneyin veya kategori filtresini kullanın.`, 
+                    'error');
+                
+                const noResults = document.createElement('div');
+                noResults.style.textAlign = 'center';
+                noResults.style.padding = '40px';
+                noResults.style.color = '#7f8c8d';
+                
+                const heading = document.createElement('h3');
+                heading.textContent = '🔍 Sonuç Bulunamadı';
+                
+                const para = document.createElement('p');
+                para.textContent = 'Arama önerileriniz:';
+                
+                const list = document.createElement('ul');
+                list.style.listStyle = 'none';
+                list.style.padding = '0';
+                
+                const suggestions = [
+                    '• Farklı anahtar kelimeler deneyin',
+                    '• Madde numarası ile arama yapın (örn: CMK 251)',
+                    '• Kategori filtrelerini kullanın'
+                ];
+                
+                suggestions.forEach(text => {
+                    const li = document.createElement('li');
+                    li.textContent = text;
+                    list.appendChild(li);
+                });
+                
+                noResults.appendChild(heading);
+                noResults.appendChild(para);
+                noResults.appendChild(list);
+                container.appendChild(noResults);
+                return;
+            }
+            
+            showAlert('searchAlert', 
+                `"${escapedSearchTerm}" için ${results.length} sonuç bulundu.`, 
+                'success');
+            
+            const resultsTitle = document.createElement('h3');
+            resultsTitle.textContent = `Arama Sonuçları: "${searchTerm}" (${results.length} sonuç)`;
+            resultsTitle.style.color = 'var(--primary-color)';
+            resultsTitle.style.marginBottom = '20px';
+            container.appendChild(resultsTitle);
+            
+            results.forEach(decision => {
+                container.appendChild(createDecisionCard(decision));
+            });
+        }
+
+        // Show alert
+        function showAlert(elementId, message, type) {
+            const alertDiv = document.getElementById(elementId);
+            alertDiv.className = `alert alert-${type} show`;
+            
+            const icon = type === 'success' ? '✅' : type === 'error' ? '❌' : 'ℹ️';
+            const strong = document.createElement('strong');
+            strong.textContent = icon;
+            
+            alertDiv.innerHTML = '';
+            alertDiv.appendChild(strong);
+            alertDiv.appendChild(document.createTextNode(' ' + message));
+            
+            // Auto hide after 5 seconds
+            setTimeout(() => {
+                hideAlert(elementId);
+            }, 5000);
+        }
+
+        // Hide alert
+        function hideAlert(elementId) {
+            const alertDiv = document.getElementById(elementId);
+            alertDiv.classList.remove('show');
+        }
+    </script>
+</body>
+</html>
