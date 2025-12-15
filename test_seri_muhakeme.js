@@ -231,11 +231,13 @@ test('Sonuç alanı dolu ve anlamlı', () => {
     });
 });
 
-test('Karar tarihleri makul aralıkta (2019-2024)', () => {
+test('Karar tarihleri makul aralıkta', () => {
+    const currentYear = new Date().getFullYear();
+    const minYear = 2019; // Seri muhakeme usulü 7188 sayılı kanunla 2019'da yürürlüğe girdi
     decisionData.decisions.forEach(decision => {
         const year = new Date(decision.date).getFullYear();
-        assert(year >= 2019 && year <= 2024, 
-            `${decision.decision_number} için tarih makul aralıkta değil: ${year}`);
+        assert(year >= minYear && year <= currentYear + 1, 
+            `${decision.decision_number} için tarih makul aralıkta değil: ${year} (beklenen: ${minYear}-${currentYear + 1})`);
     });
 });
 
