@@ -10,6 +10,28 @@ Basit yargılama usulü, **alt sınırı 2 yıl veya daha az hapis cezası** ön
 
 ## 📚 İçindekiler
 
+### 🆕 Talepname Usulleri Kontrol Mekanizması
+**Dosyalar:**
+- `talepname_kontrol.js` - Validasyon ve kontrol modülü
+- `talepname_form.html` - Web tabanlı interaktif form arayüzü
+- `test_talepname_kontrol.js` - Otomatik test suite (Node.js)
+
+**Özellikler:**
+- Talepnamelerin (iddianame) yasal gerekliliklerini otomatik kontrol eder
+- 8 zorunlu bölüm için kapsamlı validasyon
+- Kullanıcı dostu form arayüzü ile kolay veri girişi
+- Gerçek zamanlı ilerleme takibi ve tamamlanma oranı
+- Akıllı uyarı sistemi (tutukluluk, TCK maddesi, müdafii kontrolü vb.)
+- HTML ve konsol formatında detaylı raporlama
+- JSON formatında veri kaydetme ve yükleme
+
+**Kullanım:**
+1. `talepname_form.html` dosyasını bir tarayıcıda açın
+2. Zorunlu alanları doldurun ve kontrolü başlatın
+3. Testleri çalıştırmak için: `node test_talepname_kontrol.js`
+
+---
+
 ### 🆕 Suç Türleri Kütüphanesi
 **Dosyalar:** 
 - `suc_turleri_kutuphanesi.json` - Kapsamlı suç türleri veritabanı
@@ -322,11 +344,16 @@ Basit-Yargılama-Editör/
 │   ├── HIZLI_BASVURU.md
 │   └── IS_AKIS_SEMASI.md
 │
-└── 🗂️ Suç Türleri Kütüphanesi (YENİ)
-    ├── suc_turleri_kutuphanesi.json - Veri tabanı
-    ├── suc_kutuphanesi_editor.html - Görselleştirme arayüzü
-    ├── test_suc_kutuphanesi.js - Node.js test suite
-    └── test_suc_kutuphanesi.html - Tarayıcı test suite
+├── 🗂️ Suç Türleri Kütüphanesi
+│   ├── suc_turleri_kutuphanesi.json - Veri tabanı
+│   ├── suc_kutuphanesi_editor.html - Görselleştirme arayüzü
+│   ├── test_suc_kutuphanesi.js - Node.js test suite
+│   └── test_suc_kutuphanesi.html - Tarayıcı test suite
+│
+└── ⚖️ Talepname Usulleri Kontrol Mekanizması (YENİ)
+    ├── talepname_kontrol.js - Kontrol modülü
+    ├── talepname_form.html - Web tabanlı form arayüzü
+    └── test_talepname_kontrol.js - Node.js test suite
 ```
 
 ---
@@ -471,6 +498,266 @@ console.log(offense.name); // "Tehdit suçu..."
 - [ ] Ceza hesaplaması doğru mu?
 - [ ] İtiraz hakkı bilgisi var mı?
 - [ ] Tarih ve imza alanları dolduruldu mu?
+
+---
+
+## ⚖️ Talepname Usulleri Kontrol Mekanizması - Detaylı Kullanım
+
+### Genel Bakış
+
+Talepname Usulleri Kontrol Mekanizması, talepnamelerin (iddianame) yasal gereklilikleri karşılayıp karşılamadığını kontrol eden kapsamlı bir sistemdir. Bu mekanizma:
+
+- **Otomatik Validasyon** ile talepnamelerdeki eksik bilgileri tespit eder
+- **Kullanıcı Dostu Form** ile veri girişini kolaylaştırır
+- **Gerçek Zamanlı Geri Bildirim** ile eksik alanlar hakkında anlık bilgi verir
+- **Kapsamlı Raporlama** ile detaylı validasyon sonuçları sunar
+
+### Kontrol Edilen Zorunlu Bölümler
+
+1. **Şüphelinin Kimliği ve Müdafii**
+   - Adı Soyadı
+   - T.C. Kimlik No
+   - Baba Adı ve Ana Adı
+   - Doğum Tarihi/Yeri
+   - Nüfusa Kayıtlı Olduğu Yer
+   - Müdafii Bilgileri
+
+2. **Mağdur veya Suçtan Zarar Görenlerin Kimlik Bilgileri**
+   - Adı Soyadı
+   - T.C. Kimlik No (varsa)
+   - İletişim Bilgileri
+
+3. **İsnat Olunan Suç ve İlgili Kanun Maddeleri**
+   - Suç Tanımı
+   - İlgili TCK Maddesi
+   - Diğer İlgili Mevzuat
+
+4. **İsnat Edilen Suçun İşlendiği Yer, Tarih ve Zaman Dilimi**
+   - Suçun İşlendiği Yer
+   - Suçun İşlendiği Tarih
+   - Zaman Dilimi (saat bilgisi)
+
+5. **Şüphelinin Tutuklu Olup Olmadığı**
+   - Tutuklu mu? (Evet/Hayır)
+   - Gözaltı Tarihi ve Süresi
+   - Tutuklama Tarihi ve Süresi
+
+6. **Olayların Özeti**
+   - Olayın detaylı açıklaması
+
+7. **Şüpheliye Teklif Edilen Usul ve Kabul Bilgileri**
+   - Teklif Edilen Usul
+   - Müdafii Huzurunda Teklif Edildi mi?
+   - Teklif Kabul Edildi mi?
+   - Teklif Tarihi
+   - Şüphelinin Beyanı
+
+8. **Belirlenen Ceza ve/veya Güvenlik Tedbirleri**
+   - Temel Ceza
+   - Ceza Alt ve Üst Sınırları
+   - Güvenlik Tedbirleri
+   - İlgili Açıklamalar
+
+### Web Arayüzü Kullanımı
+
+**Başlatma:**
+```bash
+# Tarayıcınızda açın:
+talepname_form.html
+```
+
+**Özellikler:**
+- 📝 **İnteraktif Form:** Tüm zorunlu alanlar için girdi alanları
+- 📊 **İlerleme Çubuğu:** Formun tamamlanma oranını gösterir
+- ✅ **Anlık Validasyon:** Her bölümün durumunu görsel olarak gösterir
+- ⚠️ **Akıllı Uyarılar:** Eksik veya hatalı bilgiler için otomatik uyarılar
+- 💾 **Form Kaydetme:** Girilen verileri JSON formatında kaydeder
+- 🔄 **Form Sıfırlama:** Tüm verileri temizler
+
+### Kontrol Modülü Kullanımı
+
+**JavaScript ile kullanım:**
+```javascript
+// Kontrol modülünü yükle
+const kontrol = new TalepnameKontrol();
+
+// Talepname verilerini hazırla
+const talepnameVerisi = {
+    supheliKimlik: {
+        adiSoyadi: 'Ahmet Yılmaz',
+        tcKimlikNo: '12345678901',
+        // ... diğer alanlar
+    },
+    magdurKimlik: {
+        adiSoyadi: 'Ayşe Kaya',
+        // ... diğer alanlar
+    },
+    // ... diğer bölümler
+};
+
+// Validasyon yap
+const sonuc = kontrol.kontrolEt(talepnameVerisi);
+
+// Sonuçları kontrol et
+if (sonuc.basarili) {
+    console.log('✅ Talepname eksiksiz!');
+} else {
+    console.log('❌ Eksikler var:', sonuc.eksikAlanlar);
+}
+
+// HTML raporu oluştur
+const htmlRapor = kontrol.raporOlustur(sonuc);
+
+// Konsol raporu göster
+kontrol.konsolRaporuOlustur(sonuc);
+```
+
+**Node.js ile kullanım:**
+```javascript
+const TalepnameKontrol = require('./talepname_kontrol.js');
+const kontrol = new TalepnameKontrol();
+
+const sonuc = kontrol.kontrolEt(veriler);
+console.log('Tamamlanma Oranı:', sonuc.tamamlanmaOrani + '%');
+```
+
+### Akıllı Uyarı Sistemi
+
+Kontrol mekanizması aşağıdaki durumlarda otomatik uyarılar verir:
+
+1. **Tutukluluk Kontrolü**
+   - Şüpheli tutuklu olarak işaretlenmişse ancak tutuklama tarihi girilmemişse uyarır
+
+2. **TCK Maddesi Format Kontrolü**
+   - TCK maddesi standart formatta değilse (örn: "TCK m.106/1") uyarır
+
+3. **Olay Özeti Kalite Kontrolü**
+   - Olay özeti çok kısa ise (50 karakterden az) uyarır
+
+4. **Hukuki Gereklilik Kontrolü**
+   - Usul teklifi müdafii huzurunda yapılmamışsa uyarır
+
+### Test Suite Kullanımı
+
+**Testleri Çalıştırma:**
+```bash
+node test_talepname_kontrol.js
+```
+
+**Test Kategorileri:**
+- ✅ Temel yapı testleri
+- ✅ Validasyon testleri
+- ✅ Özel kontrol testleri
+- ✅ Tamamlanma oranı testleri
+- ✅ Rapor oluşturma testleri
+- ✅ Alan kontrolü testleri
+- ✅ Detaylı sonuç testleri
+
+**Test İstatistikleri:**
+- 23 kapsamlı test
+- %100 kod kapsama hedefi
+- Otomatik regresyon testi
+
+### Validasyon Sonuç Yapısı
+
+```javascript
+{
+    basarili: true/false,           // Tüm alanlar tamamlandı mı?
+    tamamlanmaOrani: 85.5,          // Yüzde cinsinden tamamlanma
+    eksikAlanlar: [                 // Eksik alanların listesi
+        {
+            grup: 'Şüphelinin Kimliği',
+            alan: 'Müdafii Bilgileri',
+            alanKodu: 'supheliKimlik',
+            fieldKey: 'mudafii'
+        }
+    ],
+    uyarilar: [                     // Uyarı mesajları
+        {
+            tip: 'hukuki',
+            mesaj: 'Usul teklifi müdafii huzurunda yapılmamış...'
+        }
+    ],
+    detaylar: [                     // Her bölümün detaylı durumu
+        {
+            alan: 'Şüphelinin Kimliği ve Müdafii',
+            alanKodu: 'supheliKimlik',
+            tamamlandiMi: false,
+            eksikAlanlar: ['Müdafii Bilgileri']
+        }
+    ],
+    mesaj: 'Talepnamede 1 eksik alan bulunmaktadır.'
+}
+```
+
+### Entegrasyon Örnekleri
+
+**React ile Kullanım:**
+```javascript
+import TalepnameKontrol from './talepname_kontrol.js';
+
+function TalepnameForm() {
+    const [sonuc, setSonuc] = useState(null);
+    const kontrol = new TalepnameKontrol();
+    
+    const handleValidate = (formData) => {
+        const validasyonSonucu = kontrol.kontrolEt(formData);
+        setSonuc(validasyonSonucu);
+    };
+    
+    // ... form render
+}
+```
+
+**Vue.js ile Kullanım:**
+```javascript
+import TalepnameKontrol from './talepname_kontrol.js';
+
+export default {
+    data() {
+        return {
+            kontrol: new TalepnameKontrol(),
+            sonuc: null
+        }
+    },
+    methods: {
+        validate() {
+            this.sonuc = this.kontrol.kontrolEt(this.formData);
+        }
+    }
+}
+```
+
+### En İyi Pratikler
+
+1. **Veri Girişi Sırasında:**
+   - Her bölümü doldurduktan sonra validasyon yapın
+   - İlerleme çubuğunu takip edin
+   - Uyarıları dikkate alın
+
+2. **Kalite Kontrol:**
+   - Tamamlanma oranının %100 olduğundan emin olun
+   - Tüm uyarıları gözden geçirin
+   - Özel kontrolleri dikkate alın
+
+3. **Veri Saklama:**
+   - Formu düzenli olarak kaydedin
+   - JSON formatındaki verileri yedekleyin
+   - Versiyon kontrolü kullanın
+
+4. **Hata Ayıklama:**
+   - Konsol raporlarını inceleyin
+   - Eksik alanları tek tek kontrol edin
+   - Test modülünü kullanarak doğrulayın
+
+### Yasal Uyumluluk
+
+Bu kontrol mekanizması aşağıdaki yasal düzenlemelere uygun olarak tasarlanmıştır:
+
+- **5271 sayılı CMK** - Ceza Muhakemesi Kanunu
+- **5237 sayılı TCK** - Türk Ceza Kanunu
+- **CMK Madde 170** - İddianamenin (Talepnamenin) şekli ve içeriği
+- **Yargıtay İçtihatları** - Talepname şekil ve içerik gereklilikleri
 
 ---
 

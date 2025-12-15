@@ -1,0 +1,56 @@
+{
+  "metadata": {
+    "version": "1.0",
+    "created_date": "2024-12-15",
+    "description": "Talepname Kontrol Mekanizması için örnek veri dosyası",
+    "case_type": "Basit Yargılama - Tehdit Suçu"
+  },
+  "supheliKimlik": {
+    "adiSoyadi": "Ahmet Yılmaz",
+    "tcKimlikNo": "12345678901",
+    "babaAdi": "Mehmet Yılmaz",
+    "anaAdi": "Fatma Yılmaz",
+    "dogumTarihiYeri": "15/05/1985 - İstanbul",
+    "nufusaKayitliYer": "İstanbul/Kadıköy/Moda Mahallesi",
+    "mudafii": "Av. Ali Demir - İstanbul Barosu Kaydı: 12345"
+  },
+  "magdurKimlik": {
+    "adiSoyadi": "Ayşe Kaya",
+    "tcKimlikNo": "98765432109",
+    "iletisimBilgileri": "İstanbul, Şişli, Cumhuriyet Caddesi No: 123, Tel: 0555 111 2233, E-posta: ayse.kaya@example.com"
+  },
+  "isnatOlunanSuc": {
+    "sucTanimi": "Tehdit suçu - hayat, vücut, cinsel dokunulmazlık",
+    "tckMaddesi": "TCK m.106/1",
+    "digeMevzuat": "5271 sayılı CMK - Basit Yargılama Usulü (m.251)"
+  },
+  "sucunIslendigiYerZaman": {
+    "yer": "İstanbul, Kadıköy, Moda Caddesi No: 45/7, Kafe İçi",
+    "tarih": "10.12.2024",
+    "zamanDilimi": "14:30 - 15:00 arası (öğleden sonra)"
+  },
+  "tutuklulukDurumu": {
+    "tutuklumu": "Hayır",
+    "gozaltiTarihi": "-",
+    "tutuklamaTarihi": "-",
+    "gozaltiSuresi": "-",
+    "tutuklamaSuresi": "-"
+  },
+  "olayinOzeti": {
+    "ozetMetin": "Şüpheli Ahmet Yılmaz, 10.12.2024 tarihinde saat 14:30 sıralarında İstanbul Kadıköy'de bulunan Moda Caddesi No: 45/7 adresindeki bir kafede, mağdur Ayşe Kaya ile karşılaştığında, aralarında geçen tartışma sırasında mağdura yönelik tehdit içerikli sözler sarf etmiştir. Tanıklar Mehmet Öz ve Zeynep Çelik'in beyanlarına göre, şüpheli mağdura 'Seni öldürürüm, canına okur, ailenin başına iş açarım' şeklinde tehdit içerikli ve hayatına yönelik saldırı gerçekleştireceğinden bahisle tehdit etmiştir. Olay yeri inceleme raporunda, olayın kamuya açık bir yerde gerçekleştiği, çevrede bulunan diğer müşterilerin de olayı duyduğu tespit edilmiştir. Mağdur olay sonrası psikolojik olarak etkilenmiş ve güvenlik endişesi yaşamaya başlamıştır."
+  },
+  "teklifEdilenUsul": {
+    "teklifEdilenUsul": "Basit Yargılama Usulü (CMK m.251)",
+    "mudafiiHuzurundamiTeklif": "Evet",
+    "teklifKabulEdildiMi": "Evet",
+    "teklifTarihi": "12.12.2024",
+    "beyanMetni": "Müdafiim Av. Ali Demir huzurunda yapılan basit yargılama usulü teklifini kabul ediyorum. Haklarım tarafıma anlatıldı, anladım. İmzam."
+  },
+  "cezaVeTedbirler": {
+    "temelCeza": "Hapis cezası",
+    "cezaAltSinir": "6 ay",
+    "cezaUstSinir": "2 yıl",
+    "guvenlikTedbirleri": "Yaklaşma yasağı talebi değerlendirilecektir",
+    "aciklama": "TCK 106/1 uyarınca tehdit suçu için öngörülen ceza 6 ay ila 2 yıl arasında hapis cezasıdır. Suçun niteliği, işleniş şekli ve sonuçları dikkate alınarak, TCK 50 ve 51 hükümleri çerçevesinde ceza bireyselleştirilecek ve erteleme koşulları değerlendirilecektir. Basit yargılama usulü koşulları sağlandığından CMK 251 uygulanacaktır."
+  }
+}

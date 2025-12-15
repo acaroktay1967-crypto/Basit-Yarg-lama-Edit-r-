@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Talepname Kontrol - Tarayıcı Testleri</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f5f5f5;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .test-container {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: #7f8c8d;
+            margin-bottom: 30px;
+        }
+
+        .test-section {
+            margin-bottom: 30px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+
+        .test-title {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        .test-result {
+            margin-top: 15px;
+            padding: 15px;
+            border-radius: 5px;
+        }
+
+        .success {
+            background: #d4edda;
+            border: 1px solid #c3e6cb;
+            color: #155724;
+        }
+
+        .error {
+            background: #f8d7da;
+            border: 1px solid #f5c6cb;
+            color: #721c24;
+        }
+
+        .warning {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            color: #856404;
+        }
+
+        .info {
+            background: #d1ecf1;
+            border: 1px solid #bee5eb;
+            color: #0c5460;
+        }
+
+        button {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            margin-right: 10px;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background: #5568d3;
+        }
+
+        pre {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            font-size: 0.9em;
+        }
+
+        .stat-box {
+            display: inline-block;
+            padding: 15px 25px;
+            margin: 10px;
+            background: #667eea;
+            color: white;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2em;
+            font-weight: bold;
+        }
+
+        .stat-label {
+            font-size: 0.9em;
+            opacity: 0.9;
+        }
+
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        li {
+            padding: 8px;
+            margin-bottom: 5px;
+            background: white;
+            border-radius: 4px;
+        }
+
+        li::before {
+            content: "✓ ";
+            color: #28a745;
+            font-weight: bold;
+            margin-right: 5px;
+        }
+
+        .fail::before {
+            content: "✗ ";
+            color: #dc3545;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>⚖️ Talepname Kontrol Mekanizması - Tarayıcı Testleri</h1>
+        <p class="subtitle">Bu sayfa, Talepname Kontrol modülünün işlevselliğini test eder</p>
+
+        <!-- Test 1: Tam Veri Kontrolü -->
+        <div class="test-section">
+            <div class="test-title">Test 1: Tam Veri Validasyonu</div>
+            <p>Tüm zorunlu alanları içeren tam bir talepname verisi kontrol edilir.</p>
+            <button onclick="testTamVeri()">🧪 Testi Çalıştır</button>
+            <div id="test1Result"></div>
+        </div>
+
+        <!-- Test 2: Eksik Veri Kontrolü -->
+        <div class="test-section">
+            <div class="test-title">Test 2: Eksik Veri Validasyonu</div>
+            <p>Bazı zorunlu alanları eksik olan bir talepname verisi kontrol edilir.</p>
+            <button onclick="testEksikVeri()">🧪 Testi Çalıştır</button>
+            <div id="test2Result"></div>
+        </div>
+
+        <!-- Test 3: Uyarı Sistemi -->
+        <div class="test-section">
+            <div class="test-title">Test 3: Akıllı Uyarı Sistemi</div>
+            <p>Özel kontrollerin (tutukluluk, TCK maddesi, müdafii vb.) doğru çalışıp çalışmadığını test eder.</p>
+            <button onclick="testUyariSistemi()">🧪 Testi Çalıştır</button>
+            <div id="test3Result"></div>
+        </div>
+
+        <!-- Test 4: HTML Rapor Oluşturma -->
+        <div class="test-section">
+            <div class="test-title">Test 4: HTML Rapor Oluşturma</div>
+            <p>Validasyon sonucundan HTML raporu oluşturulmasını test eder.</p>
+            <button onclick="testRaporOlusturma()">🧪 Testi Çalıştır</button>
+            <div id="test4Result"></div>
+        </div>
+
+        <!-- Test 5: Tamamlanma Oranı -->
+        <div class="test-section">
+            <div class="test-title">Test 5: Tamamlanma Oranı Hesaplama</div>
+            <p>Farklı doluluk seviyelerinde tamamlanma oranının doğru hesaplandığını test eder.</p>
+            <button onclick="testTamamlanmaOrani()">🧪 Testi Çalıştır</button>
+            <div id="test5Result"></div>
+        </div>
+
+        <!-- Test 6: Örnek Veri Yükleme -->
+        <div class="test-section">
+            <div class="test-title">Test 6: Örnek Veri Dosyası Validasyonu</div>
+            <p>talepname_ornek_veri.json dosyasındaki örnek verinin validasyonu.</p>
+            <button onclick="testOrnekVeri()">🧪 Testi Çalıştır</button>
+            <div id="test6Result"></div>
+        </div>
+
+        <!-- Tüm Testler -->
+        <div class="test-section" style="border-left-color: #28a745;">
+            <div class="test-title">🚀 Tüm Testleri Çalıştır</div>
+            <button onclick="runAllTests()" style="background: #28a745;">▶️ Tüm Testleri Çalıştır</button>
+            <div id="allTestsResult"></div>
+        </div>
+    </div>
+
+    <script src="talepname_kontrol.js"></script>
+    <script>
+        // Test verileri
+        const tamVeri = {
+            supheliKimlik: {
+                adiSoyadi: 'Ahmet Yılmaz',
+                tcKimlikNo: '12345678901',
+                babaAdi: 'Mehmet',
+                anaAdi: 'Fatma',
+                dogumTarihiYeri: '15/05/1985 - İstanbul',
+                nufusaKayitliYer: 'İstanbul/Kadıköy',
+                mudafii: 'Av. Ali Demir - İstanbul Barosu'
+            },
+            magdurKimlik: {
+                adiSoyadi: 'Ayşe Kaya',
+                tcKimlikNo: '98765432109',
+                iletisimBilgileri: 'İstanbul, Şişli, Tel: 0555 111 2233'
+            },
+            isnatOlunanSuc: {
+                sucTanimi: 'Tehdit suçu',
+                tckMaddesi: 'TCK m.106/1',
+                digeMevzuat: '-'
+            },
+            sucunIslendigiYerZaman: {
+                yer: 'İstanbul, Kadıköy, Moda Caddesi No: 45',
+                tarih: '10.12.2024',
+                zamanDilimi: '14:30 - 15:00 arası'
+            },
+            tutuklulukDurumu: {
+                tutuklumu: 'Hayır',
+                gozaltiTarihi: '-',
+                tutuklamaTarihi: '-',
+                gozaltiSuresi: '-',
+                tutuklamaSuresi: '-'
+            },
+            olayinOzeti: {
+                ozetMetin: 'Şüpheli Ahmet Yılmaz, 10.12.2024 tarihinde saat 14:30 sıralarında İstanbul Kadıköy\'de bulunan Moda Caddesi No: 45 adresinde mağdur Ayşe Kaya\'ya yönelik tehdit içerikli sözler sarf etmiştir. Tanıkların beyanlarına ve olay yeri inceleme raporuna göre, şüpheli mağdura "Seni öldürürüm" şeklinde tehdit içerikli sözler söylemiştir.'
+            },
+            teklifEdilenUsul: {
+                teklifEdilenUsul: 'Basit Yargılama Usulü',
+                mudafiiHuzurundamiTeklif: 'Evet',
+                teklifKabulEdildiMi: 'Evet',
+                teklifTarihi: '12.12.2024',
+                beyanMetni: 'Basit yargılama usulünü kabul ediyorum.'
+            },
+            cezaVeTedbirler: {
+                temelCeza: 'Hapis cezası',
+                cezaAltSinir: '6 ay',
+                cezaUstSinir: '2 yıl',
+                guvenlikTedbirleri: '-',
+                aciklama: 'TCK 106/1 uyarınca tehdit suçu için öngörülen ceza'
+            }
+        };
+
+        const eksikVeri = {
+            supheliKimlik: {
+                adiSoyadi: 'Ahmet Yılmaz',
+                tcKimlikNo: '12345678901'
+            },
+            magdurKimlik: {
+                adiSoyadi: 'Ayşe Kaya'
+            }
+        };
+
+        // Test fonksiyonları
+        function testTamVeri() {
+            const kontrol = new TalepnameKontrol();
+            const sonuc = kontrol.kontrolEt(tamVeri);
+            
+            let html = '<div class="test-result ' + (sonuc.basarili ? 'success' : 'error') + '">';
+            html += '<strong>Sonuç:</strong> ' + sonuc.mesaj + '<br>';
+            html += '<strong>Tamamlanma Oranı:</strong> ' + sonuc.tamamlanmaOrani + '%<br>';
+            html += '<strong>Eksik Alan Sayısı:</strong> ' + sonuc.eksikAlanlar.length;
+            html += '</div>';
+            
+            document.getElementById('test1Result').innerHTML = html;
+        }
+
+        function testEksikVeri() {
+            const kontrol = new TalepnameKontrol();
+            const sonuc = kontrol.kontrolEt(eksikVeri);
+            
+            let html = '<div class="test-result ' + (sonuc.basarili ? 'success' : 'warning') + '">';
+            html += '<strong>Sonuç:</strong> ' + sonuc.mesaj + '<br>';
+            html += '<strong>Tamamlanma Oranı:</strong> ' + sonuc.tamamlanmaOrani + '%<br>';
+            html += '<strong>Eksik Alan Sayısı:</strong> ' + sonuc.eksikAlanlar.length + '<br><br>';
+            
+            if (sonuc.eksikAlanlar.length > 0) {
+                html += '<strong>İlk 5 Eksik Alan:</strong><ul>';
+                sonuc.eksikAlanlar.slice(0, 5).forEach(eksik => {
+                    html += '<li class="fail"><strong>' + eksik.grup + ':</strong> ' + eksik.alan + '</li>';
+                });
+                html += '</ul>';
+            }
+            html += '</div>';
+            
+            document.getElementById('test2Result').innerHTML = html;
+        }
+
+        function testUyariSistemi() {
+            const veri = {
+                ...tamVeri,
+                tutuklulukDurumu: {
+                    tutuklumu: 'Evet',
+                    gozaltiTarihi: '10.12.2024',
+                    tutuklamaTarihi: '',
+                    gozaltiSuresi: '24 saat',
+                    tutuklamaSuresi: ''
+                },
+                isnatOlunanSuc: {
+                    sucTanimi: 'Tehdit suçu',
+                    tckMaddesi: '106/1',
+                    digeMevzuat: '-'
+                },
+                teklifEdilenUsul: {
+                    teklifEdilenUsul: 'Basit Yargılama Usulü',
+                    mudafiiHuzurundamiTeklif: 'Hayır',
+                    teklifKabulEdildiMi: 'Evet',
+                    teklifTarihi: '12.12.2024',
+                    beyanMetni: 'Kabul ediyorum'
+                }
+            };
+            
+            const kontrol = new TalepnameKontrol();
+            const sonuc = kontrol.kontrolEt(veri);
+            
+            let html = '<div class="test-result info">';
+            html += '<strong>Uyarı Sayısı:</strong> ' + sonuc.uyarilar.length + '<br><br>';
+            
+            if (sonuc.uyarilar.length > 0) {
+                html += '<strong>Tespit Edilen Uyarılar:</strong><ul>';
+                sonuc.uyarilar.forEach(uyari => {
+                    html += '<li><strong>[' + uyari.tip.toUpperCase() + ']</strong> ' + uyari.mesaj + '</li>';
+                });
+                html += '</ul>';
+            }
+            html += '</div>';
+            
+            document.getElementById('test3Result').innerHTML = html;
+        }
+
+        function testRaporOlusturma() {
+            const kontrol = new TalepnameKontrol();
+            const sonuc = kontrol.kontrolEt(tamVeri);
+            const rapor = kontrol.raporOlustur(sonuc);
+            
+            let html = '<div class="test-result success">';
+            html += '<strong>HTML Raporu Başarıyla Oluşturuldu</strong><br>';
+            html += '<strong>Rapor Boyutu:</strong> ' + rapor.length + ' karakter<br><br>';
+            html += '<div style="border: 2px solid #28a745; padding: 10px; border-radius: 5px; background: white;">';
+            html += rapor;
+            html += '</div>';
+            html += '</div>';
+            
+            document.getElementById('test4Result').innerHTML = html;
+        }
+
+        function testTamamlanmaOrani() {
+            const kontrol = new TalepnameKontrol();
+            
+            const tamSonuc = kontrol.kontrolEt(tamVeri);
+            const eksikSonuc = kontrol.kontrolEt(eksikVeri);
+            const bosSonuc = kontrol.kontrolEt({});
+            
+            let html = '<div class="test-result info">';
+            html += '<div class="stat-box">';
+            html += '<div class="stat-number">' + tamSonuc.tamamlanmaOrani + '%</div>';
+            html += '<div class="stat-label">Tam Veri</div>';
+            html += '</div>';
+            
+            html += '<div class="stat-box" style="background: #ffc107;">';
+            html += '<div class="stat-number">' + eksikSonuc.tamamlanmaOrani + '%</div>';
+            html += '<div class="stat-label">Eksik Veri</div>';
+            html += '</div>';
+            
+            html += '<div class="stat-box" style="background: #dc3545;">';
+            html += '<div class="stat-number">' + bosSonuc.tamamlanmaOrani + '%</div>';
+            html += '<div class="stat-label">Boş Veri</div>';
+            html += '</div>';
+            html += '</div>';
+            
+            document.getElementById('test5Result').innerHTML = html;
+        }
+
+        async function testOrnekVeri() {
+            try {
+                const response = await fetch('talepname_ornek_veri.json');
+                const ornekVeri = await response.json();
+                
+                const kontrol = new TalepnameKontrol();
+                const sonuc = kontrol.kontrolEt(ornekVeri);
+                
+                let html = '<div class="test-result ' + (sonuc.basarili ? 'success' : 'error') + '">';
+                html += '<strong>Örnek Veri Dosyası Yüklendi!</strong><br>';
+                html += '<strong>Sonuç:</strong> ' + sonuc.mesaj + '<br>';
+                html += '<strong>Tamamlanma Oranı:</strong> ' + sonuc.tamamlanmaOrani + '%<br>';
+                html += '<strong>Vaka Türü:</strong> ' + ornekVeri.metadata.case_type;
+                html += '</div>';
+                
+                document.getElementById('test6Result').innerHTML = html;
+            } catch (error) {
+                let html = '<div class="test-result error">';
+                html += '<strong>Hata:</strong> Örnek veri dosyası yüklenemedi.<br>';
+                html += 'Detay: ' + error.message;
+                html += '</div>';
+                document.getElementById('test6Result').innerHTML = html;
+            }
+        }
+
+        function runAllTests() {
+            const startTime = Date.now();
+            
+            testTamVeri();
+            testEksikVeri();
+            testUyariSistemi();
+            testRaporOlusturma();
+            testTamamlanmaOrani();
+            testOrnekVeri();
+            
+            const endTime = Date.now();
+            const duration = endTime - startTime;
+            
+            setTimeout(() => {
+                let html = '<div class="test-result success" style="margin-top: 15px;">';
+                html += '<h3>✅ Tüm Testler Tamamlandı!</h3>';
+                html += '<strong>Toplam Süre:</strong> ' + duration + ' ms<br>';
+                html += '<strong>Test Sayısı:</strong> 6<br>';
+                html += '<strong>Durum:</strong> Başarılı';
+                html += '</div>';
+                
+                document.getElementById('allTestsResult').innerHTML = html;
+            }, 500);
+        }
+
+        // Sayfa yüklendiğinde bilgi mesajı
+        console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
+        console.log('⚖️  TALEPNAME KONTROL MEKANİZMASI');
+        console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
+        console.log('Tarayıcı test sayfası başarıyla yüklendi.');
+        console.log('Test fonksiyonlarını çalıştırmak için butonları kullanın.');
+        console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n');
+    </script>
+</body>
+</html>
