@@ -16,7 +16,9 @@
       "penalty_max": "1 yıl",
       "penalty_type": "Hapis",
       "eligible_for_simple_trial": true,
-      "notes": "Alt sınır 2 yılın altında olduğundan basit yargılama kapsamındadır"
+      "notes": "Alt sınır 2 yılın altında olduğundan basit yargılama kapsamındadır",
+      "seri_muhakeme_uygun": true,
+      "seri_muhakeme_notes": "Şüphelinin kabulü halinde ceza yarısı oranında indirilir"
     },
     {
       "id": 2,
@@ -28,7 +30,8 @@
       "penalty_max": "3 yıl",
       "penalty_type": "Hapis",
       "eligible_for_simple_trial": false,
-      "notes": "Alt sınır 1 yıl olduğu için dikkatli değerlendirme gerekir"
+      "notes": "Alt sınır 1 yıl olduğu için dikkatli değerlendirme gerekir",
+      "seri_muhakeme_uygun": false
     },
     {
       "id": 3,
@@ -40,7 +43,9 @@
       "penalty_max": "Temel cezada indirim",
       "penalty_type": "Hapis",
       "eligible_for_simple_trial": true,
-      "notes": "TCK 86'ya göre cezada 1/3 oranında indirim yapılır"
+      "notes": "TCK 86'ya göre cezada 1/3 oranında indirim yapılır",
+      "seri_muhakeme_uygun": true,
+      "seri_muhakeme_notes": "Şüphelinin kabulü halinde ceza yarısı oranında indirilir"
     },
     {
       "id": 4,
@@ -52,7 +57,9 @@
       "penalty_max": "1 yıl",
       "penalty_type": "Hapis veya Adli Para Cezası",
       "eligible_for_simple_trial": true,
-      "notes": "Alt sınır 2 yılın altında olduğundan basit yargılama kapsamındadır"
+      "notes": "Alt sınır 2 yılın altında olduğundan basit yargılama kapsamındadır",
+      "seri_muhakeme_uygun": true,
+      "seri_muhakeme_notes": "Şüphelinin kabulü halinde ceza yarısı oranında indirilir"
     },
     {
       "id": 5,
@@ -64,7 +71,9 @@
       "penalty_max": "2 yıl",
       "penalty_type": "Hapis",
       "eligible_for_simple_trial": true,
-      "notes": "Alt sınır 2 yılın altında olduğundan basit yargılama kapsamındadır"
+      "notes": "Alt sınır 2 yılın altında olduğundan basit yargılama kapsamındadır",
+      "seri_muhakeme_uygun": true,
+      "seri_muhakeme_notes": "Şüphelinin kabulü halinde ceza yarısı oranında indirilir"
     },
     {
       "id": 6,
@@ -76,7 +85,8 @@
       "penalty_max": "3 yıl",
       "penalty_type": "Hapis",
       "eligible_for_simple_trial": false,
-      "notes": "Alt sınır 1 yıl - basit yargılama için dikkatli değerlendirme gerekir"
+      "notes": "Alt sınır 1 yıl - basit yargılama için dikkatli değerlendirme gerekir",
+      "seri_muhakeme_uygun": false
     },
     {
       "id": 7,
@@ -88,7 +98,9 @@
       "penalty_max": "2 yıl",
       "penalty_type": "Hapis",
       "eligible_for_simple_trial": true,
-      "notes": "En yaygın basit yargılama suçlarından biridir"
+      "notes": "En yaygın basit yargılama suçlarından biridir",
+      "seri_muhakeme_uygun": true,
+      "seri_muhakeme_notes": "Şüphelinin kabulü halinde ceza yarısı oranında indirilir"
     },
     {
       "id": 8,
@@ -100,7 +112,9 @@
       "penalty_max": "2 yıl",
       "penalty_type": "Hapis veya Adli Para Cezası",
       "eligible_for_simple_trial": true,
-      "notes": "Alt sınır 2 yılın altında olduğundan basit yargılama kapsamındadır"
+      "notes": "Alt sınır 2 yılın altında olduğundan basit yargılama kapsamındadır",
+      "seri_muhakeme_uygun": true,
+      "seri_muhakeme_notes": "Şüphelinin kabulü halinde ceza yarısı oranında indirilir"
     },
     {
       "id": 9,
@@ -112,7 +126,9 @@
       "penalty_max": "2 yıl",
       "penalty_type": "Hapis",
       "eligible_for_simple_trial": true,
-      "notes": "Basit yargılama kapsamındadır"
+      "notes": "Basit yargılama kapsamındadır",
+      "seri_muhakeme_uygun": true,
+      "seri_muhakeme_notes": "Şüphelinin kabulü halinde ceza yarısı oranında indirilir"
     },
     {
       "id": 10,
@@ -124,7 +140,9 @@
       "penalty_max": "1 yıl",
       "penalty_type": "Hapis",
       "eligible_for_simple_trial": true,
-      "notes": "Basit yargılama kapsamındadır"
+      "notes": "Basit yargılama kapsamındadır",
+      "seri_muhakeme_uygun": true,
+      "seri_muhakeme_notes": "Şüphelinin kabulü halinde ceza yarısı oranında indirilir"
     },
     {
       "id": 11,
@@ -136,7 +154,8 @@
       "penalty_max": "3 yıl",
       "penalty_type": "Hapis",
       "eligible_for_simple_trial": false,
-      "notes": "Alt sınır 1 yıl - basit yargılama için dikkatli değerlendirme gerekir"
+      "notes": "Alt sınır 1 yıl - basit yargılama için dikkatli değerlendirme gerekir",
+      "seri_muhakeme_uygun": false
     },
     {
       "id": 12,
@@ -148,7 +167,9 @@
       "penalty_max": "2 yıl",
       "penalty_type": "Hapis veya Adli Para Cezası",
       "eligible_for_simple_trial": true,
-      "notes": "Yaygın basit yargılama suçlarından biridir"
+      "notes": "Yaygın basit yargılama suçlarından biridir",
+      "seri_muhakeme_uygun": true,
+      "seri_muhakeme_notes": "Şüphelinin kabulü halinde ceza yarısı oranında indirilir"
     },
     {
       "id": 13,
@@ -160,7 +181,9 @@
       "penalty_max": "3 yıl",
       "penalty_type": "Hapis veya Adli Para Cezası",
       "eligible_for_simple_trial": true,
-      "notes": "Alt sınır düşük olduğundan genellikle basit yargılama kapsamındadır"
+      "notes": "Alt sınır düşük olduğundan genellikle basit yargılama kapsamındadır",
+      "seri_muhakeme_uygun": true,
+      "seri_muhakeme_notes": "Şüphelinin kabulü halinde ceza yarısı oranında indirilir"
     },
     {
       "id": 14,
@@ -172,7 +195,8 @@
       "penalty_max": "3 yıl",
       "penalty_type": "Hapis",
       "eligible_for_simple_trial": false,
-      "notes": "Alt sınır 1 yıl - dikkatli değerlendirme gerekir"
+      "notes": "Alt sınır 1 yıl - dikkatli değerlendirme gerekir",
+      "seri_muhakeme_uygun": false
     },
     {
       "id": 15,
@@ -184,7 +208,8 @@
       "penalty_max": "3 yıl",
       "penalty_type": "Hapis",
       "eligible_for_simple_trial": false,
-      "notes": "Alt sınır 1 yıl - dikkatli değerlendirme gerekir"
+      "notes": "Alt sınır 1 yıl - dikkatli değerlendirme gerekir",
+      "seri_muhakeme_uygun": false
     },
     {
       "id": 16,
@@ -196,7 +221,8 @@
       "penalty_max": "5 yıl",
       "penalty_type": "Hapis",
       "eligible_for_simple_trial": false,
-      "notes": "Alt sınır 1 yıl - basit yargılama için uygun değildir"
+      "notes": "Alt sınır 1 yıl - basit yargılama için uygun değildir",
+      "seri_muhakeme_uygun": false
     },
     {
       "id": 17,
@@ -208,7 +234,9 @@
       "penalty_max": "1 yıl",
       "penalty_type": "Adli Para Cezası",
       "eligible_for_simple_trial": true,
-      "notes": "Basit yargılama kapsamındadır"
+      "notes": "Basit yargılama kapsamındadır",
+      "seri_muhakeme_uygun": true,
+      "seri_muhakeme_notes": "Şüphelinin kabulü halinde ceza yarısı oranında indirilir"
     },
     {
       "id": 18,
@@ -220,7 +248,9 @@
       "penalty_max": "3 yıl",
       "penalty_type": "Hapis",
       "eligible_for_simple_trial": true,
-      "notes": "Alt sınır düşük, ancak suçun niteliğine göre değerlendirme gerekir"
+      "notes": "Alt sınır düşük, ancak suçun niteliğine göre değerlendirme gerekir",
+      "seri_muhakeme_uygun": true,
+      "seri_muhakeme_notes": "Şüphelinin kabulü halinde ceza yarısı oranında indirilir"
     },
     {
       "id": 19,
@@ -232,7 +262,9 @@
       "penalty_max": "3 yıl",
       "penalty_type": "Hapis",
       "eligible_for_simple_trial": true,
-      "notes": "Alt sınır düşük olduğundan basit yargılama uygulanabilir"
+      "notes": "Alt sınır düşük olduğundan basit yargılama uygulanabilir",
+      "seri_muhakeme_uygun": true,
+      "seri_muhakeme_notes": "Şüphelinin kabulü halinde ceza yarısı oranında indirilir"
     },
     {
       "id": 20,
@@ -244,7 +276,8 @@
       "penalty_max": "3 yıl",
       "penalty_type": "Hapis",
       "eligible_for_simple_trial": false,
-      "notes": "Alt sınır 1 yıl - genellikle basit yargılama için uygun değildir, ancak dosyanın niteliğine göre değerlendirilebilir"
+      "notes": "Alt sınır 1 yıl - genellikle basit yargılama için uygun değildir, ancak dosyanın niteliğine göre değerlendirilebilir",
+      "seri_muhakeme_uygun": false
     }
   ]
 }

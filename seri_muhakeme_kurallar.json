@@ -1,0 +1,82 @@
+{
+  "metadata": {
+    "version": "1.0",
+    "last_updated": "2024-12-15",
+    "description": "Seri Muhakeme Usulü Kuralları ve Uygulanamayacağı Haller",
+    "legal_basis": "CMK Madde 250"
+  },
+  "uygulanamaayacagi_haller": [
+    {
+      "id": 1,
+      "kategori": "Şüpheliye Ulaşılamama",
+      "aciklama": "Resmî mercilere beyan edilmiş olup da soruşturma dosyasında yer alan adreste bulunmama veya yurt dışında olma ya da başka bir nedenle şüpheliye ulaşılamaması",
+      "kod": "ULASILAMAMA"
+    },
+    {
+      "id": 2,
+      "kategori": "Diğer Usullerin Kapsamı",
+      "aciklama": "Önödeme ve uzlaştırma kapsamındaki suçlar",
+      "kod": "ONODEME_UZLASTIRMA"
+    },
+    {
+      "id": 3,
+      "kategori": "Şüphelinin Davranışı",
+      "aciklama": "Şüphelinin mazeretsiz olarak hüküm kuracak mahkemeye gelmemesi",
+      "kod": "MAHKEMEYE_GELMEME"
+    },
+    {
+      "id": 4,
+      "kategori": "İştirak Hali",
+      "aciklama": "Suçun iştirak hâlinde işlenmesi ve şüphelilerden birinin seri muhakemeyi kabul etmemesi",
+      "kod": "ISTIRAK_KABUL_ETMEME"
+    },
+    {
+      "id": 5,
+      "kategori": "Karma Suçlar",
+      "aciklama": "Suçun, seri muhakeme kapsamında olmayan başka bir suçla birlikte işlenmesi",
+      "kod": "KARMA_SUCLAR"
+    },
+    {
+      "id": 6,
+      "kategori": "Ehliyet Durumu",
+      "aciklama": "Yaş küçüklüğü, akıl hastalığı, sağır ve dilsizlik hâllerinde uygulanamaz",
+      "kod": "EHLIYET_ENGELI"
+    }
+  ],
+  "genel_kosullar": {
+    "ceza_siniri": {
+      "aciklama": "Seri muhakeme usulü için alt sınırı iki yıl veya daha az hapis cezası öngörülen suçlar",
+      "ust_sinir_yil": 2
+    },
+    "ceza_indirimi": {
+      "aciklama": "Seri muhakeme usulünde kabul edilen sanığa ceza yarısı oranında indirilir",
+      "indirim_orani": 0.5
+    },
+    "uzlastirma_ve_onodeme": {
+      "aciklama": "Uzlaştırma ve önödeme kapsamındaki suçlarda seri muhakeme uygulanamaz",
+      "uygulanmaz": true
+    }
+  },
+  "prosedur_adimlari": [
+    {
+      "adim": 1,
+      "baslik": "Cumhuriyet Savcısının Teklifi",
+      "aciklama": "Cumhuriyet savcısı, şüpheliye seri muhakeme usulünün uygulanmasını ve cezanın yarısına kadar indirim yapılacağını teklif eder"
+    },
+    {
+      "adim": 2,
+      "baslik": "Şüphelinin Kabulü",
+      "aciklama": "Şüpheli ve müdafii huzurunda teklifin kabulü veya reddi alınır. Kabul halinde dosya iddianame düzenlenmeksizin mahkemeye gönderilir"
+    },
+    {
+      "adim": 3,
+      "baslik": "Mahkeme Kararı",
+      "aciklama": "Mahkeme en geç on gün içinde duruşma yaparak karar verir. Ceza yarısı oranında indirilir"
+    },
+    {
+      "adim": 4,
+      "baslik": "Kesinlik",
+      "aciklama": "Seri muhakeme usulünde verilen hüküm kesindir ve istinaf yoluna başvurulamaz"
+    }
+  ]
+}
