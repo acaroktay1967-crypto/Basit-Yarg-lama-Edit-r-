@@ -3,6 +3,23 @@
 
 ---
 
+## ⚠️ ÖNEMLİ UYARI: TCK MADDE NUMARALARI
+
+**Bu repository'deki bazı şablonlarda (örneğin `2_Basit_Yargilama_Karar_Sablonu_TCK86.md`) tehdit suçu için TCK 86 madde numarası kullanılmaktadır. Ancak güncel 5237 sayılı TCK'da:**
+
+- **Tehdit suçu: TCK m.106** (güncel)
+- **Kasten yaralama suçu: TCK m.86** (güncel)
+
+**Uygulama Kılavuzu:**
+- Yeni karar yazarken **güncel TCK madde numaralarını** kullanın (Tehdit için TCK 106)
+- Mevcut şablonlardaki TCK 86 referansları **eski düzenlemeyi** veya **farklı bir kaynağı** yansıtıyor olabilir
+- **Mutlaka güncel mevzuatı kontrol edin** ve kararlarınızda güncel madde numaralarını kullanın
+- Şablon dosya isimleri eski numaralamayı içerse de, içeriği güncel mevzuata göre düzenleyin
+
+**Bu kütüphanede güncel TCK madde numaraları kullanılmıştır.**
+
+---
+
 ## 📋 GENEL BİLGİ
 
 Bu kütüphane, **5271 sayılı Ceza Muhakemesi Kanunu'nun 251. maddesi** uyarınca **Basit Yargılama Usulü**'ne tabi tutulabilecek suçların kapsamlı listesini içermektedir.
@@ -102,7 +119,7 @@ Basit yargılama usulü, aşağıdaki koşulları taşıyan suçlarda uygulanabi
 - **Açıklama:** Kişiyi, kendisinin veya yakınının malvarlığına zarar vereceğinden bahisle tehdit etme
 - **Basit Yargılama:** ✅ EVET
 
-**Not:** Eski TCK madde numaraları farklıydı. Güncel TCK'da tehdit suçu 106. maddededir. Ancak bu repository'de TCK 86 olarak geçiyor (eski numara veya farklı kaynak). Lütfen güncel mevzuatı kontrol ediniz.
+**💡 Not:** Bu repository'deki bazı şablonlarda tehdit suçu TCK 86 olarak geçmektedir. Güncel TCK'da tehdit suçu m.106'dadır. Detaylı bilgi için yukarıdaki "ÖNEMLİ UYARI" bölümüne bakınız.
 
 #### 3.2. Konut Dokunulmazlığının İhlali
 
@@ -240,7 +257,7 @@ Basit yargılama usulü, aşağıdaki koşulları taşıyan suçlarda uygulanabi
 
 ---
 
-### 9. ADLIYE KARŞI SUÇLAR
+### 9. ADLİYEYE KARŞI SUÇLAR
 
 #### 9.1. Suçu Bildirmeme
 
@@ -326,8 +343,12 @@ Basit yargılama kararına **7 gün içinde itiraz** edilebilir. İtiraz ciddi b
 
 ## 🔍 DİPNOTLAR
 
-### Not 1: TCK Madde Numaraları
-Bu repository'de bazı şablonlarda **TCK 86** olarak geçen tehdit suçu, güncel TCK'da **TCK 106** olarak düzenlenmiştir. Lütfen güncel mevzuatı kontrol ediniz. Eski TCK'dan kaynaklanan farklılıklar olabilir.
+### Not 1: TCK Madde Numaraları ve Dosya İsimleri
+Bu repository'de bazı şablonlarda **TCK 86** olarak geçen tehdit suçu, güncel TCK'da **TCK 106** olarak düzenlenmiştir. 
+
+**Örnek:** `2_Basit_Yargilama_Karar_Sablonu_TCK86.md` dosyası tehdit suçu için örnek şablondur, ancak dosya ismi eski/farklı bir numaralamayı içermektedir. Kararlarınızda **güncel TCK 106 madde numarasını** kullanınız.
+
+**Önemli:** Dosya isimleri değiştirilmemiş olsa da, içeriği ve kararlarınızı mutlaka güncel mevzuata göre düzenleyiniz.
 
 ### Not 2: Güncellemeler
 Ceza hukuku mevzuatı sürekli güncellenmektedir. Bu liste **2024 yılı itibariyle** hazırlanmıştır. Güncel mevzuatı mutlaka kontrol ediniz.
@@ -360,7 +381,7 @@ Bu kütüphane, Basit Yargılama Editörü projesinin bir parçasıdır. Daha fa
 
 **Şablonlar:**
 - `1_Tensip_Zapti_CMK251.md` - Basit yargılama kararı
-- `2_Basit_Yargilama_Karar_Sablonu_TCK86.md` - Tehdit suçu örneği
+- `2_Basit_Yargilama_Karar_Sablonu_TCK86.md` - Tehdit suçu örneği (**Not:** Dosya ismi TCK86 içerir ancak güncel mevzuatta tehdit TCK 106'dadır)
 - `3_HAGB_Karar_Sablonu.md` - HAGB kararı
 - `4_Mahkumiyet_Karar_Sablonu.md` - Mahkumiyet kararı
 - `5_Itiraz_Uzerine_Durusma_Acilmasi.md` - Duruşma açılması
