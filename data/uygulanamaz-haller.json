@@ -1,0 +1,126 @@
+{
+  "metadata": {
+    "version": "1.0",
+    "last_updated": "2024-12-15",
+    "description": "Seri Muhakemenin Uygulanamayacağı Haller",
+    "legal_basis": "CMK 250/13"
+  },
+  "uygulanamaz_haller": [
+    {
+      "id": 1,
+      "kod": "ADRES_BULUNMAMA",
+      "baslik": "Şüphelinin Adresinin Bulunamaması",
+      "aciklama": "Şüphelinin yerleşim yeri adresinin bulunamaması veya yurt dışında olması",
+      "yasal_dayanak": "CMK 250/13-a",
+      "kontrol_kriterleri": [
+        "Adres tespiti yapılmış mı?",
+        "Şüpheli yurt dışında mı?",
+        "Tebligat yapılabilecek adres var mı?"
+      ],
+      "oncelik": 1
+    },
+    {
+      "id": 2,
+      "kod": "ONODEME_UZLASTIRMA",
+      "baslik": "Önödeme veya Uzlaştırma Kapsamı",
+      "aciklama": "Soruşturması veya kovuşturması şikayete bağlı olup, önödeme veya uzlaştırma kapsamında bulunan suçlar",
+      "yasal_dayanak": "CMK 250/13-b",
+      "kontrol_kriterleri": [
+        "Suç şikayete bağlı mı?",
+        "Önödeme kapsamında mı?",
+        "Uzlaştırma kapsamında mı?",
+        "Uzlaştırma yapıldı mı, sonuçsuz mu kaldı?"
+      ],
+      "oncelik": 2
+    },
+    {
+      "id": 3,
+      "kod": "MAZERETSIZ_GELMEME",
+      "baslik": "Şüphelinin Mazeretsiz Gelmemesi",
+      "aciklama": "Şüphelinin mazereti olmaksızın Cumhuriyet savcısının çağrısı üzerine gelmemesi veya savunma vermemesi",
+      "yasal_dayanak": "CMK 250/13-c",
+      "kontrol_kriterleri": [
+        "Çağrı yapıldı mı?",
+        "Şüpheli geldi mi?",
+        "Mazeret bildirdi mi?",
+        "Savunma verdi mi?"
+      ],
+      "oncelik": 3
+    },
+    {
+      "id": 4,
+      "kod": "ISTIRAK_KABUL_ETMEME",
+      "baslik": "İştirak Halinde Kabul Etmeme",
+      "aciklama": "Suça iştirak eden diğer şüphelilerden birisinin teklifi kabul etmemesi",
+      "yasal_dayanak": "CMK 250/13-ç",
+      "kontrol_kriterleri": [
+        "Suç iştirak halinde mi işlendi?",
+        "Diğer şüpheliler var mı?",
+        "Tüm şüpheliler teklifi kabul etti mi?"
+      ],
+      "oncelik": 4
+    },
+    {
+      "id": 5,
+      "kod": "BIRLIKTE_KAPSAM_DISI",
+      "baslik": "Birlikte İşlenen Kapsam Dışı Suç",
+      "aciklama": "Şüphelinin aynı zamanda birlikte işlediği seri muhakeme kapsamı dışındaki başka bir suçtan da soruşturulması",
+      "yasal_dayanak": "CMK 250/13-d",
+      "kontrol_kriterleri": [
+        "Başka suç var mı?",
+        "Diğer suç seri muhakeme kapsamında mı?",
+        "Suçlar birlikte mi işlendi?"
+      ],
+      "oncelik": 5
+    },
+    {
+      "id": 6,
+      "kod": "YAS_KUCUKLUGU",
+      "baslik": "Yaş Küçüklüğü",
+      "aciklama": "Şüphelinin on iki yaşını doldurmamış çocuk olması",
+      "yasal_dayanak": "CMK 250/13-e",
+      "kontrol_kriterleri": [
+        "Şüphelinin yaşı kaç?",
+        "On iki yaşını doldurmuş mu?"
+      ],
+      "oncelik": 6
+    },
+    {
+      "id": 7,
+      "kod": "AKIL_HASTALIGI",
+      "baslik": "Akıl Hastalığı",
+      "aciklama": "Şüphelinin akıl hastası olması",
+      "yasal_dayanak": "CMK 250/13-f",
+      "kontrol_kriterleri": [
+        "Akıl hastalığı var mı?",
+        "Tıbbi rapor alındı mı?",
+        "TCK 32 kapsamında mı?"
+      ],
+      "oncelik": 7
+    },
+    {
+      "id": 8,
+      "kod": "SAGIR_DILSIZ",
+      "baslik": "Sağır ve Dilsiz Olma",
+      "aciklama": "Şüphelinin sağır ve dilsiz olması",
+      "yasal_dayanak": "CMK 250/13-g",
+      "kontrol_kriterleri": [
+        "Şüpheli sağır ve dilsiz mi?",
+        "İletişim için özel düzenleme gerekli mi?"
+      ],
+      "oncelik": 8
+    },
+    {
+      "id": 9,
+      "kod": "CMK250_13_ADRES",
+      "baslik": "CMK 250/13 Kapsamında Adres Bulunmaması",
+      "aciklama": "CMK 250/13'te sayılan diğer hallerden herhangi birinin bulunması",
+      "yasal_dayanak": "CMK 250/13",
+      "kontrol_kriterleri": [
+        "Yukarıdaki hallerden herhangi biri var mı?",
+        "Seri muhakeme için tüm şartlar sağlanıyor mu?"
+      ],
+      "oncelik": 9
+    }
+  ]
+}

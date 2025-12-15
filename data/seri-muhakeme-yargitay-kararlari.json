@@ -1,0 +1,75 @@
+{
+  "metadata": {
+    "version": "1.0",
+    "last_updated": "2024-12-15",
+    "description": "Seri Muhakeme Usulü Yargıtay Kararları Kütüphanesi",
+    "legal_basis": "CMK 250 - Seri Muhakeme Usulü"
+  },
+  "kararlar": [
+    {
+      "id": 1,
+      "baslik": "Seri Muhakeme Usulünde Talepnamenin Reddi",
+      "ozet": "Müdafi huzurunda kabul edilmeyen talepname usulüne uygun olmadığından işlemin iptali gerekmiştir.",
+      "suc": "TCK 151/1 - Mala Zarar Verme",
+      "tarih": "2024-03-15",
+      "mahkeme": "Yargıtay 6. Ceza Dairesi",
+      "esas_no": "2024/1234",
+      "karar_no": "2024/5678",
+      "sonuc": "Bozma",
+      "karar_metni": "Seri muhakeme usulünde talepnamenin şüpheli ve müdafii huzurunda kabul edilmesi zorunludur. Müdafi olmaksızın yapılan kabul usule aykırıdır.",
+      "anahtar_kelimeler": ["müdafi", "kabul", "talepname", "usul"]
+    },
+    {
+      "id": 2,
+      "baslik": "Belirlenen Cezanın Üst Sınırı Aşması",
+      "ozet": "CMK 250/2 uyarınca belirlenen ceza kanunda öngörülen cezanın üst sınırını aşamaz.",
+      "suc": "TCK 106/1 - Tehdit",
+      "tarih": "2024-04-20",
+      "mahkeme": "Yargıtay 4. Ceza Dairesi",
+      "esas_no": "2024/2345",
+      "karar_no": "2024/6789",
+      "sonuc": "Bozma",
+      "karar_metni": "Seri muhakeme usulünde belirlenen ceza, suça ilişkin kanunda öngörülen cezanın üst sınırını aşamaz. Aksi halde işlem CMK 250/2'ye aykırıdır.",
+      "anahtar_kelimeler": ["ceza üst sınırı", "CMK 250/2", "belirlenen ceza"]
+    },
+    {
+      "id": 3,
+      "baslik": "İştirak Halinde İşlenen Suçlarda Seri Muhakeme",
+      "ozet": "Suça iştirak eden diğer şüphelilerin seri muhakeme teklifini kabul etmemesi halinde uygulanamaz.",
+      "suc": "TCK 141/1 - Hırsızlık",
+      "tarih": "2024-05-10",
+      "mahkeme": "Yargıtay 13. Ceza Dairesi",
+      "esas_no": "2024/3456",
+      "karar_no": "2024/7890",
+      "sonuc": "Onanma",
+      "karar_metni": "CMK 250/13 uyarınca, suça iştirak eden diğer şüphelilerden birisinin seri muhakeme teklifini kabul etmemesi halinde seri muhakeme usulü uygulanamaz.",
+      "anahtar_kelimeler": ["iştirak", "kabul etmeme", "CMK 250/13"]
+    },
+    {
+      "id": 4,
+      "baslik": "Seri Muhakemede Gözaltı Süresi İndirim",
+      "ozet": "Gözaltında veya tutuklulukta geçirilen sürenin belirlenen cezadan indirilmesi gerekir.",
+      "suc": "TCK 86/2 - Kasten Yaralama",
+      "tarih": "2024-06-05",
+      "mahkeme": "Yargıtay 6. Ceza Dairesi",
+      "esas_no": "2024/4567",
+      "karar_no": "2024/8901",
+      "sonuc": "Onanma",
+      "karar_metni": "CMK 250/2 gereğince belirlenen cezada, gözaltında veya tutuklulukta geçen sürenin indirilmesi ve TCK 63 uyarınca infaz rejimine karar verilmesi gerekir.",
+      "anahtar_kelimeler": ["gözaltı süresi", "tutukluluk", "TCK 63", "infaz"]
+    },
+    {
+      "id": 5,
+      "baslik": "Uzlaştırma Kapsamındaki Suçlarda Seri Muhakeme",
+      "ozet": "Uzlaştırma kapsamında olan suçlarda önce uzlaştırma yapılmalıdır.",
+      "suc": "TCK 86/2 - Kasten Yaralama",
+      "tarih": "2024-07-12",
+      "mahkeme": "Yargıtay 4. Ceza Dairesi",
+      "esas_no": "2024/5678",
+      "karar_no": "2024/9012",
+      "sonuc": "Bozma",
+      "karar_metni": "CMK 250/13 uyarınca uzlaştırma kapsamındaki suçlarda öncelikle uzlaştırma görüşmeleri yapılmalıdır. Uzlaştırmanın sonuçsuz kalması halinde seri muhakeme uygulanabilir.",
+      "anahtar_kelimeler": ["uzlaştırma", "CMK 250/13", "öncelik"]
+    }
+  ]
+}

@@ -1,0 +1,113 @@
+{
+  "metadata": {
+    "version": "1.0",
+    "last_updated": "2024-12-15",
+    "description": "CMK 250'ye Göre Örnek Mahkeme Hükümleri",
+    "legal_basis": "CMK 250 - Seri Muhakeme Usulü"
+  },
+  "ornekler": [
+    {
+      "id": 1,
+      "baslik": "Kasten Yaralama Suçunda Seri Muhakeme Hükmü",
+      "suc": "TCK 86/2 - Kasten Yaralama",
+      "kimlik_bilgileri": {
+        "sanik_adi": "Ali YILMAZ",
+        "tc_kimlik": "12345678901",
+        "dogum_tarihi": "15.05.1985",
+        "dogum_yeri": "İstanbul",
+        "adres": "Atatürk Mah. Cumhuriyet Cad. No:15 Kadıköy/İstanbul"
+      },
+      "suc_tanimi": "Sanığın, mağdur Mehmet DEMİR'e karşı 10.11.2024 tarihinde İstanbul ili Kadıköy ilçesi Moda semtinde, tartışma sırasında yumrukla vurarak kasten yaraladığı iddiasıyla TCK 86/2 maddesi uyarınca seri muhakeme usulü ile yargılandığı davada;",
+      "karar_gerekceleri": [
+        "Şüphelinin müdafii huzurunda seri muhakeme teklifini kabul ettiği,",
+        "Dosya kapsamındaki delillerin (adli rapor, tanık beyanları, olay yeri inceleme tutanağı) suçun işlendiğini gösterdiği,",
+        "CMK 250/2 uyarınca belirlenen cezanın kanunda öngörülen üst sınırı aşmadığı,",
+        "TCK 62 gereğince temel ceza 8 ay hapis cezası olarak belirlenmiş, sanığın daha önce kasıtlı suçtan mahkum olmadığı, suçun işleniş biçimi ve sonuçları değerlendirilerek takdiri indirim uygulanmadığı,"
+      ],
+      "sonuc": {
+        "karar_turu": "Mahkumiyet",
+        "ceza": "6 ay hapis cezası",
+        "hagb": false,
+        "erteleme": true,
+        "erteleme_suresi": "1 yıl",
+        "denetim_suresi": "1 yıl",
+        "aciklama": "Sanığın daha önce kasıtlı suçtan mahkum olmadığı, bir daha suç işlemeyeceği kanaati oluştuğundan TCK 51 uyarınca hapis cezasının ertelenmesine karar verilmiştir."
+      },
+      "ek_notlar": [
+        "Karar kesinleştiğinde infaz aşamasına geçilecektir.",
+        "Erteleme süresinde yeni bir kasıtlı suç işlenmesi halinde erteleme kararı geri alınacaktır.",
+        "CMK 250/5 uyarınca karara 7 gün içinde itiraz edilebilir."
+      ]
+    },
+    {
+      "id": 2,
+      "baslik": "Tehdit Suçunda Seri Muhakeme ile HAGB Kararı",
+      "suc": "TCK 106/1 - Tehdit",
+      "kimlik_bilgileri": {
+        "sanik_adi": "Ayşe KAYA",
+        "tc_kimlik": "98765432109",
+        "dogum_tarihi": "20.08.1990",
+        "dogum_yeri": "Ankara",
+        "adres": "Kızılay Mah. Atatürk Bulvarı No:45/7 Çankaya/Ankara"
+      },
+      "suc_tanimi": "Sanığın, mağdur Fatma ARSLAN'ı 05.10.2024 tarihinde Ankara ili Çankaya ilçesinde telefon ile arayarak 'Seni öldüreceğim' diyerek tehdit ettiği iddiasıyla TCK 106/1 maddesi uyarınca seri muhakeme usulü ile yargılandığı davada;",
+      "karar_gerekceleri": [
+        "Şüphelinin müdafii huzurunda seri muhakeme teklifini kabul ettiği,",
+        "Telefon görüşme kayıtları ve mağdur beyanının suçu ispat ettiği,",
+        "CMK 250/2 uyarınca belirlenen cezanın 10 ay hapis cezası olduğu,",
+        "TCK 62 gereğince temel ceza belirlenmiş, sanığın pişmanlık duyduğu ve daha önce sabıkasının bulunmadığı,",
+        "CMK 231 uyarınca HAGB koşullarının değerlendirildiği:"
+      ],
+      "sonuc": {
+        "karar_turu": "HAGB",
+        "ceza": "10 ay hapis cezası",
+        "hagb": true,
+        "hagb_denetim_suresi": "1 yıl",
+        "yuklulukler": [
+          "İmza yükümlülüğü (ayda bir kez)",
+          "Mağdura yaklaşmama"
+        ],
+        "aciklama": "Sanığın daha önce kasıtlı suçtan mahkum olmadığı, bir daha suç işlemeyeceği konusunda kanaate varıldığı, mağdurun rızasının bulunduğu göz önünde bulundurularak CMK 231 uyarınca hükmün açıklanmasının geri bırakılmasına karar verilmiştir."
+      },
+      "ek_notlar": [
+        "Denetim süresi içinde kasıtlı yeni bir suç işlenmemesi halinde dava düşecektir.",
+        "Yükümlülüklere uyulmaması halinde hüküm açıklanacaktır.",
+        "CMK 250/5 uyarınca karara 7 gün içinde itiraz edilebilir."
+      ]
+    },
+    {
+      "id": 3,
+      "baslik": "Mala Zarar Verme Suçunda Seri Muhakeme Hükmü",
+      "suc": "TCK 151/1 - Mala Zarar Verme",
+      "kimlik_bilgileri": {
+        "sanik_adi": "Mustafa ÖZKAN",
+        "tc_kimlik": "11223344556",
+        "dogum_tarihi": "12.03.1988",
+        "dogum_yeri": "İzmir",
+        "adres": "Alsancak Mah. Şehit Fethi Bey Cad. No:23 Konak/İzmir"
+      },
+      "suc_tanimi": "Sanığın, 22.09.2024 tarihinde İzmir ili Konak ilçesi Alsancak semtinde park halindeki mağdura ait araca tekme atarak hasar verdiği iddiasıyla TCK 151/1 maddesi uyarınca seri muhakeme usulü ile yargılandığı davada;",
+      "karar_gerekceleri": [
+        "Şüphelinin müdafii huzurunda seri muhakeme teklifini kabul ettiği,",
+        "Güvenlik kamerası kayıtları, ekspertiz raporu ve tanık beyanlarının suçu ispat ettiği,",
+        "Verilen zararın 3.500 TL olduğu tespit edildiği,",
+        "CMK 250/2 uyarınca belirlenen cezanın 5 ay hapis cezası olarak belirlendiği,",
+        "Sanığın daha önce suç işlemediği ancak zararın tazmin edilmediği,"
+      ],
+      "sonuc": {
+        "karar_turu": "Mahkumiyet",
+        "ceza": "5 ay hapis cezası",
+        "hagb": false,
+        "erteleme": true,
+        "secenek_yaptirim": "Adli para cezasına çevirme",
+        "adli_para_miktari": "50 gün x 100 TL = 5.000 TL",
+        "aciklama": "TCK 52/2 uyarınca hapis cezası adli para cezasına çevrilmiş, TCK 51 uyarınca da adli para cezasının ödenmesi ertelenmiştir. Sanık ayrıca mağdura verdiği zararı tazmin etmelidir."
+      },
+      "ek_notlar": [
+        "Adli para cezası 1 yıl içinde ödenmediği takdirde hapse çevrilecektir.",
+        "Tazminat davası ayrıca açılmalıdır.",
+        "CMK 250/5 uyarınca karara 7 gün içinde itiraz edilebilir."
+      ]
+    }
+  ]
+}

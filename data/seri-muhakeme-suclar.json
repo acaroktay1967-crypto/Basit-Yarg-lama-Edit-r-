@@ -1,0 +1,190 @@
+{
+  "metadata": {
+    "version": "1.0",
+    "last_updated": "2024-12-15",
+    "description": "CMK 250/1 Kapsamındaki Seri Muhakemeye Tabi Suçlar",
+    "legal_basis": "CMK 250/1 - Seri Muhakeme Usulü"
+  },
+  "suclar": [
+    {
+      "id": 1,
+      "suc_adi": "Kasten yaralama",
+      "tck_madde": "TCK 86/2",
+      "kategori": "Kişilere Karşı Suçlar",
+      "ceza_alt_sinir": "4 ay",
+      "ceza_ust_sinir": "1 yıl",
+      "ceza_turu": "Hapis",
+      "aciklama": "Kasten yaralama suçunun basit hali",
+      "seri_muhakeme_uygun": true,
+      "notlar": "Alt sınır 2 yılın altında olduğundan seri muhakeme kapsamındadır"
+    },
+    {
+      "id": 2,
+      "suc_adi": "Taksirle yaralama",
+      "tck_madde": "TCK 89/1",
+      "kategori": "Kişilere Karşı Suçlar",
+      "ceza_alt_sinir": "3 ay",
+      "ceza_ust_sinir": "1 yıl",
+      "ceza_turu": "Hapis veya adli para",
+      "aciklama": "Taksirle başkasının vücuduna acı veren veya sağlığının bozulmasına neden olma",
+      "seri_muhakeme_uygun": true,
+      "notlar": "Taksirle işlenen suçlar seri muhakeme kapsamındadır"
+    },
+    {
+      "id": 3,
+      "suc_adi": "Tehdit",
+      "tck_madde": "TCK 106/1",
+      "kategori": "Kişilere Karşı Suçlar",
+      "ceza_alt_sinir": "6 ay",
+      "ceza_ust_sinir": "2 yıl",
+      "ceza_turu": "Hapis",
+      "aciklama": "Kişiyi kendisinin veya yakınının hayatına, vücut veya cinsel dokunulmazlığına yönelik saldırı ile tehdit",
+      "seri_muhakeme_uygun": true,
+      "notlar": "Alt sınır 2 yıl veya daha az olduğundan kapsamdadır"
+    },
+    {
+      "id": 4,
+      "suc_adi": "Tehdit (malvarlığına zarar)",
+      "tck_madde": "TCK 106/2",
+      "kategori": "Kişilere Karşı Suçlar",
+      "ceza_alt_sinir": "0",
+      "ceza_ust_sinir": "6 ay",
+      "ceza_turu": "Hapis veya adli para",
+      "aciklama": "Malvarlığına zarar vereceği yönünde tehdit",
+      "seri_muhakeme_uygun": true,
+      "notlar": "Alt sınır 2 yılın altında"
+    },
+    {
+      "id": 5,
+      "suc_adi": "Kişiyi hürriyetinden yoksun kılma",
+      "tck_madde": "TCK 109/1",
+      "kategori": "Kişilere Karşı Suçlar",
+      "ceza_alt_sinir": "2 yıl",
+      "ceza_ust_sinir": "5 yıl",
+      "ceza_turu": "Hapis",
+      "aciklama": "Kanuna uygun bir şekilde verilmiş bir hükümranlık emri olmaksızın bir kimseyi hürriyetinden yoksun kılma",
+      "seri_muhakeme_uygun": true,
+      "notlar": "Alt sınır tam 2 yıl olduğundan sınırda kabul edilebilir"
+    },
+    {
+      "id": 6,
+      "suc_adi": "Konut dokunulmazlığının ihlali",
+      "tck_madde": "TCK 116/1",
+      "kategori": "Kişilere Karşı Suçlar",
+      "ceza_alt_sinir": "6 ay",
+      "ceza_ust_sinir": "2 yıl",
+      "ceza_turu": "Hapis",
+      "aciklama": "Hukuka aykırı olarak başkasının konutuna girme veya sahibinin isteği üzerine çıkmama",
+      "seri_muhakeme_uygun": true,
+      "notlar": "Alt sınır 2 yılın altında"
+    },
+    {
+      "id": 7,
+      "suc_adi": "Hakaret",
+      "tck_madde": "TCK 125/1",
+      "kategori": "Kişilere Karşı Suçlar",
+      "ceza_alt_sinir": "3 ay",
+      "ceza_ust_sinir": "2 yıl",
+      "ceza_turu": "Hapis veya adli para",
+      "aciklama": "Bir kimseye onur, şeref ve saygınlığını rencide edebilecek somut bir fiil veya olgu isnat etmek veya sövmek",
+      "seri_muhakeme_uygun": true,
+      "notlar": "Şikayete bağlı suç, seri muhakeme kapsamında"
+    },
+    {
+      "id": 8,
+      "suc_adi": "Hırsızlık",
+      "tck_madde": "TCK 141/1",
+      "kategori": "Malvarlığına Karşı Suçlar",
+      "ceza_alt_sinir": "1 yıl",
+      "ceza_ust_sinir": "3 yıl",
+      "ceza_turu": "Hapis",
+      "aciklama": "Zilyedinin rızası olmadan başkasına ait taşınır bir malı, kendisine veya başkasına bir yarar sağlamak maksadıyla bulunduğu yerden alma",
+      "seri_muhakeme_uygun": true,
+      "notlar": "Basit hırsızlık halleri seri muhakeme kapsamındadır"
+    },
+    {
+      "id": 9,
+      "suc_adi": "Mala zarar verme",
+      "tck_madde": "TCK 151/1",
+      "kategori": "Malvarlığına Karşı Suçlar",
+      "ceza_alt_sinir": "4 ay",
+      "ceza_ust_sinir": "3 yıl",
+      "ceza_turu": "Hapis veya adli para",
+      "aciklama": "Başkasının taşınır veya taşınmaz malını kısmen veya tamamen yıkmak, tahrip etmek, yıkılmasına veya tahribine sebep olmak, bozmak veya zarar vermek",
+      "seri_muhakeme_uygun": true,
+      "notlar": "Alt sınır 2 yılın altında"
+    },
+    {
+      "id": 10,
+      "suc_adi": "Güveni kötüye kullanma",
+      "tck_madde": "TCK 155/1",
+      "kategori": "Malvarlığına Karşı Suçlar",
+      "ceza_alt_sinir": "6 ay",
+      "ceza_ust_sinir": "2 yıl",
+      "ceza_turu": "Hapis",
+      "aciklama": "Zilyedliği kendisine tevdi edilen veya muhafazası kendisine emanet edilen malı kendisinin veya başkasının yararına olarak zimmetine geçirme",
+      "seri_muhakeme_uygun": true,
+      "notlar": "Basit hal seri muhakeme kapsamında"
+    },
+    {
+      "id": 11,
+      "suc_adi": "Dolandırıcılık",
+      "tck_madde": "TCK 157/1",
+      "kategori": "Malvarlığına Karşı Suçlar",
+      "ceza_alt_sinir": "1 yıl",
+      "ceza_ust_sinir": "5 yıl",
+      "ceza_turu": "Hapis",
+      "aciklama": "Hileli davranışlarla bir kimseyi aldatıp, onun veya başkasının zararına olarak, kendisine veya başkasına bir yarar sağlama",
+      "seri_muhakeme_uygun": true,
+      "notlar": "Basit dolandırıcılık halleri seri muhakeme kapsamında olabilir"
+    },
+    {
+      "id": 12,
+      "suc_adi": "Görevi yaptırmamak için direnme",
+      "tck_madde": "TCK 265/1",
+      "kategori": "Kamu İdaresine Karşı Suçlar",
+      "ceza_alt_sinir": "6 ay",
+      "ceza_ust_sinir": "3 yıl",
+      "ceza_turu": "Hapis",
+      "aciklama": "Kamu görevlisine karşı görevini yapmasını engellemek amacıyla cebir veya tehdit kullanma",
+      "seri_muhakeme_uygun": true,
+      "notlar": "Alt sınır 2 yılın altında"
+    },
+    {
+      "id": 13,
+      "suc_adi": "İftira",
+      "tck_madde": "TCK 267/1",
+      "kategori": "Kamu İdaresine Karşı Suçlar",
+      "ceza_alt_sinir": "2 yıl",
+      "ceza_ust_sinir": "8 yıl",
+      "ceza_turu": "Hapis",
+      "aciklama": "Kişi hakkında soruşturma veya kovuşturma başlatılmasını ya da idari yaptırım uygulanmasını sağlamak amacıyla, o kişiyi iftira etme",
+      "seri_muhakeme_uygun": true,
+      "notlar": "Alt sınır tam 2 yıl olduğundan sınırda kabul edilebilir"
+    },
+    {
+      "id": 14,
+      "suc_adi": "Cinsel taciz",
+      "tck_madde": "TCK 105/1",
+      "kategori": "Kişilere Karşı Suçlar",
+      "ceza_alt_sinir": "3 ay",
+      "ceza_ust_sinir": "2 yıl",
+      "ceza_turu": "Hapis veya adli para",
+      "aciklama": "Kişiyi cinsel amaçlı olarak taciz etme",
+      "seri_muhakeme_uygun": true,
+      "notlar": "Şikayete bağlı suç"
+    },
+    {
+      "id": 15,
+      "suc_adi": "Terk",
+      "tck_madde": "TCK 97",
+      "kategori": "Kişilere Karşı Suçlar",
+      "ceza_alt_sinir": "3 ay",
+      "ceza_ust_sinir": "1 yıl",
+      "ceza_turu": "Hapis",
+      "aciklama": "Bakıma muhtaç kimseyi terk etme",
+      "seri_muhakeme_uygun": true,
+      "notlar": "Alt sınır 2 yılın altında"
+    }
+  ]
+}

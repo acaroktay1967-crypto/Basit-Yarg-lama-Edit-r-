@@ -31,6 +31,89 @@ Basit yargılama usulü, **alt sınırı 2 yıl veya daha az hapis cezası** ön
 
 ---
 
+### 🆕 CMK 250 - Seri Muhakeme Usulü Modülleri
+
+Bu proje artık **CMK 250 - Seri Muhakeme Usulü** kapsamında kapsamlı modüller içermektedir.
+
+#### 1. Seri Muhakeme Yargıtay Kararları Kütüphanesi
+
+**Dosyalar:**
+- `data/seri-muhakeme-yargitay-kararlari.json` - Örnek karar kayıtları
+- `src/components/KararKutuphane.jsx` - Listeleme, filtreleme, detay görüntüleme
+- `src/components/KararForm.jsx` - Yeni karar ekleme formu
+- `tests/kararKutuphane.test.js` - Test suite
+
+**Özellikler:**
+- Yargıtay kararlarını listeleme ve arama
+- Başlık, özet, suç, mahkeme, sonuç bilgileri
+- Anahtar kelime bazlı arama
+- Sonuç türüne göre filtreleme (Onanma, Bozma, Düzeltme)
+
+#### 2. Seri Muhakemenin Uygulanamayacağı Haller
+
+**Dosyalar:**
+- `data/uygulanamaz-haller.json` - CMK 250/13 kapsamındaki haller
+- `src/lib/rules/seriMuhakemeRules.ts` - Kontrol kuralları ve fonksiyonlar
+- `src/components/UygunlukKontrol.jsx` - Uygunluk kontrol arayüzü
+- `tests/uygulanamazHaller.test.js` - Test suite
+
+**Kontrol edilen haller:**
+- Adres bulunmaması/yurt dışında olma (CMK 250/13-a)
+- Önödeme/uzlaştırma kapsamı (CMK 250/13-b)
+- Mazeretsiz gelmeme (CMK 250/13-c)
+- İştirak halinde kabul etmeme (CMK 250/13-ç)
+- Birlikte işlenen kapsam dışı suç (CMK 250/13-d)
+- Yaş küçüklüğü (CMK 250/13-e)
+- Akıl hastalığı (CMK 250/13-f)
+- Sağır ve dilsiz olma (CMK 250/13-g)
+
+#### 3. Seri Muhakeme Suçları Listesi
+
+**Dosyalar:**
+- `data/seri-muhakeme-suclar.json` - CMK 250/1 kapsamındaki suçlar
+- `src/lib/sucturleri/seriMuhakemeAdapter.ts` - Entegrasyon fonksiyonları
+- `src/components/SucTurleri.jsx` - Suç türleri bileşeni (güncellenmiş)
+- `tests/seriMuhakemeSuclar.test.js` - Test suite
+
+**Özellikler:**
+- 15+ seri muhakemeye tabi suç
+- TCK madde bazlı arama
+- Kategori filtreleme
+- "Seri Muhakeme" etiketi/filtresi
+- İstatistik görüntüleme
+
+#### 4. Talepname Usulleri Validasyon
+
+**Dosyalar:**
+- `data/talepname-sablon.json` - Gerekli alanlar listesi
+- `src/lib/validation/talepnameValidation.ts` - Validasyon modülü
+- `src/components/TalepnameForm.jsx` - Form bileşeni
+- `tests/talepnameValidation.test.js` - Test suite
+
+**Validasyon kuralları:**
+- Şüpheli ve müdafii bilgileri (zorunlu)
+- Müdafi huzurunda kabul kontrolü (CMK 250/2)
+- İsnat olunan suç ve madde
+- Olay bilgileri (yer, tarih, zaman)
+- Tutukluluk/gözaltı süreleri
+- Belirlenen ceza/güvenlik tedbirleri
+- HAGB/seçenek/erteleme bilgileri
+
+#### 5. CMK 250 Örnek Mahkeme Hükümleri
+
+**Dosyalar:**
+- `data/cmk250-ornek-hukumler.json` - Örnek hükümler
+- `src/components/HukumOrnekleri.jsx` - Görüntüleme bileşeni
+
+**İçerik:**
+- Kimlik bilgileri
+- Suç tanımı
+- Karar gerekçeleri
+- Sonuç (mahkumiyet/HAGB)
+- Ek notlar
+
+---
+
 ### 1. Tensip Zaptı (Ön Karar)
 **Dosya:** `1_Tensip_Zapti_CMK251.md`
 
@@ -474,11 +557,79 @@ console.log(offense.name); // "Tehdit suçu..."
 
 ---
 
+## 🚀 Kurulum ve Kullanım (CMK 250 Modülleri)
+
+### Kurulum
+
+```bash
+# Bağımlılıkları yükleyin (ilk kez)
+npm install
+
+# Geliştirme sunucusunu başlatın
+npm run dev
+
+# Testleri çalıştırın
+npm test
+```
+
+### TypeScript Modül Kullanımı
+
+```typescript
+import {
+  seriMuhakemeUygunlukKontrol,
+  validateTalepname,
+  loadSeriMuhakemeSuclar,
+} from './lib/index';
+
+// Seri muhakeme uygunluk kontrolü
+const sonuc = seriMuhakemeUygunlukKontrol(sucBilgisi, usulBilgisi, uygulanamayacakHaller);
+
+// Talepname validasyonu
+const validasyonSonucu = validateTalepname(talepnameData);
+
+// Suçları yükle
+const suclar = await loadSeriMuhakemeSuclar('/data/seri-muhakeme-suclar.json');
+```
+
+### React Bileşenlerini Kullanma
+
+```jsx
+import KararKutuphane from './components/KararKutuphane';
+import UygunlukKontrol from './components/UygunlukKontrol';
+import TalepnameForm from './components/TalepnameForm';
+import SucTurleri from './components/SucTurleri';
+import HukumOrnekleri from './components/HukumOrnekleri';
+
+// Uygulamanızda kullanın
+<KararKutuphane />
+<UygunlukKontrol />
+<TalepnameForm />
+<SucTurleri />
+<HukumOrnekleri />
+```
+
+### Veri Dosyaları
+
+Tüm veri dosyaları `data/` dizininde JSON formatında saklanmaktadır:
+- `data/seri-muhakeme-yargitay-kararlari.json`
+- `data/uygulanamaz-haller.json`
+- `data/seri-muhakeme-suclar.json`
+- `data/talepname-sablon.json`
+- `data/cmk250-ornek-hukumler.json`
+
+---
+
 ## 📞 Yasal Dayanak
 
+**Basit Yargılama:**
 - 5271 Sayılı Ceza Muhakemesi Kanunu Madde 251
 - 5237 Sayılı Türk Ceza Kanunu Madde 50, 51, 52, 86
 - Yargıtay İçtihatları (basit yargılama ile ilgili)
+
+**Seri Muhakeme:**
+- 5271 Sayılı Ceza Muhakemesi Kanunu Madde 250
+- 5237 Sayılı Türk Ceza Kanunu (ilgili maddeler)
+- Yargıtay İçtihatları (seri muhakeme ile ilgili)
 
 ---
 
@@ -492,9 +643,19 @@ Bu şablonlar, 5271 sayılı CMK'nın 251. maddesi kapsamında basit yargılama 
 
 ## 📅 Versiyon
 
-**Versiyon:** 1.0  
-**Tarih:** 2024  
+**Versiyon:** 2.0 (CMK 250 Modülleri Eklendi)  
+**Tarih:** 2024-12-15  
 **Düzenleyen:** Basit Yargılama Çalışma Grubu
+
+**Değişiklikler:**
+- ✅ CMK 250 Seri Muhakeme Usulü modülleri eklendi
+- ✅ Yargıtay kararları kütüphanesi
+- ✅ Uygulanamaz haller kontrol mekanizması
+- ✅ Seri muhakeme suçları entegrasyonu
+- ✅ Talepname validasyon modülü
+- ✅ Örnek mahkeme hükümleri
+- ✅ TypeScript ve React desteği
+- ✅ Kapsamlı test suite
 
 ---
 
