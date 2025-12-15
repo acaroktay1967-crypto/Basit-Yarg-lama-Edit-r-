@@ -353,10 +353,10 @@
             });
 
             test('Başlığa göre arama (case-insensitive)', () => {
-                const searchTerm = 'itiraz';
+                const searchTerm = 'usulü';
                 const results = decisionData.decisions.filter(d => 
                     d.title.toLowerCase().includes(searchTerm.toLowerCase()));
-                assertTrue(results.length > 0, 'İtiraz için sonuç bulunamadı');
+                assertTrue(results.length > 0, 'Usulü için sonuç bulunamadı');
             });
 
             test('Anahtar kelimelere göre arama', () => {
