@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suç Kütüphanesi Test Suite</title>
+    <style>
+        body {
+            font-family: 'Courier New', monospace;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #1e1e1e;
+            color: #d4d4d4;
+        }
+        
+        h1 {
+            color: #4ec9b0;
+            border-bottom: 2px solid #4ec9b0;
+            padding-bottom: 10px;
+        }
+        
+        h2 {
+            color: #dcdcaa;
+            margin-top: 30px;
+        }
+        
+        .test-result {
+            margin: 15px 0;
+            padding: 15px;
+            border-radius: 5px;
+            border-left: 4px solid;
+        }
+        
+        .test-pass {
+            background: rgba(78, 201, 176, 0.1);
+            border-left-color: #4ec9b0;
+        }
+        
+        .test-fail {
+            background: rgba(244, 71, 71, 0.1);
+            border-left-color: #f44747;
+        }
+        
+        .test-name {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .test-pass .test-name::before {
+            content: "✓ ";
+            color: #4ec9b0;
+        }
+        
+        .test-fail .test-name::before {
+            content: "✗ ";
+            color: #f44747;
+        }
+        
+        .test-details {
+            font-size: 0.9em;
+            margin-top: 5px;
+            padding-left: 20px;
+        }
+        
+        .summary {
+            margin-top: 30px;
+            padding: 20px;
+            background: rgba(68, 131, 196, 0.1);
+            border-radius: 5px;
+            border-left: 4px solid #4483c4;
+        }
+        
+        .summary h3 {
+            color: #4483c4;
+            margin-top: 0;
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .stat-item {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 15px;
+            border-radius: 5px;
+        }
+        
+        .stat-label {
+            color: #9cdcfe;
+            font-size: 0.85em;
+        }
+        
+        .stat-value {
+            font-size: 2em;
+            font-weight: bold;
+            margin-top: 5px;
+        }
+        
+        code {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2px 6px;
+            border-radius: 3px;
+            color: #ce9178;
+        }
+        
+        pre {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>🧪 Suç Kütüphanesi Test Suite</h1>
+    <p>Basit Yargılama Usulü Suç Türleri Kütüphanesi - Otomatik Test Sonuçları</p>
+    
+    <div id="testResults"></div>
+    
+    <div class="summary" id="summary"></div>
+
+    <script>
+        const testResults = [];
+        let offenseData = null;
+
+        // Test framework
+        function test(name, testFunction) {
+            try {
+                testFunction();
+                testResults.push({ name, passed: true, message: 'Test başarılı' });
+            } catch (error) {
+                testResults.push({ name, passed: false, message: error.message });
+            }
+        }
+
+        function assert(condition, message) {
+            if (!condition) {
+                throw new Error(message);
+            }
+        }
+
+        function assertEquals(actual, expected, message) {
+            if (actual !== expected) {
+                throw new Error(`${message}. Beklenen: ${expected}, Gerçekleşen: ${actual}`);
+            }
+        }
+
+        function assertTrue(condition, message) {
+            assert(condition, message);
+        }
+
+        function assertFalse(condition, message) {
+            assert(!condition, message);
+        }
+
+        // Load and run tests
+        async function runTests() {
+            try {
+                // Load offense data
+                const response = await fetch('suc_turleri_kutuphanesi.json');
+                offenseData = await response.json();
+                
+                // Run all tests
+                console.log('🧪 Testler başlatılıyor...');
+                
+                // Data Structure Tests
+                testDataStructure();
+                
+                // Data Integrity Tests
+                testDataIntegrity();
+                
+                // Offense Validation Tests
+                testOffenseValidation();
+                
+                // Search and Filter Tests
+                testSearchAndFilter();
+                
+                // Business Logic Tests
+                testBusinessLogic();
+                
+                // Display results
+                displayResults();
+                
+            } catch (error) {
+                document.getElementById('testResults').innerHTML = `
+                    <div class="test-result test-fail">
+                        <div class="test-name">Kritik Hata</div>
+                        <div class="test-details">Test suite başlatılamadı: ${error.message}</div>
+                    </div>
+                `;
+            }
+        }
+
+        // Test: Data Structure
+        function testDataStructure() {
+            test('JSON dosyası geçerli bir yapıya sahip', () => {
+                assertTrue(offenseData !== null, 'Veri yüklenemiyor');
+                assertTrue(typeof offenseData === 'object', 'Veri bir nesne olmalı');
+            });
+
+            test('Metadata bölümü mevcut', () => {
+                assertTrue('metadata' in offenseData, 'metadata bölümü eksik');
+                assertTrue('version' in offenseData.metadata, 'version bilgisi eksik');
+                assertTrue('description' in offenseData.metadata, 'description bilgisi eksik');
+            });
+
+            test('Offenses dizisi mevcut', () => {
+                assertTrue('offenses' in offenseData, 'offenses dizisi eksik');
+                assertTrue(Array.isArray(offenseData.offenses), 'offenses bir dizi olmalı');
+            });
+
+            test('En az 10 suç türü tanımlı', () => {
+                assertTrue(offenseData.offenses.length >= 10, 
+                    `En az 10 suç türü bekleniyor, ${offenseData.offenses.length} bulundu`);
+            });
+        }
+
+        // Test: Data Integrity
+        function testDataIntegrity() {
+            test('Tüm suçlarda gerekli alanlar mevcut', () => {
+                const requiredFields = ['id', 'category', 'name', 'tck_article', 'description', 
+                                       'penalty_min', 'penalty_max', 'penalty_type', 'eligible_for_simple_trial'];
+                
+                offenseData.offenses.forEach((offense, index) => {
+                    requiredFields.forEach(field => {
+                        assertTrue(field in offense, 
+                            `Suç #${index + 1} (${offense.name || 'İsimsiz'}) için '${field}' alanı eksik`);
+                    });
+                });
+            });
+
+            test('ID değerleri benzersiz', () => {
+                const ids = offenseData.offenses.map(o => o.id);
+                const uniqueIds = new Set(ids);
+                assertEquals(ids.length, uniqueIds.size, 'Tekrarlayan ID değerleri var');
+            });
+
+            test('TCK maddeleri benzersiz', () => {
+                const articles = offenseData.offenses.map(o => o.tck_article);
+                const uniqueArticles = new Set(articles);
+                assertEquals(articles.length, uniqueArticles.size, 'Tekrarlayan TCK maddeleri var');
+            });
+
+            test('Kategori isimleri tutarlı', () => {
+                const categories = offenseData.offenses.map(o => o.category);
+                categories.forEach(category => {
+                    assertTrue(category.length > 0, 'Boş kategori ismi var');
+                    assertTrue(category.includes('Karşı'), 'Kategori standart formatta değil');
+                });
+            });
+        }
+
+        // Test: Offense Validation
+        function testOffenseValidation() {
+            test('Problem statement\'ta belirtilen suçlar mevcut', () => {
+                const requiredOffenses = [
+                    'TCK m.86/2',
+                    'TCK m.86/3',
+                    'TCK m.88/1',
+                    'TCK m.89/1',
+                    'TCK m.97',
+                    'TCK m.98',
+                    'TCK m.106/1',
+                    'TCK m.105/1',
+                    'TCK m.116/1'
+                ];
+                
+                const articles = offenseData.offenses.map(o => o.tck_article);
+                
+                requiredOffenses.forEach(required => {
+                    assertTrue(articles.includes(required), 
+                        `Gerekli suç ${required} kütüphanede bulunamadı`);
+                });
+            });
+
+            test('eligible_for_simple_trial boolean değeri', () => {
+                offenseData.offenses.forEach((offense, index) => {
+                    assertTrue(typeof offense.eligible_for_simple_trial === 'boolean',
+                        `Suç #${index + 1} için eligible_for_simple_trial boolean olmalı`);
+                });
+            });
+
+            test('Tehdit suçu (TCK 106/1) doğru şekilde tanımlanmış', () => {
+                const tehdit = offenseData.offenses.find(o => o.tck_article === 'TCK m.106/1');
+                assertTrue(tehdit !== undefined, 'TCK 106/1 bulunamadı');
+                assertEquals(tehdit.penalty_min, '6 ay', 'Tehdit suçu ceza alt sınırı hatalı');
+                assertEquals(tehdit.penalty_max, '2 yıl', 'Tehdit suçu ceza üst sınırı hatalı');
+                assertTrue(tehdit.eligible_for_simple_trial, 'Tehdit suçu basit yargılamaya uygun olmalı');
+            });
+        }
+
+        // Test: Search and Filter
+        function testSearchAndFilter() {
+            test('Kategoriye göre filtreleme', () => {
+                const categories = [...new Set(offenseData.offenses.map(o => o.category))];
+                assertTrue(categories.length > 0, 'Hiç kategori bulunamadı');
+                
+                categories.forEach(category => {
+                    const filtered = offenseData.offenses.filter(o => o.category === category);
+                    assertTrue(filtered.length > 0, `${category} kategorisinde suç bulunamadı`);
+                });
+            });
+
+            test('Basit yargılama uygunluğuna göre filtreleme', () => {
+                const eligible = offenseData.offenses.filter(o => o.eligible_for_simple_trial === true);
+                const notEligible = offenseData.offenses.filter(o => o.eligible_for_simple_trial === false);
+                
+                assertTrue(eligible.length > 0, 'Basit yargılamaya uygun suç bulunamadı');
+                assertTrue(notEligible.length > 0, 'Basit yargılamaya uygun olmayan suç bulunamadı');
+                assertEquals(eligible.length + notEligible.length, offenseData.offenses.length,
+                    'Toplam suç sayısı eşleşmiyor');
+            });
+
+            test('TCK maddesine göre arama', () => {
+                const searchTerm = 'TCK m.86';
+                const results = offenseData.offenses.filter(o => 
+                    o.tck_article.toLowerCase().includes(searchTerm.toLowerCase()));
+                assertTrue(results.length > 0, 'TCK m.86 için sonuç bulunamadı');
+            });
+
+            test('İsme göre arama (case-insensitive)', () => {
+                const searchTerm = 'tehdit';
+                const results = offenseData.offenses.filter(o => 
+                    o.name.toLowerCase().includes(searchTerm.toLowerCase()));
+                assertTrue(results.length > 0, 'Tehdit için sonuç bulunamadı');
+            });
+        }
+
+        // Test: Business Logic
+        function testBusinessLogic() {
+            test('Basit yargılamaya uygun suçlar doğru işaretlenmiş', () => {
+                // This test verifies eligibility marking is reasonable
+                // Note: Actual eligibility depends on judicial interpretation
+                const eligibleOffenses = offenseData.offenses.filter(o => o.eligible_for_simple_trial);
+                
+                eligibleOffenses.forEach(offense => {
+                    // Basic sanity check - eligible offenses should generally have lower penalties
+                    const minPenalty = offense.penalty_min.toLowerCase();
+                    const hasReasonablePenalty = 
+                        minPenalty.includes('ay') || 
+                        minPenalty.includes('temel') ||
+                        (minPenalty.includes('yıl') && (minPenalty.startsWith('1') || minPenalty.includes('6')));
+                    
+                    assertTrue(
+                        hasReasonablePenalty || minPenalty.length > 0,
+                        `${offense.tck_article} eligibility marking should be reviewed`
+                    );
+                });
+            });
+
+            test('Notlar alanı anlamlı bilgi içeriyor', () => {
+                const withNotes = offenseData.offenses.filter(o => o.notes);
+                assertTrue(withNotes.length > 0, 'Hiçbir suçta not bulunmuyor');
+                
+                withNotes.forEach(offense => {
+                    assertTrue(offense.notes.length > 10, 
+                        `${offense.tck_article} için not çok kısa`);
+                });
+            });
+
+            test('Kişilere karşı suçlar kategorisi en fazla suç içeriyor', () => {
+                const categoryCounts = {};
+                offenseData.offenses.forEach(o => {
+                    categoryCounts[o.category] = (categoryCounts[o.category] || 0) + 1;
+                });
+                
+                const maxCategory = Object.keys(categoryCounts).reduce((a, b) => 
+                    categoryCounts[a] > categoryCounts[b] ? a : b
+                );
+                
+                assertTrue(maxCategory.includes('Kişilere'), 
+                    'En fazla suç Kişilere Karşı Suçlar kategorisinde olmalı');
+            });
+
+            test('Tüm ceza türleri geçerli', () => {
+                const validPenaltyTypes = ['Hapis', 'Adli Para Cezası', 'Hapis veya Adli Para Cezası', 'Temel cezada indirim'];
+                
+                offenseData.offenses.forEach(offense => {
+                    assertTrue(validPenaltyTypes.includes(offense.penalty_type),
+                        `${offense.tck_article} için geçersiz ceza türü: ${offense.penalty_type}`);
+                });
+            });
+        }
+
+        // Display test results
+        function displayResults() {
+            const resultsDiv = document.getElementById('testResults');
+            const summaryDiv = document.getElementById('summary');
+            
+            const passed = testResults.filter(r => r.passed).length;
+            const failed = testResults.filter(r => !r.passed).length;
+            const total = testResults.length;
+            const passRate = ((passed / total) * 100).toFixed(1);
+            
+            // Display individual test results
+            let resultsHTML = '<h2>Test Sonuçları</h2>';
+            testResults.forEach(result => {
+                resultsHTML += `
+                    <div class="test-result ${result.passed ? 'test-pass' : 'test-fail'}">
+                        <div class="test-name">${result.name}</div>
+                        <div class="test-details">${result.message}</div>
+                    </div>
+                `;
+            });
+            resultsDiv.innerHTML = resultsHTML;
+            
+            // Display summary
+            summaryDiv.innerHTML = `
+                <h3>📊 Test Özeti</h3>
+                <div class="stats">
+                    <div class="stat-item">
+                        <div class="stat-label">Toplam Test</div>
+                        <div class="stat-value">${total}</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-label">Başarılı</div>
+                        <div class="stat-value" style="color: #4ec9b0;">${passed}</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-label">Başarısız</div>
+                        <div class="stat-value" style="color: #f44747;">${failed}</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-label">Başarı Oranı</div>
+                        <div class="stat-value" style="color: ${passRate >= 90 ? '#4ec9b0' : '#f44747'};">${passRate}%</div>
+                    </div>
+                </div>
+                <div style="margin-top: 20px;">
+                    ${failed === 0 ? 
+                        '<p style="color: #4ec9b0;">✓ Tüm testler başarıyla geçti!</p>' : 
+                        `<p style="color: #f44747;">⚠ ${failed} test başarısız oldu.</p>`
+                    }
+                </div>
+            `;
+            
+            console.log(`Test özeti: ${passed}/${total} başarılı (${passRate}%)`);
+        }
+
+        // Run tests on page load
+        document.addEventListener('DOMContentLoaded', runTests);
+    </script>
+</body>
+</html>

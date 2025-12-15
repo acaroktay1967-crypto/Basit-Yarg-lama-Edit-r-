@@ -10,6 +10,27 @@ Basit yargılama usulü, **alt sınırı 2 yıl veya daha az hapis cezası** ön
 
 ## 📚 İçindekiler
 
+### 🆕 Suç Türleri Kütüphanesi
+**Dosyalar:** 
+- `suc_turleri_kutuphanesi.json` - Kapsamlı suç türleri veritabanı
+- `suc_kutuphanesi_editor.html` - Görselleştirme ve düzenleme arayüzü
+- `test_suc_kutuphanesi.js` - Otomatik test suite (Node.js)
+- `test_suc_kutuphanesi.html` - Tarayıcı tabanlı test suite
+
+**Özellikler:**
+- 20+ suç türü detaylı veri yapısı ile tanımlanmıştır
+- Her suç için TCK maddesi, kategori, ceza aralığı ve basit yargılama uygunluğu bilgisi
+- Arama, filtreleme ve sınıflandırma özellikleri
+- Kullanıcı dostu web arayüzü
+- Kapsamlı otomatik testler
+
+**Kullanım:**
+1. `suc_kutuphanesi_editor.html` dosyasını bir tarayıcıda açın
+2. Suç türlerini arayın, filtreleyin ve görüntüleyin
+3. Testleri çalıştırmak için: `node test_suc_kutuphanesi.js`
+
+---
+
 ### 1. Tensip Zaptı (Ön Karar)
 **Dosya:** `1_Tensip_Zapti_CMK251.md`
 
@@ -288,12 +309,144 @@ Ceza belirlenirken dikkate alınır:
 Basit-Yargılama-Editör/
 │
 ├── README.md (Bu dosya)
-├── 1_Tensip_Zapti_CMK251.md
-├── 2_Basit_Yargilama_Karar_Sablonu_TCK86.md
-├── 3_HAGB_Karar_Sablonu.md
-├── 4_Mahkumiyet_Karar_Sablonu.md
-├── 5_Itiraz_Uzerine_Durusma_Acilmasi.md
-└── 6_Itiraz_Inceleme_Karar.md
+│
+├── 📚 Karar Şablonları
+│   ├── 1_Tensip_Zapti_CMK251.md
+│   ├── 2_Basit_Yargilama_Karar_Sablonu_TCK86.md
+│   ├── 3_HAGB_Karar_Sablonu.md
+│   ├── 4_Mahkumiyet_Karar_Sablonu.md
+│   ├── 5_Itiraz_Uzerine_Durusma_Acilmasi.md
+│   └── 6_Itiraz_Inceleme_Karar.md
+│
+├── 🔍 Kılavuzlar
+│   ├── HIZLI_BASVURU.md
+│   └── IS_AKIS_SEMASI.md
+│
+└── 🗂️ Suç Türleri Kütüphanesi (YENİ)
+    ├── suc_turleri_kutuphanesi.json - Veri tabanı
+    ├── suc_kutuphanesi_editor.html - Görselleştirme arayüzü
+    ├── test_suc_kutuphanesi.js - Node.js test suite
+    └── test_suc_kutuphanesi.html - Tarayıcı test suite
+```
+
+---
+
+## 🗂️ Suç Türleri Kütüphanesi - Detaylı Kullanım
+
+### Kütüphane Genel Bakış
+
+Basit yargılama usulüne tabi suç türlerini içeren kapsamlı bir veri tabanı ve yönetim sistemi. Bu kütüphane:
+
+- **20+ suç türü** ile basit yargılama kapsamındaki ana suçları içerir
+- **Yapılandırılmış JSON formatı** ile kolay entegrasyon sağlar
+- **Web tabanlı arayüz** ile kullanıcı dostu erişim sunar
+- **Otomatik testler** ile veri bütünlüğünü garanti eder
+
+### Kütüphanedeki Suç Kategorileri
+
+1. **Kişilere Karşı Suçlar** (En yaygın kategori)
+   - Basit kasten yaralama (TCK 86/2, 86/3)
+   - Taksirle yaralama (TCK 89/1)
+   - Tehdit (TCK 106/1)
+   - Cinsel taciz (TCK 105/1)
+   - Hakaret (TCK 125/1)
+   - Konut dokunulmazlığının ihlali (TCK 116/1-3)
+   - Terk (TCK 97)
+   - Ve daha fazlası...
+
+2. **Malvarlığına Karşı Suçlar**
+   - Mala zarar verme (TCK 151/1)
+   - Hırsızlık - basit hal (TCK 141/1)
+   - Güveni kötüye kullanma (TCK 155/1)
+
+3. **Kamu Güvenliğine Karşı Suçlar**
+   - Tehlikeli maddelerin terk edilmesi (TCK 177/1)
+   - Kişiyi hürriyetinden yoksun kılma (TCK 109/1)
+
+4. **Kamu İdaresine Karşı Suçlar**
+   - Görevi yaptırmamak için direnme (TCK 265/1)
+
+### Web Arayüzü Kullanımı
+
+**Başlatma:**
+```bash
+# Tarayıcınızda açın:
+suc_kutuphanesi_editor.html
+```
+
+**Özellikler:**
+- 🔍 **Arama:** Suç ismi, TCK maddesi veya anahtar kelime ile arama
+- 📊 **Filtreleme:** Kategori ve basit yargılama uygunluğuna göre filtreleme
+- 📈 **İstatistikler:** Gerçek zamanlı istatistik görüntüleme
+- 🎯 **Detaylı Bilgi:** Her suç için kapsamlı bilgi kartları
+- ⚡ **Hızlı Erişim:** Responsive tasarım, tüm cihazlarda çalışır
+
+### Veri Yapısı
+
+Her suç türü aşağıdaki bilgileri içerir:
+
+```json
+{
+  "id": 1,
+  "category": "Kişilere Karşı Suçlar",
+  "name": "Basit kasten yaralama suçu",
+  "tck_article": "TCK m.86/2",
+  "description": "Kasten yaralama suçunun basit hali",
+  "penalty_min": "4 ay",
+  "penalty_max": "1 yıl",
+  "penalty_type": "Hapis",
+  "eligible_for_simple_trial": true,
+  "notes": "Alt sınır 2 yılın altında..."
+}
+```
+
+### Test Suite Kullanımı
+
+**Node.js ile Test:**
+```bash
+node test_suc_kutuphanesi.js
+```
+
+**Tarayıcı ile Test:**
+```
+test_suc_kutuphanesi.html dosyasını tarayıcıda açın
+```
+
+**Test Kategorileri:**
+- ✅ Veri yapısı doğrulama
+- ✅ Veri bütünlüğü kontrolü
+- ✅ Suç türü validasyonu
+- ✅ Arama ve filtreleme testleri
+- ✅ İş mantığı testleri
+
+### Entegrasyon Örnekleri
+
+**JavaScript ile kullanım:**
+```javascript
+// JSON dosyasını yükle
+fetch('suc_turleri_kutuphanesi.json')
+  .then(response => response.json())
+  .then(data => {
+    // Basit yargılamaya uygun suçları bul
+    const eligible = data.offenses.filter(
+      o => o.eligible_for_simple_trial === true
+    );
+    console.log('Uygun suçlar:', eligible.length);
+  });
+```
+
+**Node.js ile kullanım:**
+```javascript
+const fs = require('fs');
+const data = JSON.parse(
+  fs.readFileSync('suc_turleri_kutuphanesi.json', 'utf8')
+);
+
+// TCK maddesine göre suç ara
+const offense = data.offenses.find(
+  o => o.tck_article === 'TCK m.106/1'
+);
+console.log(offense.name); // "Tehdit suçu..."
 ```
 
 ---
