@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CMK 250 - Seri Muhakeme Modülleri Demo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        .module-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+        
+        .module-card {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 25px;
+            border-left: 4px solid #667eea;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .module-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        
+        .module-card h3 {
+            color: #1e3c72;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+        
+        .module-card p {
+            color: #555;
+            margin-bottom: 10px;
+        }
+        
+        .features {
+            list-style: none;
+            margin-top: 15px;
+        }
+        
+        .features li {
+            padding: 5px 0;
+            color: #666;
+        }
+        
+        .features li:before {
+            content: "✓ ";
+            color: #28a745;
+            font-weight: bold;
+            margin-right: 8px;
+        }
+        
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            margin: 30px 0;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #667eea;
+        }
+        
+        .stat-label {
+            color: #666;
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
+        
+        .tech-stack {
+            margin-top: 30px;
+            padding: 20px;
+            background: #e3f2fd;
+            border-radius: 8px;
+        }
+        
+        .tech-stack h3 {
+            color: #1e3c72;
+            margin-bottom: 15px;
+        }
+        
+        .badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .badge {
+            background: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            color: #555;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        footer {
+            background: #1e3c72;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .legal-basis {
+            margin: 30px 0;
+            padding: 20px;
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            border-radius: 5px;
+        }
+        
+        .legal-basis h3 {
+            color: #856404;
+            margin-bottom: 10px;
+        }
+        
+        .legal-basis ul {
+            list-style: none;
+            color: #856404;
+        }
+        
+        .legal-basis li {
+            padding: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>⚖️ CMK 250 - Seri Muhakeme Modülleri</h1>
+            <p>Basit Yargılama Editörü v2.0</p>
+        </header>
+        
+        <div class="content">
+            <div class="stats">
+                <div class="stat-item">
+                    <div class="stat-number">5</div>
+                    <div class="stat-label">Ana Modül</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">6</div>
+                    <div class="stat-label">React Bileşeni</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">3</div>
+                    <div class="stat-label">TypeScript Kütüphanesi</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">5</div>
+                    <div class="stat-label">JSON Veri Dosyası</div>
+                </div>
+            </div>
+            
+            <h2 style="color: #1e3c72; margin-bottom: 20px;">📦 Modüller</h2>
+            
+            <div class="module-grid">
+                <div class="module-card">
+                    <h3>📚 Yargıtay Kararları Kütüphanesi</h3>
+                    <p>Seri muhakeme usulüne ilişkin Yargıtay kararları</p>
+                    <ul class="features">
+                        <li>5 örnek karar</li>
+                        <li>Arama ve filtreleme</li>
+                        <li>Detay görüntüleme</li>
+                        <li>Yeni karar ekleme formu</li>
+                    </ul>
+                </div>
+                
+                <div class="module-card">
+                    <h3>⚠️ Uygulanamaz Haller</h3>
+                    <p>CMK 250/13 kapsamındaki kontrol mekanizması</p>
+                    <ul class="features">
+                        <li>9 farklı engel hal kontrolü</li>
+                        <li>Otomatik uygunluk değerlendirmesi</li>
+                        <li>Yasal dayanak gösterimi</li>
+                        <li>Kontrol kriterleri</li>
+                    </ul>
+                </div>
+                
+                <div class="module-card">
+                    <h3>📋 Suçlar Listesi</h3>
+                    <p>Seri muhakemeye tabi suçlar ve entegrasyon</p>
+                    <ul class="features">
+                        <li>15+ seri muhakeme suçu</li>
+                        <li>TCK madde bazlı arama</li>
+                        <li>Kategori filtreleme</li>
+                        <li>İstatistik görüntüleme</li>
+                    </ul>
+                </div>
+                
+                <div class="module-card">
+                    <h3>✅ Talepname Validasyon</h3>
+                    <p>Zorunlu alan kontrolü ve validasyon</p>
+                    <ul class="features">
+                        <li>8 ana alan grubu</li>
+                        <li>Müdafi huzurunda kabul kontrolü</li>
+                        <li>TC Kimlik No validasyonu</li>
+                        <li>Anlık hata mesajları</li>
+                    </ul>
+                </div>
+                
+                <div class="module-card">
+                    <h3>📄 Örnek Hükümler</h3>
+                    <p>CMK 250'ye göre mahkeme hükümleri</p>
+                    <ul class="features">
+                        <li>3 farklı örnek hüküm</li>
+                        <li>HAGB ve mahkumiyet örnekleri</li>
+                        <li>Karar gerekçeleri</li>
+                        <li>Ek notlar ve açıklamalar</li>
+                    </ul>
+                </div>
+                
+                <div class="module-card">
+                    <h3>🧪 Test Coverage</h3>
+                    <p>Kapsamlı otomatik testler</p>
+                    <ul class="features">
+                        <li>4 test suite</li>
+                        <li>Jest framework</li>
+                        <li>Veri validasyonu</li>
+                        <li>Fonksiyon testleri</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="legal-basis">
+                <h3>⚖️ Yasal Dayanak</h3>
+                <ul>
+                    <li><strong>CMK 250</strong> - Seri Muhakeme Usulü</li>
+                    <li><strong>CMK 250/13</strong> - Seri Muhakemenin Uygulanamayacağı Haller</li>
+                    <li><strong>TCK</strong> - İlgili Suç Maddeleri</li>
+                    <li><strong>Yargıtay İçtihatları</strong> - Seri muhakeme kararları</li>
+                </ul>
+            </div>
+            
+            <div class="tech-stack">
+                <h3>🛠️ Teknoloji Yığını</h3>
+                <div class="badges">
+                    <span class="badge">React 18</span>
+                    <span class="badge">TypeScript 5</span>
+                    <span class="badge">Jest</span>
+                    <span class="badge">Vite</span>
+                    <span class="badge">JSON</span>
+                    <span class="badge">JavaScript ES2020</span>
+                </div>
+            </div>
+            
+            <div style="margin-top: 30px; padding: 20px; background: #d4edda; border-left: 4px solid #28a745; border-radius: 5px;">
+                <h3 style="color: #155724; margin-bottom: 10px;">✅ Kurulum</h3>
+                <pre style="background: white; padding: 15px; border-radius: 5px; overflow-x: auto; color: #333;"><code>npm install
+npm run dev
+npm test</code></pre>
+            </div>
+        </div>
+        
+        <footer>
+            <p><strong>Basit Yargılama Editörü v2.0</strong></p>
+            <p style="opacity: 0.8; margin-top: 5px;">CMK 250 - Seri Muhakeme Modülleri | 2024</p>
+        </footer>
+    </div>
+</body>
+</html>

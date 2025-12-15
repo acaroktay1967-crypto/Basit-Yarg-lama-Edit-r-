@@ -1,0 +1,205 @@
+/* Basic Reset and Global Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  color: #333;
+  background: #f5f5f5;
+}
+
+/* App Layout */
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-header {
+  background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+  color: white;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.app-header h1 {
+  font-size: 2em;
+  margin-bottom: 5px;
+}
+
+.app-header p {
+  opacity: 0.9;
+  font-size: 1.1em;
+}
+
+.app-nav {
+  background: white;
+  display: flex;
+  overflow-x: auto;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.nav-tab {
+  padding: 15px 25px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s;
+  border-bottom: 3px solid transparent;
+  font-size: 0.95em;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.nav-tab:hover {
+  background: #f8f9fa;
+}
+
+.nav-tab.active {
+  border-bottom-color: #667eea;
+  background: #f8f9fa;
+  font-weight: 600;
+}
+
+.tab-icon {
+  font-size: 1.3em;
+}
+
+.app-content {
+  flex: 1;
+  padding: 30px;
+  max-width: 1400px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.app-footer {
+  background: #1e3c72;
+  color: white;
+  text-align: center;
+  padding: 15px;
+  margin-top: auto;
+}
+
+/* Common Components */
+.loading {
+  text-align: center;
+  padding: 40px;
+  color: #666;
+}
+
+.btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+  transition: all 0.3s;
+}
+
+.btn-kaydet {
+  background: #28a745;
+  color: white;
+}
+
+.btn-kaydet:hover {
+  background: #218838;
+}
+
+.btn-iptal {
+  background: #6c757d;
+  color: white;
+  margin-left: 10px;
+}
+
+.btn-iptal:hover {
+  background: #5a6268;
+}
+
+.btn-kontrol {
+  background: #667eea;
+  color: white;
+  padding: 12px 30px;
+  font-size: 1.1em;
+}
+
+.btn-kontrol:hover {
+  background: #5568d3;
+}
+
+/* Forms */
+.form-grup {
+  margin-bottom: 20px;
+}
+
+.form-grup label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 500;
+  color: #555;
+}
+
+.form-grup input,
+.form-grup textarea,
+.form-grup select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1em;
+}
+
+.form-grup input:focus,
+.form-grup textarea:focus,
+.form-grup select:focus {
+  outline: none;
+  border-color: #667eea;
+}
+
+.form-grup input.hata,
+.form-grup textarea.hata {
+  border-color: #dc3545;
+}
+
+.hata-mesaj {
+  color: #dc3545;
+  font-size: 0.9em;
+  margin-top: 5px;
+  display: block;
+}
+
+.zorunlu {
+  color: #dc3545;
+}
+
+/* Utilities */
+.basarili-mesaj {
+  color: #28a745;
+  padding: 15px;
+  background: #d4edda;
+  border-radius: 5px;
+  margin: 10px 0;
+}
+
+.uyari-mesaj {
+  color: #856404;
+  padding: 15px;
+  background: #fff3cd;
+  border-radius: 5px;
+  margin: 10px 0;
+}
+
+.hata-mesaj {
+  color: #721c24;
+  padding: 15px;
+  background: #f8d7da;
+  border-radius: 5px;
+  margin: 10px 0;
+}

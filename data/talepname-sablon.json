@@ -1,0 +1,307 @@
+{
+  "metadata": {
+    "version": "1.0",
+    "last_updated": "2024-12-15",
+    "description": "Seri Muhakeme Talepname Şablonu - Gerekli Alanlar",
+    "legal_basis": "CMK 250 - Seri Muhakeme Usulü"
+  },
+  "zorunlu_alanlar": [
+    {
+      "id": 1,
+      "alan_adi": "suspehli_bilgileri",
+      "baslik": "Şüpheli ve Müdafii Bilgileri",
+      "aciklama": "Şüphelinin kimlik bilgileri ve müdafii bilgileri",
+      "alt_alanlar": [
+        {
+          "alan": "ad_soyad",
+          "tip": "text",
+          "zorunlu": true,
+          "aciklama": "Şüphelinin adı ve soyadı"
+        },
+        {
+          "alan": "tc_kimlik_no",
+          "tip": "text",
+          "zorunlu": true,
+          "aciklama": "T.C. Kimlik Numarası"
+        },
+        {
+          "alan": "dogum_tarihi",
+          "tip": "date",
+          "zorunlu": true,
+          "aciklama": "Doğum tarihi"
+        },
+        {
+          "alan": "dogum_yeri",
+          "tip": "text",
+          "zorunlu": true,
+          "aciklama": "Doğum yeri"
+        },
+        {
+          "alan": "adres",
+          "tip": "textarea",
+          "zorunlu": true,
+          "aciklama": "İkametgah adresi"
+        },
+        {
+          "alan": "mudafi_ad_soyad",
+          "tip": "text",
+          "zorunlu": true,
+          "aciklama": "Müdafii adı ve soyadı"
+        },
+        {
+          "alan": "mudafi_baro_no",
+          "tip": "text",
+          "zorunlu": true,
+          "aciklama": "Müdafii baro sicil numarası"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "alan_adi": "magdur_bilgileri",
+      "baslik": "Mağdur/Zarar Gören ve Vekil/Kanuni Temsilci Bilgileri",
+      "aciklama": "Mağdur veya zarar görenin kimlik bilgileri ve varsa vekil/kanuni temsilci bilgileri",
+      "alt_alanlar": [
+        {
+          "alan": "magdur_ad_soyad",
+          "tip": "text",
+          "zorunlu": false,
+          "aciklama": "Mağdur/Zarar görenin adı ve soyadı"
+        },
+        {
+          "alan": "magdur_tc_kimlik_no",
+          "tip": "text",
+          "zorunlu": false,
+          "aciklama": "Mağdur/Zarar görenin T.C. Kimlik Numarası"
+        },
+        {
+          "alan": "vekil_ad_soyad",
+          "tip": "text",
+          "zorunlu": false,
+          "aciklama": "Vekil/Kanuni temsilci adı soyadı"
+        },
+        {
+          "alan": "vekil_baro_no",
+          "tip": "text",
+          "zorunlu": false,
+          "aciklama": "Vekil baro sicil numarası"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "alan_adi": "isnat_bilgileri",
+      "baslik": "İsnat Olunan Suç ve Madde",
+      "aciklama": "Şüpheliye isnat edilen suç ve yasal dayanak",
+      "alt_alanlar": [
+        {
+          "alan": "suc_adi",
+          "tip": "text",
+          "zorunlu": true,
+          "aciklama": "Suçun adı"
+        },
+        {
+          "alan": "tck_madde",
+          "tip": "text",
+          "zorunlu": true,
+          "aciklama": "İlgili TCK maddesi"
+        },
+        {
+          "alan": "suc_tarihi",
+          "tip": "date",
+          "zorunlu": true,
+          "aciklama": "Suçun işlendiği tarih"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "alan_adi": "olay_bilgileri",
+      "baslik": "Yer, Tarih, Zaman Bilgileri",
+      "aciklama": "Olayın gerçekleştiği yer, tarih ve zaman bilgileri",
+      "alt_alanlar": [
+        {
+          "alan": "olay_yeri",
+          "tip": "text",
+          "zorunlu": true,
+          "aciklama": "Olayın gerçekleştiği yer"
+        },
+        {
+          "alan": "olay_tarihi",
+          "tip": "date",
+          "zorunlu": true,
+          "aciklama": "Olayın gerçekleştiği tarih"
+        },
+        {
+          "alan": "olay_saati",
+          "tip": "time",
+          "zorunlu": false,
+          "aciklama": "Olayın gerçekleştiği saat (varsa)"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "alan_adi": "tutukluluk_bilgileri",
+      "baslik": "Tutukluluk/Gözaltı Tarihleri ve Süreleri",
+      "aciklama": "Şüphelinin gözaltında veya tutuklulukta geçirdiği süre bilgileri",
+      "alt_alanlar": [
+        {
+          "alan": "gozalti_var_mi",
+          "tip": "boolean",
+          "zorunlu": true,
+          "aciklama": "Gözaltı var mı?"
+        },
+        {
+          "alan": "gozalti_baslangic",
+          "tip": "datetime",
+          "zorunlu": false,
+          "aciklama": "Gözaltı başlangıç tarihi ve saati"
+        },
+        {
+          "alan": "gozalti_bitis",
+          "tip": "datetime",
+          "zorunlu": false,
+          "aciklama": "Gözaltı bitiş tarihi ve saati"
+        },
+        {
+          "alan": "tutukluluk_var_mi",
+          "tip": "boolean",
+          "zorunlu": true,
+          "aciklama": "Tutukluluk var mı?"
+        },
+        {
+          "alan": "tutukluluk_baslangic",
+          "tip": "date",
+          "zorunlu": false,
+          "aciklama": "Tutukluluk başlangıç tarihi"
+        },
+        {
+          "alan": "tutukluluk_suresi_gun",
+          "tip": "number",
+          "zorunlu": false,
+          "aciklama": "Tutuklulukta geçen süre (gün)"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "alan_adi": "olay_ozeti",
+      "baslik": "Olay Özeti",
+      "aciklama": "Olayın kısa özeti ve deliller",
+      "alt_alanlar": [
+        {
+          "alan": "olay_aciklamasi",
+          "tip": "textarea",
+          "zorunlu": true,
+          "aciklama": "Olayın ayrıntılı açıklaması"
+        },
+        {
+          "alan": "deliller",
+          "tip": "textarea",
+          "zorunlu": true,
+          "aciklama": "Mevcut deliller"
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "alan_adi": "teklif_kabul_bilgileri",
+      "baslik": "Teklif ve Müdafii Huzurunda Kabul Bilgisi",
+      "aciklama": "Seri muhakeme teklifinin yapılması ve kabulü",
+      "alt_alanlar": [
+        {
+          "alan": "teklif_tarihi",
+          "tip": "date",
+          "zorunlu": true,
+          "aciklama": "Teklifin yapıldığı tarih"
+        },
+        {
+          "alan": "mudafi_huzurunda_mi",
+          "tip": "boolean",
+          "zorunlu": true,
+          "aciklama": "Teklif müdafii huzurunda mı kabul edildi?"
+        },
+        {
+          "alan": "kabul_tarihi",
+          "tip": "date",
+          "zorunlu": true,
+          "aciklama": "Teklifin kabul edildiği tarih"
+        },
+        {
+          "alan": "kabul_aciklamasi",
+          "tip": "textarea",
+          "zorunlu": true,
+          "aciklama": "Kabulün nasıl gerçekleştiği"
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "alan_adi": "ceza_bilgileri",
+      "baslik": "Belirlenen Ceza/Güvenlik Tedbirleri ve HAGB/Seçenek/Ertelemeye İlişkin Hususlar",
+      "aciklama": "Belirlenen ceza ve uygulanacak hukuki sonuçlar",
+      "alt_alanlar": [
+        {
+          "alan": "belirlenen_ceza_sure",
+          "tip": "text",
+          "zorunlu": true,
+          "aciklama": "Belirlenen ceza süresi (örn: 6 ay)"
+        },
+        {
+          "alan": "ceza_turu",
+          "tip": "select",
+          "secenekler": ["Hapis", "Adli Para"],
+          "zorunlu": true,
+          "aciklama": "Ceza türü"
+        },
+        {
+          "alan": "hagb_uygulanacak_mi",
+          "tip": "boolean",
+          "zorunlu": true,
+          "aciklama": "HAGB uygulanacak mı?"
+        },
+        {
+          "alan": "erteleme_uygulanacak_mi",
+          "tip": "boolean",
+          "zorunlu": true,
+          "aciklama": "Erteleme uygulanacak mı?"
+        },
+        {
+          "alan": "secenek_yaptirim",
+          "tip": "text",
+          "zorunlu": false,
+          "aciklama": "Seçenek yaptırım (varsa)"
+        },
+        {
+          "alan": "guvenlik_tedbiri",
+          "tip": "textarea",
+          "zorunlu": false,
+          "aciklama": "Güvenlik tedbirleri (varsa)"
+        }
+      ]
+    }
+  ],
+  "validasyon_kurallari": [
+    {
+      "kural": "mudafi_zorunlu",
+      "aciklama": "Şüpheli müdafii olmadan seri muhakeme teklifini kabul edemez",
+      "hata_mesaji": "Müdafii bilgileri zorunludur"
+    },
+    {
+      "kural": "mudafi_huzurunda_kabul",
+      "aciklama": "Teklif mutlaka müdafii huzurunda kabul edilmelidir",
+      "hata_mesaji": "Teklif müdafii huzurunda kabul edilmelidir (CMK 250/2)"
+    },
+    {
+      "kural": "ceza_ust_sinir_asma",
+      "aciklama": "Belirlenen ceza, suça ilişkin kanunda öngörülen cezanın üst sınırını aşamaz",
+      "hata_mesaji": "Belirlenen ceza üst sınırı aşamaz (CMK 250/2)"
+    },
+    {
+      "kural": "gozalti_tutukluluk_indirim",
+      "aciklama": "Gözaltı ve tutukluluk süreleri belirlenen cezadan indirilmelidir",
+      "hata_mesaji": "Gözaltı/tutukluluk süreleri indirilmeli (CMK 250/2)"
+    }
+  ]
+}
