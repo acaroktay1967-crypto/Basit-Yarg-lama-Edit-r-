@@ -14,6 +14,7 @@ Basit yargılama usulü, **alt sınırı 2 yıl veya daha az hapis cezası** ön
 **Dosyalar:** 
 - `suc_turleri_kutuphanesi.json` - Kapsamlı suç türleri veritabanı
 - `suc_kutuphanesi_editor.html` - Görselleştirme ve düzenleme arayüzü
+- `dist/BasitYargilamaEditor-Portable.html` - 📦 **Portable tek dosya versiyon** (Önerilen!)
 - `test_suc_kutuphanesi.js` - Otomatik test suite (Node.js)
 - `test_suc_kutuphanesi.html` - Tarayıcı tabanlı test suite
 
@@ -24,11 +25,20 @@ Basit yargılama usulü, **alt sınırı 2 yıl veya daha az hapis cezası** ön
 - Arama, filtreleme ve sınıflandırma özellikleri
 - Kullanıcı dostu web arayüzü
 - Kapsamlı otomatik testler
+- **📦 Portable HTML versiyonu** - Kurulum gerektirmez, USB'de taşınabilir
+
+**Hızlı Başlangıç (Portable Versiyon):**
+```bash
+npm install
+npm run build
+# dist/BasitYargilamaEditor-Portable.html dosyası oluşturulur
+```
 
 **Kullanım:**
-1. `suc_kutuphanesi_editor.html` dosyasını bir tarayıcıda açın
-2. Suç türlerini arayın, filtreleyin ve görüntüleyin
-3. Testleri çalıştırmak için: `node test_suc_kutuphanesi.js`
+1. **Portable (Önerilen):** `dist/BasitYargilamaEditor-Portable.html` dosyasını çift tıklayın
+2. **Web Versiyonu:** `suc_kutuphanesi_editor.html` dosyasını tarayıcıda açın
+3. **Testler:** `node test_suc_kutuphanesi.js`
+4. **Build Detayları:** `BUILD.md` dosyasına bakınız
 
 ---
 

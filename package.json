@@ -1,0 +1,51 @@
+{
+  "name": "basit-yargilama-editor",
+  "version": "1.1.0",
+  "description": "Basit Yargılama ve Seri Muhakeme Usulü - Suç Türleri Kütüphanesi",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "node build-portable.js",
+    "build:portable": "node build-portable.js",
+    "build:exe": "echo 'Windows .exe build requires Wine on Linux. Please build on Windows or use portable HTML version.' && node build-portable.js",
+    "test": "node test_suc_kutuphanesi.js"
+  },
+  "keywords": [
+    "basit-yargilama",
+    "seri-muhakeme",
+    "tck",
+    "cmk",
+    "hukuk"
+  ],
+  "author": "acaroktay1967-crypto",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^28.0.0",
+    "electron-builder": "^24.9.1"
+  },
+  "build": {
+    "appId": "com.basit-yargilama.editor",
+    "productName": "Basit Yargılama Editörü",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "main.js",
+      "suc_kutuphanesi_editor.html",
+      "suc_turleri_kutuphanesi.json"
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "portable",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    },
+    "portable": {
+      "artifactName": "BasitYargilamaEditor-Portable.exe"
+    }
+  }
+}
