@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basit Yargılama Suç Türleri Kütüphanesi - Portable</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+        }
+
+        header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.2em;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            opacity: 0.9;
+            font-size: 1.1em;
+        }
+
+        .controls {
+            padding: 25px 30px;
+            background: #f8f9fa;
+            border-bottom: 2px solid #e9ecef;
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .search-box {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 12px 20px;
+            border: 2px solid #dee2e6;
+            border-radius: 25px;
+            font-size: 1em;
+            transition: all 0.3s;
+        }
+
+        .search-box input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .filter-group {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        select {
+            padding: 10px 15px;
+            border: 2px solid #dee2e6;
+            border-radius: 8px;
+            font-size: 0.95em;
+            cursor: pointer;
+            background: white;
+            transition: all 0.3s;
+        }
+
+        select:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            font-size: 0.95em;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 600;
+        }
+
+        .btn-primary {
+            background: #667eea;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #5568d3;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-secondary {
+            background: #6c757d;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: #5a6268;
+        }
+
+        .stats {
+            padding: 20px 30px;
+            background: #e3f2fd;
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2em;
+            font-weight: bold;
+            color: #1976d2;
+        }
+
+        .stat-label {
+            color: #666;
+            margin-top: 5px;
+        }
+
+        .content {
+            padding: 30px;
+        }
+
+        .offense-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .offense-card {
+            border: 2px solid #e9ecef;
+            border-radius: 12px;
+            padding: 20px;
+            transition: all 0.3s;
+            background: white;
+        }
+
+        .offense-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            border-color: #667eea;
+        }
+
+        .offense-card.eligible {
+            border-left: 5px solid #28a745;
+        }
+
+        .offense-card.not-eligible {
+            border-left: 5px solid #dc3545;
+        }
+
+        .offense-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 15px;
+        }
+
+        .offense-title {
+            font-size: 1.1em;
+            font-weight: bold;
+            color: #2c3e50;
+            flex: 1;
+        }
+
+        .tck-badge {
+            background: #667eea;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 600;
+            white-space: nowrap;
+            margin-left: 10px;
+        }
+
+        .offense-category {
+            color: #6c757d;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+            font-style: italic;
+        }
+
+        .offense-description {
+            color: #495057;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .penalty-info {
+            background: #f8f9fa;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        .penalty-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+            font-size: 0.9em;
+        }
+
+        .penalty-label {
+            color: #6c757d;
+            font-weight: 600;
+        }
+
+        .penalty-value {
+            color: #2c3e50;
+        }
+
+        .eligibility-badge {
+            display: inline-block;
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 600;
+            margin-top: 10px;
+        }
+
+        .eligibility-badge.yes {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .eligibility-badge.no {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        .notes {
+            margin-top: 10px;
+            padding: 10px;
+            background: #fff3cd;
+            border-left: 3px solid #ffc107;
+            border-radius: 4px;
+            font-size: 0.85em;
+            color: #856404;
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 60px 20px;
+            color: #6c757d;
+        }
+
+        .no-results i {
+            font-size: 3em;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        footer {
+            background: #2c3e50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .offense-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .controls {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .search-box {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>⚖️ Basit Yargılama Suç Türleri Kütüphanesi</h1>
+            <p>5271 sayılı Ceza Muhakemesi Kanunu - Portable Versiyon</p>
+        </header>
+
+        <div class="controls">
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="🔍 Suç türü, TCK maddesi veya anahtar kelime ara...">
+            </div>
+            
+            <div class="filter-group">
+                <select id="categoryFilter">
+                    <option value="all">Tüm Kategoriler</option>
+                </select>
+                
+                <select id="eligibilityFilter">
+                    <option value="all">Tüm Suçlar</option>
+                    <option value="eligible">Basit Yargılama Uygun</option>
+                    <option value="not-eligible">Basit Yargılama Uygun Değil</option>
+                    <option value="expedited">Seri Muhakeme Uygun</option>
+                </select>
+            </div>
+
+            <button class="btn btn-primary" onclick="resetFilters()">🔄 Filtreleri Sıfırla</button>
+        </div>
+
+        <div class="stats" id="stats">
+            <div class="stat-item">
+                <div class="stat-number" id="totalCount">0</div>
+                <div class="stat-label">Toplam Suç Türü</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" id="eligibleCount">0</div>
+                <div class="stat-label">Basit Yargılama Uygun</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" id="expeditedCount">0</div>
+                <div class="stat-label">Seri Muhakeme Uygun</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" id="displayedCount">0</div>
+                <div class="stat-label">Görüntülenen</div>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="offense-grid" id="offenseGrid">
+                <!-- Offense cards will be dynamically inserted here -->
+            </div>
+        </div>
+
+        <footer>
+            <p>&copy; 2024 Basit Yargılama Editörü | MIT License</p>
+            <p style="margin-top: 10px; font-size: 0.9em; opacity: 0.8;">
+                Bu kütüphane, mevcut mevzuat ve Yargıtay içtihatlarına göre hazırlanmıştır.
+            </p>
+        </footer>
+    </div>
+
+    <script>
+        let offenseData = null;
+        let filteredOffenses = [];
+
+        // Load offense data
+        async function loadOffenseData() {
+        try {
+            // Embedded JSON data for portable version
+            offenseData = {
+  "metadata": {
+    "version": "1.1",
+    "last_updated": "2024-12-15",
+    "description": "Basit Yargılama ve Seri Muhakeme Usulüne Tabi Suç Türleri Kütüphanesi",
+    "legal_basis": "5271 sayılı Ceza Muhakemesi Kanunu Madde 250 (Seri Muhakeme) ve Madde 251 (Basit Yargılama)"
+  },
+  "offenses": [
+    {
+      "id": 1,
+      "category": "Kişilere Karşı Suçlar",
+      "name": "Basit kasten yaralama suçu",
+      "tck_article": "TCK m.86/2",
+      "description": "Kasten yaralama suçunun basit hali",
+      "penalty_min": "4 ay",
+      "penalty_max": "1 yıl",
+      "penalty_type": "Hapis",
+      "eligible_for_simple_trial": true,
+      "notes": "Alt sınır 2 yılın altında olduğundan basit yargılama kapsamındadır"
+    },
+    {
+      "id": 2,
+      "category": "Kişilere Karşı Suçlar",
+      "name": "Basit kasten yaralama suçu",
+      "tck_article": "TCK m.86/3",
+      "description": "Kasten yaralama suçunun basit hali - neticesi sebebiyle ağırlaşmış hal",
+      "penalty_min": "1 yıl",
+      "penalty_max": "3 yıl",
+      "penalty_type": "Hapis",
+      "eligible_for_simple_trial": false,
+      "notes": "Alt sınır 1 yıl olduğu için dikkatli değerlendirme gerekir"
+    },
+    {
+      "id": 3,
+      "category": "Kişilere Karşı Suçlar",
+      "name": "Kasten yaralamanın ihmali davranışla işlenmesi",
+      "tck_article": "TCK m.88/1",
+      "description": "Kasten yaralama suçunun ihmali davranışla işlenmesi",
+      "penalty_min": "Temel cezada indirim",
+      "penalty_max": "Temel cezada indirim",
+      "penalty_type": "Hapis",
+      "eligible_for_simple_trial": true,
+      "notes": "TCK 86'ya göre cezada 1/3 oranında indirim yapılır"
+    },
+    {
+      "id": 4,
+      "category": "Kişilere Karşı Suçlar",
+      "name": "Taksirle yaralama suçu",
+      "tck_article": "TCK m.89/1",
+      "description": "Taksirle başkasının vücuduna acı veren veya sağlığının ya da algılama yeteneğinin bozulmasına neden olan kişi",
+      "penalty_min": "3 ay",
+      "penalty_max": "1 yıl",
+      "penalty_type": "Hapis veya Adli Para Cezası",
+      "eligible_for_simple_trial": true,
+      "notes": "Alt sınır 2 yılın altında olduğundan basit yargılama kapsamındadır"
+    },
+    {
+      "id": 5,
+      "category": "Kişilere Karşı Suçlar",
+      "name": "Terk suçu",
+      "tck_article": "TCK m.97",
+      "description": "Çocuk, hasta, yaşlı veya bedensel veya ruhsal bir engeli olan kişiyi yardım edemeyecek durumda terk etme",
+      "penalty_min": "3 ay",
+      "penalty_max": "2 yıl",
+      "penalty_type": "Hapis",
+      "eligible_for_simple_trial": true,
+      "notes": "Alt sınır 2 yılın altında olduğundan basit yargılama kapsamındadır"
+    },
+    {
+      "id": 6,
+      "category": "Kişilere Karşı Suçlar",
+      "name": "Yardım veya bildirim yükümlülüğünün yerine getirilmemesi",
+      "tck_article": "TCK m.98",
+      "description": "Ölüm veya ağır bir bedensel zarara uğramış veya uğrama tehlikesi olan kişiye yardım etmeme veya yetkili makamlara bildirmeme",
+      "penalty_min": "1 yıl",
+      "penalty_max": "3 yıl",
+      "penalty_type": "Hapis",
+      "eligible_for_simple_trial": false,
+      "notes": "Alt sınır 1 yıl - basit yargılama için dikkatli değerlendirme gerekir"
+    },
+    {
+      "id": 7,
+      "category": "Kişilere Karşı Suçlar",
+      "name": "Tehdit suçu - hayat, vücut, cinsel dokunulmazlık",
+      "tck_article": "TCK m.106/1",
+      "description": "Kişiyi, kendisinin veya yakınının hayatına, vücut veya cinsel dokunulmazlığına yönelik bir saldırı gerçekleştireceğinden bahisle tehdit etme",
+      "penalty_min": "6 ay",
+      "penalty_max": "2 yıl",
+      "penalty_type": "Hapis",
+      "eligible_for_simple_trial": true,
+      "notes": "En yaygın basit yargılama suçlarından biridir"
+    },
+    {
+      "id": 8,
+      "category": "Kişilere Karşı Suçlar",
+      "name": "Basit cinsel taciz suçu",
+      "tck_article": "TCK m.105/1",
+      "description": "Bir kimseyi cinsel amaçlı olarak taciz eden kişi",
+      "penalty_min": "3 ay",
+      "penalty_max": "2 yıl",
+      "penalty_type": "Hapis veya Adli Para Cezası",
+      "eligible_for_simple_trial": true,
+      "notes": "Alt sınır 2 yılın altında olduğundan basit yargılama kapsamındadır"
+    },
+    {
+      "id": 9,
+      "category": "Kişilere Karşı Suçlar",
+      "name": "Konut dokunulmazlığının ihlali",
+      "tck_article": "TCK m.116/1",
+      "description": "Bir kimsenin konutuna, konutunun eklentilerine rızası olmaksızın giren veya rıza ile girdikten sonra buradan çıkmayan",
+      "penalty_min": "6 ay",
+      "penalty_max": "2 yıl",
+      "penalty_type": "Hapis",
+      "eligible_for_simple_trial": true,
+      "notes": "Basit yargılama kapsamındadır"
+    },
+    {
+      "id": 10,
+      "category": "Kişilere Karşı Suçlar",
+      "name": "Konut dokunulmazlığının ihlali - işyeri",
+      "tck_article": "TCK m.116/2",
+      "description": "Bir kimsenin işyerine veya eklentilerine rızası olmaksızın giren veya rıza ile girdikten sonra buradan çıkmayan",
+      "penalty_min": "6 ay",
+      "penalty_max": "1 yıl",
+      "penalty_type": "Hapis",
+      "eligible_for_simple_trial": true,
+      "notes": "Basit yargılama kapsamındadır"
+    },
+    {
+      "id": 11,
+      "category": "Kişilere Karşı Suçlar",
+      "name": "Konut dokunulmazlığının ihlali - tehdit veya cebir",
+      "tck_article": "TCK m.116/3",
+      "description": "Konut dokunulmazlığı ihlalinin tehdit veya cebir kullanarak işlenmesi",
+      "penalty_min": "1 yıl",
+      "penalty_max": "3 yıl",
+      "penalty_type": "Hapis",
+      "eligible_for_simple_trial": false,
+      "notes": "Alt sınır 1 yıl - basit yargılama için dikkatli değerlendirme gerekir"
+    },
+    {
+      "id": 12,
+      "category": "Kişilere Karşı Suçlar",
+      "name": "Hakaret suçu",
+      "tck_article": "TCK m.125/1",
+      "description": "Bir kimseye onur, şeref ve saygınlığını rencide edebilecek somut bir fiil veya olgu isnat eden veya sövmek suretiyle bir kimsenin onur, şeref ve saygınlığına saldıran kişi",
+      "penalty_min": "3 ay",
+      "penalty_max": "2 yıl",
+      "penalty_type": "Hapis veya Adli Para Cezası",
+      "eligible_for_simple_trial": true,
+      "notes": "Yaygın basit yargılama suçlarından biridir"
+    },
+    {
+      "id": 13,
+      "category": "Malvarlığına Karşı Suçlar",
+      "name": "Mala zarar verme",
+      "tck_article": "TCK m.151/1",
+      "description": "Başkasına ait olan taşınır veya taşınmaz bir malı kısmen veya tamamen yıkan, tahrip eden, yok eden, bozan, kullanılamaz hale getiren veya kirleten kişi",
+      "penalty_min": "4 ay",
+      "penalty_max": "3 yıl",
+      "penalty_type": "Hapis veya Adli Para Cezası",
+      "eligible_for_simple_trial": true,
+      "notes": "Alt sınır düşük olduğundan genellikle basit yargılama kapsamındadır"
+    },
+    {
+      "id": 14,
+      "category": "Malvarlığına Karşı Suçlar",
+      "name": "Güveni kötüye kullanma",
+      "tck_article": "TCK m.155/1",
+      "description": "Zilyedliği kendisine devredilmiş olan veya koruma ve gözetimi altında bulunan başkasına ait taşınır bir malı kendinin veya başkasının yararına olarak zimmete geçiren kişi",
+      "penalty_min": "1 yıl",
+      "penalty_max": "3 yıl",
+      "penalty_type": "Hapis",
+      "eligible_for_simple_trial": false,
+      "notes": "Alt sınır 1 yıl - dikkatli değerlendirme gerekir"
+    },
+    {
+      "id": 15,
+      "category": "Kişilere Karşı Suçlar",
+      "name": "Kişisel verilerin kaydedilmesi",
+      "tck_article": "TCK m.135/1",
+      "description": "Hukuka aykırı olarak kişisel verileri kaydeden kişi",
+      "penalty_min": "1 yıl",
+      "penalty_max": "3 yıl",
+      "penalty_type": "Hapis",
+      "eligible_for_simple_trial": false,
+      "notes": "Alt sınır 1 yıl - dikkatli değerlendirme gerekir"
+    },
+    {
+      "id": 16,
+      "category": "Kamu Güvenliğine Karşı Suçlar",
+      "name": "Kişiyi hürriyetinden yoksun kılma",
+      "tck_article": "TCK m.109/1",
+      "description": "Bir kimseyi hukuka aykırı olarak bir yere gitmekten alıkoyan, bir yerde kalmaya mecbur kılan veya başka bir suretle hürriyetinden yoksun bırakan kişi",
+      "penalty_min": "1 yıl",
+      "penalty_max": "5 yıl",
+      "penalty_type": "Hapis",
+      "eligible_for_simple_trial": false,
+      "notes": "Alt sınır 1 yıl - basit yargılama için uygun değildir"
+    },
+    {
+      "id": 17,
+      "category": "Kişilere Karşı Suçlar",
+      "name": "Kişilerin huzur ve sükûnunu bozma",
+      "tck_article": "TCK m.123/1",
+      "description": "Hukuka aykırı olarak kişilerin huzur ve sükûnunu bozacak şekilde gürültüye neden olan kişi",
+      "penalty_min": "3 ay",
+      "penalty_max": "1 yıl",
+      "penalty_type": "Adli Para Cezası",
+      "eligible_for_simple_trial": true,
+      "notes": "Basit yargılama kapsamındadır"
+    },
+    {
+      "id": 18,
+      "category": "Kamu Güvenliğine Karşı Suçlar",
+      "name": "Tehlikeli maddelerin terk edilmesi",
+      "tck_article": "TCK m.177/1",
+      "description": "Patlayıcı, parlayıcı, yakıcı, nükleer veya radyoaktif maddeleri terk ederek kişilerin hayatı, sağlığı veya malvarlığı bakımından somut bir tehlike oluşturan kişi",
+      "penalty_min": "6 ay",
+      "penalty_max": "3 yıl",
+      "penalty_type": "Hapis",
+      "eligible_for_simple_trial": true,
+      "notes": "Alt sınır düşük, ancak suçun niteliğine göre değerlendirme gerekir"
+    },
+    {
+      "id": 19,
+      "category": "Kamu İdaresinin Güvenilirliğine ve İşleyişine Karşı Suçlar",
+      "name": "Görevi yaptırmamak için direnme",
+      "tck_article": "TCK m.265/1",
+      "description": "Bir kamu görevlisini, kanunların kendisine verdiği görevi yapmaması için cebir veya tehdit kullanan kişi",
+      "penalty_min": "6 ay",
+      "penalty_max": "3 yıl",
+      "penalty_type": "Hapis",
+      "eligible_for_simple_trial": true,
+      "notes": "Alt sınır düşük olduğundan basit yargılama uygulanabilir"
+    },
+    {
+      "id": 20,
+      "category": "Malvarlığına Karşı Suçlar",
+      "name": "Hırsızlık - basit hal",
+      "tck_article": "TCK m.141/1",
+      "description": "Zilyedinin rızası olmadan başkasına ait taşınır bir malı, kendisine veya başkasına bir yarar sağlamak maksadıyla bulunduğu yerden alan kişi",
+      "penalty_min": "1 yıl",
+      "penalty_max": "3 yıl",
+      "penalty_type": "Hapis",
+      "eligible_for_simple_trial": false,
+      "notes": "Alt sınır 1 yıl - genellikle basit yargılama için uygun değildir, ancak dosyanın niteliğine göre değerlendirilebilir"
+    },
+    {
+      "id": 21,
+      "category": "Seri Muhakeme Usulüne Tabi Suçlar",
+      "name": "Hakkı olmayan yere tecavüz",
+      "tck_article": "TCK m.154/2-3",
+      "description": "Hakkı olmayan yere tecavüz suçunun ikinci ve üçüncü fıkrası",
+      "penalty_min": "Değişken",
+      "penalty_max": "Değişken",
+      "penalty_type": "Hapis veya Adli Para Cezası",
+      "eligible_for_simple_trial": false,
+      "eligible_for_expedited_trial": true,
+      "notes": "CMK m.250 kapsamında seri muhakeme usulüne tabidir"
+    },
+    {
+      "id": 22,
+      "category": "Seri Muhakeme Usulüne Tabi Suçlar",
+      "name": "Genel güvenliğin kasten tehlikeye sokulması",
+      "tck_article": "TCK m.170",
+      "description": "Genel güvenliği kasten tehlikeye sokan kişi hakkında uygulanan suç",
+      "penalty_min": "1 yıl",
+      "penalty_max": "5 yıl",
+      "penalty_type": "Hapis",
+      "eligible_for_simple_trial": false,
+      "eligible_for_expedited_trial": true,
+      "notes": "CMK m.250 kapsamında seri muhakeme usulüne tabidir"
+    },
+    {
+      "id": 23,
+      "category": "Seri Muhakeme Usulüne Tabi Suçlar",
+      "name": "Trafik güvenliğini tehlikeye sokma",
+      "tck_article": "TCK m.179/2-3",
+      "description": "Trafik güvenliğini tehlikeye sokma suçunun ikinci ve üçüncü fıkrası",
+      "penalty_min": "Değişken",
+      "penalty_max": "Değişken",
+      "penalty_type": "Hapis",
+      "eligible_for_simple_trial": false,
+      "eligible_for_expedited_trial": true,
+      "notes": "CMK m.250 kapsamında seri muhakeme usulüne tabidir"
+    },
+    {
+      "id": 24,
+      "category": "Seri Muhakeme Usulüne Tabi Suçlar",
+      "name": "Gürültüye neden olma",
+      "tck_article": "TCK m.183",
+      "description": "Gürültüye neden olarak kamu düzenini bozan kişi hakkında uygulanan suç",
+      "penalty_min": "3 ay",
+      "penalty_max": "1 yıl",
+      "penalty_type": "Adli Para Cezası",
+      "eligible_for_simple_trial": true,
+      "eligible_for_expedited_trial": true,
+      "notes": "CMK m.250 kapsamında seri muhakeme usulüne tabidir. Basit yargılama için de uygun olabilir"
+    },
+    {
+      "id": 25,
+      "category": "Seri Muhakeme Usulüne Tabi Suçlar",
+      "name": "Parada sahtecilik",
+      "tck_article": "TCK m.197/2-3",
+      "description": "Parada sahtecilik suçunun ikinci ve üçüncü fıkrası",
+      "penalty_min": "Değişken",
+      "penalty_max": "Değişken",
+      "penalty_type": "Hapis",
+      "eligible_for_simple_trial": false,
+      "eligible_for_expedited_trial": true,
+      "notes": "CMK m.250 kapsamında seri muhakeme usulüne tabidir"
+    },
+    {
+      "id": 26,
+      "category": "Seri Muhakeme Usulüne Tabi Suçlar",
+      "name": "Mühür bozma",
+      "tck_article": "TCK m.203",
+      "description": "Mühür bozma suçu",
+      "penalty_min": "1 yıl",
+      "penalty_max": "3 yıl",
+      "penalty_type": "Hapis",
+      "eligible_for_simple_trial": false,
+      "eligible_for_expedited_trial": true,
+      "notes": "CMK m.250 kapsamında seri muhakeme usulüne tabidir"
+    },
+    {
+      "id": 27,
+      "category": "Seri Muhakeme Usulüne Tabi Suçlar",
+      "name": "Resmi belgenin düzenlenmesinde yalan beyan",
+      "tck_article": "TCK m.206",
+      "description": "Resmi belgenin düzenlenmesinde yalan beyan suçu",
+      "penalty_min": "3 ay",
+      "penalty_max": "2 yıl",
+      "penalty_type": "Hapis",
+      "eligible_for_simple_trial": true,
+      "eligible_for_expedited_trial": true,
+      "notes": "CMK m.250 kapsamında seri muhakeme usulüne tabidir. Basit yargılama için de uygun olabilir"
+    },
+    {
+      "id": 28,
+      "category": "Seri Muhakeme Usulüne Tabi Suçlar",
+      "name": "Kumar oynanması için yer ve imkan sağlama",
+      "tck_article": "TCK m.228/1",
+      "description": "Kumar oynanması için yer ve imkan sağlama suçunun birinci fıkrası",
+      "penalty_min": "1 yıl",
+      "penalty_max": "3 yıl",
+      "penalty_type": "Hapis",
+      "eligible_for_simple_trial": false,
+      "eligible_for_expedited_trial": true,
+      "notes": "CMK m.250 kapsamında seri muhakeme usulüne tabidir"
+    },
+    {
+      "id": 29,
+      "category": "Seri Muhakeme Usulüne Tabi Suçlar",
+      "name": "Başkasına ait kimlik veya kimlik bilgilerinin kullanılması",
+      "tck_article": "TCK m.268",
+      "description": "Başkasına ait kimlik veya kimlik bilgilerini kullanma suçu",
+      "penalty_min": "6 ay",
+      "penalty_max": "2 yıl",
+      "penalty_type": "Hapis",
+      "eligible_for_simple_trial": true,
+      "eligible_for_expedited_trial": true,
+      "notes": "CMK m.250 kapsamında seri muhakeme usulüne tabidir. Basit yargılama için de uygun olabilir"
+    },
+    {
+      "id": 30,
+      "category": "Seri Muhakeme Usulüne Tabi Suçlar",
+      "name": "Ateşli silahlar ve bıçaklar hakkında suçlar",
+      "tck_article": "6136 S.K. m.13/3, m.15/1-2-3",
+      "description": "6136 sayılı Ateşli Silahlar ve Bıçaklar ile Diğer Aletler Hakkında Kanun'un 13. maddesinin üçüncü fıkrası ile 15. maddesinin birinci, ikinci ve üçüncü fıkralarında belirtilen suçlar",
+      "penalty_min": "Değişken",
+      "penalty_max": "Değişken",
+      "penalty_type": "Hapis veya Adli Para Cezası",
+      "eligible_for_simple_trial": false,
+      "eligible_for_expedited_trial": true,
+      "notes": "CMK m.250 kapsamında seri muhakeme usulüne tabidir. 6136 sayılı Kanun kapsamında"
+    },
+    {
+      "id": 31,
+      "category": "Seri Muhakeme Usulüne Tabi Suçlar",
+      "name": "Orman suçları",
+      "tck_article": "6831 S.K. m.93/1",
+      "description": "6831 sayılı Orman Kanununun 93. maddesinin birinci fıkrasında belirtilen suç",
+      "penalty_min": "Değişken",
+      "penalty_max": "Değişken",
+      "penalty_type": "Hapis veya Adli Para Cezası",
+      "eligible_for_simple_trial": false,
+      "eligible_for_expedited_trial": true,
+      "notes": "CMK m.250 kapsamında seri muhakeme usulüne tabidir. 6831 sayılı Orman Kanunu kapsamında"
+    },
+    {
+      "id": 32,
+      "category": "Seri Muhakeme Usulüne Tabi Suçlar",
+      "name": "Oyun alet ve makinaları hakkında suçlar",
+      "tck_article": "1072 S.K. m.2",
+      "description": "1072 sayılı Rulet, Tilt, Langırt ve Benzeri Oyun Alet ve Makinaları Hakkında Kanunun 2. maddesinde belirtilen suç",
+      "penalty_min": "Değişken",
+      "penalty_max": "Değişken",
+      "penalty_type": "Hapis veya Adli Para Cezası",
+      "eligible_for_simple_trial": false,
+      "eligible_for_expedited_trial": true,
+      "notes": "CMK m.250 kapsamında seri muhakeme usulüne tabidir. 1072 sayılı Kanun kapsamında"
+    },
+    {
+      "id": 33,
+      "category": "Seri Muhakeme Usulüne Tabi Suçlar",
+      "name": "Kooperatifler hakkında suçlar",
+      "tck_article": "1163 S.K. ek m.2/1-1",
+      "description": "1163 sayılı Kooperatifler Kanununun ek 2. maddesinin birinci fıkrasının (1) numaralı bendinde belirtilen suç",
+      "penalty_min": "Değişken",
+      "penalty_max": "Değişken",
+      "penalty_type": "Hapis veya Adli Para Cezası",
+      "eligible_for_simple_trial": false,
+      "eligible_for_expedited_trial": true,
+      "notes": "CMK m.250 kapsamında seri muhakeme usulüne tabidir. 1163 sayılı Kooperatifler Kanunu kapsamında"
+    }
+  ]
+}
+;
+                
+                // Populate category filter
+                populateCategoryFilter();
+                
+                // Initial display
+                filteredOffenses = offenseData.offenses;
+                displayOffenses(filteredOffenses);
+                updateStats();
+            } catch (error) {
+                console.error('Veri yüklenirken hata oluştu:', error);
+                document.getElementById('offenseGrid').innerHTML = `
+                    <div class="no-results">
+                        <p>❌ Suç türleri verisi yüklenirken bir hata oluştu.</p>
+                        <p style="margin-top: 10px; font-size: 0.9em;">Lütfen suc_turleri_kutuphanesi.json dosyasının mevcut olduğundan emin olun.</p>
+                    </div>
+                `;
+            }
+        }
+
+        // Populate category filter dropdown
+        function populateCategoryFilter() {
+            const categories = [...new Set(offenseData.offenses.map(o => o.category))];
+            const select = document.getElementById('categoryFilter');
+            
+            categories.forEach(category => {
+                const option = document.createElement('option');
+                option.value = category;
+                option.textContent = category;
+                select.appendChild(option);
+            });
+        }
+
+        // Display offenses
+        function displayOffenses(offenses) {
+            const grid = document.getElementById('offenseGrid');
+            
+            if (offenses.length === 0) {
+                grid.innerHTML = `
+                    <div class="no-results">
+                        <span style="font-size: 3em;">🔍</span>
+                        <p style="margin-top: 20px; font-size: 1.2em;">Arama kriterlerinize uygun sonuç bulunamadı.</p>
+                        <p style="margin-top: 10px;">Lütfen farklı kriterler deneyin.</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            grid.innerHTML = offenses.map(offense => `
+                <div class="offense-card ${offense.eligible_for_simple_trial ? 'eligible' : 'not-eligible'}">
+                    <div class="offense-header">
+                        <div class="offense-title">${offense.name}</div>
+                        <div class="tck-badge">${offense.tck_article}</div>
+                    </div>
+                    
+                    <div class="offense-category">${offense.category}</div>
+                    
+                    <div class="offense-description">${offense.description}</div>
+                    
+                    <div class="penalty-info">
+                        <div class="penalty-row">
+                            <span class="penalty-label">Ceza Alt Sınırı:</span>
+                            <span class="penalty-value">${offense.penalty_min}</span>
+                        </div>
+                        <div class="penalty-row">
+                            <span class="penalty-label">Ceza Üst Sınırı:</span>
+                            <span class="penalty-value">${offense.penalty_max}</span>
+                        </div>
+                        <div class="penalty-row">
+                            <span class="penalty-label">Ceza Türü:</span>
+                            <span class="penalty-value">${offense.penalty_type}</span>
+                        </div>
+                    </div>
+                    
+                    <div class="eligibility-badge ${offense.eligible_for_simple_trial ? 'yes' : 'no'}">
+                        ${offense.eligible_for_simple_trial ? '✅ Basit Yargılama Uygun' : '⚠️ Dikkatli Değerlendirme Gerekir'}
+                    </div>
+                    
+                    ${offense.eligible_for_expedited_trial ? '<div class="eligibility-badge yes" style="margin-top: 5px;">⚡ Seri Muhakeme Uygun</div>' : ''}
+                    
+                    ${offense.notes ? `<div class="notes">💡 ${offense.notes}</div>` : ''}
+                </div>
+            `).join('');
+        }
+
+        // Update statistics
+        function updateStats() {
+            const total = offenseData.offenses.length;
+            const eligible = offenseData.offenses.filter(o => o.eligible_for_simple_trial).length;
+            const expedited = offenseData.offenses.filter(o => o.eligible_for_expedited_trial).length;
+            const displayed = filteredOffenses.length;
+            
+            document.getElementById('totalCount').textContent = total;
+            document.getElementById('eligibleCount').textContent = eligible;
+            document.getElementById('expeditedCount').textContent = expedited;
+            document.getElementById('displayedCount').textContent = displayed;
+        }
+
+        // Apply filters
+        function applyFilters() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const categoryFilter = document.getElementById('categoryFilter').value;
+            const eligibilityFilter = document.getElementById('eligibilityFilter').value;
+            
+            filteredOffenses = offenseData.offenses.filter(offense => {
+                // Search filter
+                const matchesSearch = searchTerm === '' || 
+                    offense.name.toLowerCase().includes(searchTerm) ||
+                    offense.tck_article.toLowerCase().includes(searchTerm) ||
+                    offense.description.toLowerCase().includes(searchTerm) ||
+                    offense.category.toLowerCase().includes(searchTerm);
+                
+                // Category filter
+                const matchesCategory = categoryFilter === 'all' || offense.category === categoryFilter;
+                
+                // Eligibility filter
+                let matchesEligibility = true;
+                if (eligibilityFilter === 'eligible') {
+                    matchesEligibility = offense.eligible_for_simple_trial === true;
+                } else if (eligibilityFilter === 'not-eligible') {
+                    matchesEligibility = offense.eligible_for_simple_trial === false;
+                } else if (eligibilityFilter === 'expedited') {
+                    matchesEligibility = offense.eligible_for_expedited_trial === true;
+                }
+                
+                return matchesSearch && matchesCategory && matchesEligibility;
+            });
+            
+            displayOffenses(filteredOffenses);
+            updateStats();
+        }
+
+        // Reset filters
+        function resetFilters() {
+            document.getElementById('searchInput').value = '';
+            document.getElementById('categoryFilter').value = 'all';
+            document.getElementById('eligibilityFilter').value = 'all';
+            applyFilters();
+        }
+
+        // Event listeners
+        document.addEventListener('DOMContentLoaded', loadOffenseData);
+        
+        document.getElementById('searchInput').addEventListener('input', applyFilters);
+        document.getElementById('categoryFilter').addEventListener('change', applyFilters);
+        document.getElementById('eligibilityFilter').addEventListener('change', applyFilters);
+    </script>
+</body>
+</html>

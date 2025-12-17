@@ -1,8 +1,12 @@
 # Node modules
 node_modules/
 
-# Build output
-dist/
+# Electron build output (but keep portable HTML)
+dist/win-unpacked/
+dist/*.exe
+dist/*.yml
+dist/*.blockmap
+dist/*.yaml
 
 # Electron build cache
 .cache/
